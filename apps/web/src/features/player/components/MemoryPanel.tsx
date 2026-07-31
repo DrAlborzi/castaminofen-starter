@@ -1,4 +1,4 @@
-import { BookMarked, Clock3, MessageSquareText, Sparkles, Star, StickyNote } from 'lucide-react';
+import { BookMarked, Clock3, Sparkles, Star, StickyNote } from 'lucide-react';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { getPlayerMemoryCollections } from '../data/mockPlayerExperience';
 

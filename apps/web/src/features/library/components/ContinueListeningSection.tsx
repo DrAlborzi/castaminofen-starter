@@ -65,6 +65,7 @@ export function ContinueListeningSection({ items }: { items: LibraryListeningHis
         <LibraryEmptyState
           title="هنوز اپیزودی برای ادامه پخش ندارید"
           description="اپیزودهایی که در حال گوش دادن به آن‌ها هستید در این بخش نمایش داده می‌شوند."
+          supportingText="هر بار که به یک تجربه برمی‌گردی، مسیر یادگیری و خاطره‌ات در اینجا از نو روشن می‌شود."
           eyebrow="از اولین گوش دادن شروع کنید"
           icon={PlayCircle}
         />

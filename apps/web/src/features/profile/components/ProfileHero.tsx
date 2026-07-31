@@ -36,6 +36,7 @@ export function ProfileHero({ profile, mode = 'owner' }: ProfileHeroProps) {
               <span>{profile.status}</span>
             </div>
             <p className="max-w-2xl text-sm leading-7 text-text-secondary">{profile.bio}</p>
+            <p className="text-sm leading-7 text-text-secondary">هویت شما در Castaminofen، از لحظه‌های بازگشت، مشارکت و دانش‌سازی شکل می‌گیرد.</p>
             <div className="flex flex-wrap gap-2">
               {profile.favoriteTopics.map((topic) => (
                 <span key={topic} className="rounded-full border border-border/70 bg-surface-card/80 px-3 py-1 text-xs font-medium text-text-secondary">
@@ -56,7 +57,7 @@ export function ProfileHero({ profile, mode = 'owner' }: ProfileHeroProps) {
             <>
               <Button type="button" variant="primary">ویرایش پروفایل</Button>
               <Button type="button" variant="secondary">مدیریت تنظیمات</Button>
-              <Button type="button" variant="ghost">تقویت هویت</Button>
+              <Button type="button" variant="ghost">تقویت هویت شما</Button>
             </>
           ) : (
             <>

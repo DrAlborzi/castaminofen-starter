@@ -251,7 +251,7 @@ export function AdminDashboard() {
     <PageContainer className="space-y-6">
       <SectionHeader
         title="Platform Control Center"
-        description="فضای مدیریتی برای کنترل، نظارت و رشد پلتفرم"
+        description="فضای مدیریتی برای کنترل، نظارت و رشد پلتفرم؛ از سلامت پلتفرم تا فرصت‌های بازگشت و مشارکت، همه در یک نگاه قابل فهم باشند."
         actions={<Tag className="border-accent/20 bg-accent/10 text-accent">Governance Mission Control</Tag>}
       />
 

@@ -6,7 +6,6 @@ import { useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
 import { ErrorState } from '@/components/ui/error-state';
-import { LoadingState } from '@/components/ui/loading-state';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { ContentArtwork } from '@/components/design-system/media/content-artwork';
 import { Tag } from '@/components/design-system/common/tag';
@@ -51,8 +50,8 @@ export function SearchResultsPanel({ query, page }: SearchResultsPanelProps) {
   const playerRuntime = usePlayerRuntime();
   const pageLabel = typeof page === 'number' && page > 1 ? ` · صفحه ${page}` : '';
 
-  const podcasts = result.data?.podcasts.data ?? [];
-  const episodes = result.data?.episodes ?? [];
+  const podcasts = useMemo(() => result.data?.podcasts.data ?? [], [result.data?.podcasts.data]);
+  const episodes = useMemo(() => result.data?.episodes ?? [], [result.data?.episodes]);
   const rankedPodcasts = useMemo(() => rankPodcastResults(podcasts, debouncedQuery), [podcasts, debouncedQuery]);
   const rankedEpisodes = useMemo(() => rankEpisodeResults(episodes, debouncedQuery), [episodes, debouncedQuery]);
 

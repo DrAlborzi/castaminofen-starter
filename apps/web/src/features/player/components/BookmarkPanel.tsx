@@ -14,7 +14,7 @@ export function BookmarkPanel() {
   const initialEntries = useMemo(() => getPlayerExperienceViewModel(320).bookmarks.map((bookmark) => ({ id: bookmark.id, timestamp: bookmark.timestamp, note: bookmark.note })), []);
   const [entries, setEntries] = useState<BookmarkEntry[]>(initialEntries);
   const [note, setNote] = useState('');
-  const [activeTimestamp, setActiveTimestamp] = useState(320);
+  const activeTimestamp = 320;
 
   const summary = useMemo(() => `${entries.length} نشانک ذخیره شده`, [entries.length]);
 

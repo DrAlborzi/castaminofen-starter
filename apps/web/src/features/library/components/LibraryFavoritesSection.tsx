@@ -6,8 +6,6 @@ import { formatDistanceToNowStrict } from 'date-fns';
 import { usePlayerRuntime } from '@/features/player/hooks/usePlayerRuntime';
 import { mapEpisodeToPlayableItem } from '@/features/player/adapters/episodeToPlayable';
 import { useFavorites } from '../hooks/useFavorites';
-import { LibraryLoadingState } from './LibraryLoadingState';
-import { LibraryErrorState } from './LibraryErrorState';
 import { LibraryEmptyState } from './LibraryEmptyState';
 import { Button } from '@/components/ui/button';
 import { FavoriteActionButton } from './FavoriteActionButton';
@@ -61,6 +59,7 @@ export function LibraryFavoritesSection() {
         eyebrow="علاقه‌مندی‌ها"
         title="علاقه‌مندی‌های شما در انتظارند"
         description="اپیزودهایی که دوست دارید را ذخیره کنید و هر زمان بازگردید."
+        supportingText="این بخش، بخش خاطره و بازگشت شماست؛ جایی که چیزهایی که برایتان مهم‌اند دوباره در دسترس می‌شوند."
         actionLabel="کاوش در پادکست‌ها"
       />
     );

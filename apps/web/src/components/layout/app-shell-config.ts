@@ -41,7 +41,7 @@ export function getMobileHeaderConfig(pathname: string): AppShellHeaderConfig {
   if (pathname.startsWith('/library')) {
     return {
       title: 'کتابخانه',
-      tagline: 'مرکز گوش دادن و ادامه‌ی سفر',
+      tagline: 'از اینجا به بازگشت، ادامه‌ی مسیر و لحظه‌های ارزشمند برگرد',
       showSearchAction: true,
       showProfileAction: true,
       showCreateAction: true,
@@ -52,7 +52,7 @@ export function getMobileHeaderConfig(pathname: string): AppShellHeaderConfig {
   if (pathname.startsWith('/search')) {
     return {
       title: 'جستجو',
-      tagline: 'پادکست‌ها و اپیزودها',
+      tagline: 'پیدا کردن مسیر بعدیِ شنیداری',
       showSearchAction: true,
       showProfileAction: true,
       titleTone: 'feature',
@@ -62,7 +62,7 @@ export function getMobileHeaderConfig(pathname: string): AppShellHeaderConfig {
   if (pathname.startsWith('/creator')) {
     return {
       title: 'سازنده',
-      tagline: 'هویت عمومی، محتوا و جامعه برای creators',
+      tagline: 'از اولین انتشار تا رشد و هویت در جامعه',
       showSearchAction: true,
       showProfileAction: true,
       titleTone: 'feature',
@@ -82,7 +82,7 @@ export function getMobileHeaderConfig(pathname: string): AppShellHeaderConfig {
   if (pathname.startsWith('/community')) {
     return {
       title: 'اجتماع',
-      tagline: 'بحث و تعامل با سایر شنوندگان در یک جریان یکپارچه',
+      tagline: 'از گوش دادن تا مشارکت و حس ادامه',
       showSearchAction: true,
       showProfileAction: true,
       titleTone: 'feature',
@@ -92,7 +92,7 @@ export function getMobileHeaderConfig(pathname: string): AppShellHeaderConfig {
   if (pathname.startsWith('/create') || pathname.startsWith('/podcasts/new') || pathname.startsWith('/episodes/new')) {
     return {
       title: 'ایجاد',
-      tagline: 'پادکست و اپیزودهای جدید را در یک جریان یکپارچه منتشر کن',
+      tagline: 'از ایده تا انتشار با مسیر روشن و قابل فهم',
       showSearchAction: false,
       showProfileAction: true,
       showCreateAction: false,

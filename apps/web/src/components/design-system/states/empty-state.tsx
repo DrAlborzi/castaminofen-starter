@@ -8,6 +8,7 @@ export function EmptyState({
   action,
   className,
   eyebrow,
+  supportingText,
   icon: Icon = Sparkles,
 }: {
   title: string;
@@ -15,6 +16,7 @@ export function EmptyState({
   action?: ReactNode;
   className?: string;
   eyebrow?: string;
+  supportingText?: string;
   icon?: LucideIcon;
 }) {
   return (
@@ -34,6 +36,7 @@ export function EmptyState({
           {eyebrow ? <p className="m-0 text-xs font-semibold uppercase tracking-[0.24em] text-accent">{eyebrow}</p> : null}
           <h3 className="text-subheading">{title}</h3>
           {description ? <p className="text-body m-0">{description}</p> : null}
+          {supportingText ? <p className="text-sm leading-7 text-text-secondary">{supportingText}</p> : null}
         </div>
       </div>
       {action ? <div className="flex flex-wrap gap-2">{action}</div> : null}

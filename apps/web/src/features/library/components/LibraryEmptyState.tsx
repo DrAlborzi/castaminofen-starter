@@ -11,12 +11,14 @@ export function LibraryEmptyState({
   description,
   actionLabel = 'مشاهده پادکست‌ها',
   eyebrow,
+  supportingText,
   icon: Icon = Sparkles,
 }: {
   title: string;
   description: string;
   actionLabel?: string;
   eyebrow?: string;
+  supportingText?: string;
   icon?: LucideIcon;
 }) {
   return (
@@ -25,6 +27,7 @@ export function LibraryEmptyState({
       title={title}
       description={description}
       eyebrow={eyebrow}
+      supportingText={supportingText}
       icon={Icon}
       action={
         <Link href="/podcasts" className="inline-flex">

@@ -13,20 +13,20 @@ describe('app shell config', () => {
     const config = getMobileHeaderConfig('/library');
 
     expect(config.title).toBe('کتابخانه');
-    expect(config.tagline).toBe('مرکز گوش دادن و ادامه‌ی سفر');
+    expect(config.tagline).toBe('از اینجا به بازگشت، ادامه‌ی مسیر و لحظه‌های ارزشمند برگرد');
   });
 
   it('maps the shared header metadata for the community experience', () => {
     const config = getMobileHeaderConfig('/community');
 
     expect(config.title).toBe('اجتماع');
-    expect(config.tagline).toBe('بحث و تعامل با سایر شنوندگان در یک جریان یکپارچه');
+    expect(config.tagline).toBe('از گوش دادن تا مشارکت و حس ادامه');
   });
 
   it('maps the create experience to the shared premium header pattern', () => {
     const config = getMobileHeaderConfig('/podcasts/new');
 
     expect(config.title).toBe('ایجاد');
-    expect(config.tagline).toBe('پادکست و اپیزودهای جدید را در یک جریان یکپارچه منتشر کن');
+    expect(config.tagline).toBe('از ایده تا انتشار با مسیر روشن و قابل فهم');
   });
 });

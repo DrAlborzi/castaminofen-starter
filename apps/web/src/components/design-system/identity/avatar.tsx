@@ -1,5 +1,6 @@
 import clsx from 'clsx';
-import type { ComponentProps, ReactNode } from 'react';
+import Image from 'next/image';
+import type { ReactNode } from 'react';
 
 export type AvatarSize = 'sm' | 'md' | 'lg';
 
@@ -9,9 +10,9 @@ export function Avatar({
   fallback,
   size = 'md',
   src,
-  ...props
-}: Omit<ComponentProps<'img'>, 'alt' | 'src'> & {
+}: {
   alt: string;
+  className?: string;
   fallback?: ReactNode;
   size?: AvatarSize;
   src?: string;
@@ -31,8 +32,8 @@ export function Avatar({
   }
 
   return (
-    <div className={clsx('inline-flex overflow-hidden rounded-full border border-border bg-surface-secondary shadow-sm', sizeClassName, className)}>
-      <img src={src} alt={alt} className="h-full w-full object-cover" {...props} />
+    <div className={clsx('relative inline-flex overflow-hidden rounded-full border border-border bg-surface-secondary shadow-sm', sizeClassName, className)}>
+      <Image src={src} alt={alt} fill sizes="96px" className="object-cover" unoptimized />
     </div>
   );
 }

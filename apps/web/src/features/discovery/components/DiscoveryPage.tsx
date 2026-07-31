@@ -9,7 +9,7 @@ import { usePodcasts } from '@/features/podcasts/hooks/usePodcasts';
 import { useQuery } from '@tanstack/react-query';
 import { getEpisodes } from '@/lib/episodes';
 import { useAuthStore } from '@/stores/authStore';
-import { buildDiscoverySections } from '../utils/discovery-content';
+import { buildDiscoverySections, getDiscoveryIntroContent } from '../utils/discovery-content';
 import { DiscoverySection } from './DiscoverySection';
 import { ContinueListeningSection } from '@/features/library/components/ContinueListeningSection';
 import { PageContainer } from '@/components/design-system/layout/page-container';
@@ -27,6 +27,12 @@ export function DiscoveryPage() {
     staleTime: 1000 * 30,
   });
   const continueListeningQuery = useContinueListening();
+
+  const introContent = useMemo(() => {
+    return getDiscoveryIntroContent({
+      isAuthenticated: Boolean(sessionData || isAuthenticated),
+    });
+  }, [isAuthenticated, sessionData]);
 
   const sections = useMemo(() => {
     return buildDiscoverySections({
@@ -80,8 +86,9 @@ export function DiscoveryPage() {
                 <Compass className="h-4 w-4" aria-hidden="true" />
                 Discovery
               </Tag>
-              <h1 id="discovery-heading" className="text-heading">برای بازگشت بعدی، مسیر بعدی را کشف کن</h1>
-              <p className="m-0 text-body">صفحه‌ی اصلیِ Castaminofen به‌جای یک شبکه‌ی خام، یک مسیر آرام برای ادامه، کشف و بازگشت به تجربه‌ی شنیداری است.</p>
+              <h1 id="discovery-heading" className="text-heading">از همینجا، مسیر بعدیِ شنیداری‌ات را انتخاب کن</h1>
+              <p className="m-0 text-body">Castaminofen شما را از «جستجو» به «ادامه‌ی گوش دادن، حفظ لحظه و بازگشت با هدف» می‌برد؛ بدون شلوغی و با حس پیشرفت.</p>
+              <p className="text-sm leading-7 text-text-secondary">اگر امروز تازه شروع کردی، این صفحه راه‌نمایی برای ادامه‌ی آرام و معنادار است. اگر بازگشته‌ای، از لحظه‌ای که قطع کردی دوباره ادامه بده و به مسیر خودت برگرد.</p>
             </div>
             <div className="flex flex-wrap items-center gap-2">
               <Link href="/podcasts" className="inline-flex">
@@ -98,17 +105,36 @@ export function DiscoveryPage() {
             </div>
           </div>
 
+          <div className="mt-6 rounded-[1.75rem] border border-border/80 bg-surface-card/80 p-4 shadow-soft sm:p-5">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+              <div className="max-w-2xl space-y-3">
+                <Tag className="w-fit border-accent/20 bg-accent/10 text-accent">
+                  <Sparkles className="h-4 w-4" aria-hidden="true" />
+                  {introContent.eyebrow}
+                </Tag>
+                <h2 className="text-xl font-semibold text-text-primary">{introContent.title}</h2>
+                <p className="m-0 text-sm text-text-secondary">{introContent.description}</p>
+                <p className="m-0 text-sm text-text-secondary">{introContent.supportingText}</p>
+              </div>
+              <Link href={introContent.actionHref} className="inline-flex">
+                <Button variant="secondary" size="md" className="min-h-[2.75rem]">
+                  {introContent.actionLabel}
+                </Button>
+              </Link>
+            </div>
+          </div>
+
           <div className="mt-6 grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
             <div className="rounded-[2rem] border border-border/80 bg-gradient-to-br from-accent/12 via-surface-secondary to-surface-card/90 p-5 shadow-soft sm:p-6">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                 <div className="space-y-3">
                   <p className="m-0 text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">Continue Journey</p>
-                  <h2 className="text-xl font-semibold text-text-primary">Castaminofen برای بازگشت بعدی شما، مسیر بعدی را آماده می‌کند.</h2>
-                  <p className="m-0 max-w-xl text-sm text-text-secondary">از ادامه‌ی پخش و لحظه‌های نیمه‌کامل گرفته تا موضوعات جذاب و مسیرهای بازگشتی، این صفحه به شما کمک می‌کند «جایی که متوقف شدی» را دوباره از سر بگیری.</p>
+                  <h2 className="text-xl font-semibold text-text-primary">هر بازگشت، یک قدم روشن‌تر به سمت تجربه‌ای شخصی‌تر و ماندگارتر دارد.</h2>
+                  <p className="m-0 max-w-xl text-sm text-text-secondary">از ادامه‌ی پخش و لحظه‌های نیمه‌کامل گرفته تا پیشنهادهای تازه، این صفحه به شما کمک می‌کند «جایی که متوقف شدی» را بدون سردرگمی از سر بگیری و به آن معنا ببخشی.</p>
                 </div>
                 <Tag className="w-fit border-border bg-surface-secondary/80 text-text-secondary">
                   <Sparkles className="h-4 w-4 text-accent" aria-hidden="true" />
-                  Personalized Discovery
+                  Guidance for returning
                 </Tag>
               </div>
             </div>

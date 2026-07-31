@@ -9,3 +9,6 @@
 - **Web admin intelligence tests**: `apps/web` — `pnpm --filter @castaminofen/web test`
 - **Web admin configuration regression tests**: `apps/web` — `pnpm --filter @castaminofen/web exec vitest run src/features/admin/components/AdminConfigurationCenter.test.tsx`
 - **Web type-check**: `apps/web` — `pnpm exec tsc -p apps/web/tsconfig.json --noEmit`
+- **Web tests (retention UX)**: `apps/web` — `pnpm --filter @castaminofen/web test`
+- **Web lint (retention UX)**: `apps/web` — `pnpm lint:web`
+- **Production build (retention UX)**: repo root — `pnpm build`

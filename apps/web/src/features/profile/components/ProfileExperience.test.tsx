@@ -41,6 +41,7 @@ describe('profile experience', () => {
     expect(rendered.container.textContent).toContain('علی محمدی');
     expect(rendered.container.textContent).toContain('ویرایش پروفایل');
     expect(rendered.container.textContent).toContain('مدیریت تنظیمات');
+    expect(rendered.container.textContent).toContain('هویت شما در Castaminofen');
   });
 
   it('supports follow interaction in viewer mode', () => {
