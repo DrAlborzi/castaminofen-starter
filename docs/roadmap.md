@@ -91,3 +91,11 @@
 - [ ] Docker
 - [ ] CI/CD
 - [ ] Monitoring
+
+---
+
+## Phase 12 — Product Learning & Beta Decision Framework
+- [x] User behavior learning framework
+- [x] User journey mapping
+- [x] Friction and feedback prioritization model
+- [x] Decision backlog for evidence-based product choices
