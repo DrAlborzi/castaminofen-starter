@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import { useLibraryOverview } from '../hooks/useLibraryOverview';
 import { buildLibraryCollectionsSummary } from '../utils/library-collections';
 import { ContinueListeningSection } from './ContinueListeningSection';
@@ -22,18 +23,18 @@ export function LibraryPage() {
   const isLoading = overviewQuery.isLoading;
   const isError = overviewQuery.isError;
 
-  const subscriptions = overviewQuery.data?.subscriptions ?? [];
-  const continueListening = overviewQuery.data?.continueListening ?? [];
-  const history = overviewQuery.data?.history ?? [];
-  const continueListeningIds = new Set(continueListening.map((item) => item.episodeId));
-  const historyItems = history.filter((item) => !continueListeningIds.has(item.episodeId));
-  const collectionSummary = buildLibraryCollectionsSummary({ subscriptions, continueListening, history });
+  const subscriptions = useMemo(() => overviewQuery.data?.subscriptions ?? [], [overviewQuery.data?.subscriptions]);
+  const continueListening = useMemo(() => overviewQuery.data?.continueListening ?? [], [overviewQuery.data?.continueListening]);
+  const history = useMemo(() => overviewQuery.data?.history ?? [], [overviewQuery.data?.history]);
+  const continueListeningIds = useMemo(() => new Set(continueListening.map((item) => item.episodeId)), [continueListening]);
+  const historyItems = useMemo(() => history.filter((item) => !continueListeningIds.has(item.episodeId)), [continueListeningIds, history]);
+  const collectionSummary = useMemo(() => buildLibraryCollectionsSummary({ subscriptions, continueListening, history }), [continueListening, history, subscriptions]);
   const hasAnyContent = subscriptions.length > 0 || continueListening.length > 0 || history.length > 0;
   const now = new Date();
   const greeting = getLibraryGreeting(now);
-  const latestActivityItem = [...history, ...continueListening]
+  const latestActivityItem = useMemo(() => [...history, ...continueListening]
     .slice()
-    .sort((left, right) => new Date(right.lastPlayedAt).getTime() - new Date(left.lastPlayedAt).getTime())[0];
+    .sort((left, right) => new Date(right.lastPlayedAt).getTime() - new Date(left.lastPlayedAt).getTime())[0], [continueListening, history]);
   const lastActivityLabel = getLastActivityLabel(latestActivityItem?.lastPlayedAt, now);
   const listeningStreak = getListeningStreakFromHistory(history);
   const greetingSubtitle = now.getHours() < 12
@@ -86,7 +87,7 @@ export function LibraryPage() {
             <p className="m-0 text-sm font-medium text-accent">My Knowledge · My Collections · My Memories</p>
             <h1 className="text-heading">{greeting}</h1>
             <p className="text-body m-0 max-w-2xl">این فضا یک حافظه‌ی شخصی برای بازگشت به آموخته‌ها، مسیرهای نیمه‌کامل، مجموعه‌های مورد علاقه و لحظه‌هایی است که می‌خواهی دوباره بازسازی کنی.</p>
-            <p className="text-sm leading-7 text-text-secondary">هر بار که برمی‌گردی، اینجا به تو یادآوری می‌کند چرا این محتوا برایت مهم بوده و چرا بازگشت به آن ارزش دارد.</p>
+            <p className="text-sm leading-7 text-text-secondary">هر بار که برمی‌گردی، اینجا به تو یادآوری می‌کند چرا این محتوا برایت مهم بوده و چرا بازگشت به آن ارزش دارد؛ در نسخه‌ی بتا، این مسیر هنوز در حال روشن‌تر شدن است.</p>
           </div>
           <div className="flex flex-col gap-3 sm:items-end">
             <div className="flex flex-wrap items-center gap-2 text-sm text-text-secondary" role="list" aria-label="خلاصه‌ی کتابخانه">

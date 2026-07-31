@@ -52,7 +52,7 @@ export function getMobileHeaderConfig(pathname: string): AppShellHeaderConfig {
   if (pathname.startsWith('/search')) {
     return {
       title: 'جستجو',
-      tagline: 'پیدا کردن مسیر بعدیِ شنیداری',
+      tagline: 'پیدا کردن مسیر بعدیِ شنیداری با یک عبارت ساده',
       showSearchAction: true,
       showProfileAction: true,
       titleTone: 'feature',
@@ -62,7 +62,7 @@ export function getMobileHeaderConfig(pathname: string): AppShellHeaderConfig {
   if (pathname.startsWith('/creator')) {
     return {
       title: 'سازنده',
-      tagline: 'از اولین انتشار تا رشد و هویت در جامعه',
+      tagline: 'از اولین انتشار تا هویت روشن در جامعه',
       showSearchAction: true,
       showProfileAction: true,
       titleTone: 'feature',
@@ -82,7 +82,7 @@ export function getMobileHeaderConfig(pathname: string): AppShellHeaderConfig {
   if (pathname.startsWith('/community')) {
     return {
       title: 'اجتماع',
-      tagline: 'از گوش دادن تا مشارکت و حس ادامه',
+      tagline: 'از گوش دادن تا گفت‌وگو و بازگشت به مسیر',
       showSearchAction: true,
       showProfileAction: true,
       titleTone: 'feature',
@@ -102,7 +102,7 @@ export function getMobileHeaderConfig(pathname: string): AppShellHeaderConfig {
 
   return {
     title: 'کستامینوفن',
-    tagline: 'فضای صوتی شخصی',
+    tagline: 'کشف، گوش دادن و بازگشت در یک تجربه‌ی روشن و بتا',
     showSearchAction: true,
     showNotificationAction: true,
     showProfileAction: true,

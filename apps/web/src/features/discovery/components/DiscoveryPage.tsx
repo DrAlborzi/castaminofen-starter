@@ -87,8 +87,8 @@ export function DiscoveryPage() {
                 Discovery
               </Tag>
               <h1 id="discovery-heading" className="text-heading">از همینجا، مسیر بعدیِ شنیداری‌ات را انتخاب کن</h1>
-              <p className="m-0 text-body">Castaminofen شما را از «جستجو» به «ادامه‌ی گوش دادن، حفظ لحظه و بازگشت با هدف» می‌برد؛ بدون شلوغی و با حس پیشرفت.</p>
-              <p className="text-sm leading-7 text-text-secondary">اگر امروز تازه شروع کردی، این صفحه راه‌نمایی برای ادامه‌ی آرام و معنادار است. اگر بازگشته‌ای، از لحظه‌ای که قطع کردی دوباره ادامه بده و به مسیر خودت برگرد.</p>
+              <p className="m-0 text-body">Castaminofen کار را از کشف ساده شروع می‌کند و با ادامه‌ی گوش دادن، ذخیره‌ی لحظه و بازگشتِ هدفمند، مسیر را برایت روشن‌تر می‌کند.</p>
+              <p className="text-sm leading-7 text-text-secondary">اگر تازه شروع کرده‌ای، با یک موضوع ساده شروع کن. اگر قبلاً بازگشته‌ای، از همان نقطه‌ای که قطع شدی دوباره ادامه بده و مسیر خودت را از سر بگیر.</p>
             </div>
             <div className="flex flex-wrap items-center gap-2">
               <Link href="/podcasts" className="inline-flex">
@@ -130,7 +130,7 @@ export function DiscoveryPage() {
                 <div className="space-y-3">
                   <p className="m-0 text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">Continue Journey</p>
                   <h2 className="text-xl font-semibold text-text-primary">هر بازگشت، یک قدم روشن‌تر به سمت تجربه‌ای شخصی‌تر و ماندگارتر دارد.</h2>
-                  <p className="m-0 max-w-xl text-sm text-text-secondary">از ادامه‌ی پخش و لحظه‌های نیمه‌کامل گرفته تا پیشنهادهای تازه، این صفحه به شما کمک می‌کند «جایی که متوقف شدی» را بدون سردرگمی از سر بگیری و به آن معنا ببخشی.</p>
+                  <p className="m-0 max-w-xl text-sm text-text-secondary">از ادامه‌ی پخش تا بازگشت به مسیرهای تازه، این صفحه به تو کمک می‌کند بدون سردرگمی دوباره از همان نقطه شروع کنی و برای ادامه، دلیل واضحی داشته باشی.</p>
                 </div>
                 <Tag className="w-fit border-border bg-surface-secondary/80 text-text-secondary">
                   <Sparkles className="h-4 w-4 text-accent" aria-hidden="true" />

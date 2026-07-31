@@ -9,7 +9,7 @@ import Link from 'next/link';
 export function LibraryEmptyState({
   title,
   description,
-  actionLabel = 'مشاهده پادکست‌ها',
+  actionLabel = 'شروع کشف',
   eyebrow,
   supportingText,
   icon: Icon = Sparkles,

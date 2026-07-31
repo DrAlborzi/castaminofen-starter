@@ -251,7 +251,7 @@ export function AdminDashboard() {
     <PageContainer className="space-y-6">
       <SectionHeader
         title="Platform Control Center"
-        description="فضای مدیریتی برای کنترل، نظارت و رشد پلتفرم؛ از سلامت پلتفرم تا فرصت‌های بازگشت و مشارکت، همه در یک نگاه قابل فهم باشند."
+        description="این فضای مدیریتی در نسخه‌ی بتا برای نظارت، کمک به تصمیم‌گیری و روشن‌کردن مسیر رشد پلتفرم طراحی شده است؛ بخش‌های مختلف هنوز در حال تکامل‌اند اما تجربه‌ی آنها برای بازخورد و آزمایش آماده است."
         actions={<Tag className="border-accent/20 bg-accent/10 text-accent">Governance Mission Control</Tag>}
       />
 
@@ -304,10 +304,10 @@ export function AdminDashboard() {
 
           {activeSection === 'overview' ? (
             <div className="grid gap-4 lg:grid-cols-2">
-              <MediaCard title="Empty states" subtitle="برای بخش‌های خالی و اسکریپت‌های آینده" meta="Ready" className="space-y-3">
+              <MediaCard title="Empty states" subtitle="برای بخش‌های خالی و مسیرهای آینده" meta="Preview" className="space-y-3">
                 <PageState variant="empty" title="No pending reviews" description="این بخش برای نمایش وضعیت خالی و ساختار آینده آماده است." />
               </MediaCard>
-              <MediaCard title="Loading states" subtitle="برای اتصال به داده‌های واقعی" meta="Ready" className="space-y-3">
+              <MediaCard title="Loading states" subtitle="برای اتصال به داده‌های واقعی" meta="Beta Preview" className="space-y-3">
                 <PageState variant="loading" title="Loading operational data" description="در حال آماده‌سازی داده‌های مدیریتی" />
               </MediaCard>
             </div>

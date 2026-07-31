@@ -157,6 +157,24 @@ describe('PlayerBar', () => {
     expect(container.querySelector('[role="dialog"]')).toBeNull();
   });
 
+  it('shows recovery guidance when playback is blocked by an unavailable audio source', () => {
+    mockState = {
+      ...mockState,
+      error: 'Audio source is unavailable.',
+      playbackStatus: 'paused',
+      currentItem: {
+        ...createItem('current', 'Current Episode'),
+        audioUrl: '',
+      },
+    };
+
+    act(() => {
+      root.render(<PlayerBar />);
+    });
+
+    expect(container.textContent).toContain('در این لحظه فایل صوتی در دسترس نیست');
+  });
+
   it('opens the immersive player experience from the compact bar', () => {
     act(() => {
       root.render(<PlayerBar />);

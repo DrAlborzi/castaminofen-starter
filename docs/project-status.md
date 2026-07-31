@@ -16,6 +16,13 @@
 - Phase PRODUCT.MATURITY.1 — Real User Journey Validation & Experience Hardening
 - Phase PRODUCT.MATURITY.2 — Engagement Loop Validation & Interaction Quality
 - Phase BETA.READINESS.1 — Real Product Simulation
+- Phase BETA.READINESS.2 — Performance, Security & Scale Preparation
+- Phase BETA.READINESS.3 — Runtime Resilience & Real-World Failure Hardening
+- Phase BETA.LAUNCH.1 — Product Launch Validation & Release Confidence
+- Phase BETA.LAUNCH.2 — First Impression & Launch Messaging Refinement
+- Phase BETA.POST.LAUNCH.1 — Beta Feedback Loop & Product Learning Foundation
+- Phase BETA.POST.LAUNCH.2 — Evidence-Based UX Improvement & Retention Optimization
+- Phase BETA.LEARNING.1 — User Behavior Insights & Product Decision Framework
 - Phase COMMUNITY.2 — Community Ecosystem Experience
 - Phase CREATE.2 — Creator Studio & Content Creation Ecosystem
 - Phase CREATOR.1 — Public Creator Identity & Channel Experience

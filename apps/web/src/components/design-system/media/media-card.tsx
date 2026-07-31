@@ -1,6 +1,15 @@
 import clsx from 'clsx';
 import type { ReactNode } from 'react';
 
+function resolveTextContent(value: ReactNode | undefined, fallback: string) {
+  if (typeof value === 'string') {
+    const normalized = value.trim();
+    return normalized || fallback;
+  }
+
+  return value ?? fallback;
+}
+
 export function MediaCard({
   title,
   subtitle,
@@ -14,6 +23,9 @@ export function MediaCard({
   children?: ReactNode;
   className?: string;
 }) {
+  const resolvedTitle = resolveTextContent(title, 'بدون عنوان');
+  const resolvedSubtitle = resolveTextContent(subtitle, 'توضیحی در دسترس نیست');
+
   return (
     <article
       className={clsx(
@@ -24,8 +36,8 @@ export function MediaCard({
       <div className="space-y-3">
         <div className="flex items-center justify-between gap-2">
           <div className="min-w-0 space-y-1">
-            <h3 className="truncate text-sm font-semibold text-text-primary">{title}</h3>
-            {subtitle ? <p className="truncate text-sm text-text-secondary">{subtitle}</p> : null}
+            <h3 className="truncate text-sm font-semibold text-text-primary">{resolvedTitle}</h3>
+            {subtitle !== undefined ? <p className="truncate text-sm text-text-secondary">{resolvedSubtitle}</p> : null}
           </div>
           {meta ? (
             <div className="shrink-0 rounded-full border border-border/80 bg-surface-secondary/70 px-2.5 py-1 text-[11px] font-medium text-text-secondary">

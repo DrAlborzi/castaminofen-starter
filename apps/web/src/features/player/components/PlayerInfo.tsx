@@ -4,17 +4,22 @@ import { LoaderCircle } from 'lucide-react';
 import { ContentArtwork } from '@/components/design-system/media/content-artwork';
 import { Tag } from '@/components/design-system/common/tag';
 import { usePlayerState } from '../hooks/usePlayerState';
-import { getArtworkFallback, getPlaybackStateLabel, getQueueSummary } from '../utils/playerPresentation';
+import { getArtworkFallback, getPlaybackErrorMessage, getPlaybackStateLabel, getQueueSummary } from '../utils/playerPresentation';
 
 export function PlayerInfo() {
   const { currentItem, playbackStatus, error, queue, currentIndex, repeatMode, shuffleEnabled } = usePlayerState();
 
   const title = currentItem?.title ?? 'No active playback';
-  const subtitle = currentItem?.subtitle
-    ?? (playbackStatus === 'loading' ? 'Preparing audio…' : playbackStatus === 'idle' ? 'Choose an episode to start listening.' : 'Playback available');
+  const fallbackSubtitle = playbackStatus === 'loading'
+    ? 'در حال آماده‌سازی فایل صوتی…'
+    : playbackStatus === 'idle'
+      ? 'برای شروع، اپیزودی را انتخاب کنید.'
+      : 'پخش در دسترس است';
+  const subtitle = currentItem?.subtitle ?? fallbackSubtitle;
   const isBusy = playbackStatus === 'loading';
   const statusLabel = getPlaybackStateLabel(playbackStatus);
   const queueHint = queue.length > 0 ? getQueueSummary({ queueLength: queue.length, currentIndex, repeatMode, shuffleEnabled }) : null;
+  const resolvedErrorMessage = getPlaybackErrorMessage(error, currentItem);
 
   return (
     <div className="flex min-w-0 items-start gap-3 rounded-[1.25rem] border border-border/70 bg-surface-card/70 p-3 shadow-sm">
@@ -36,7 +41,7 @@ export function PlayerInfo() {
           {queueHint ? <Tag className="bg-surface-secondary text-text-secondary">{queueHint}</Tag> : null}
           {currentItem?.podcastId ? <Tag className="bg-surface-secondary text-text-secondary">پادکست</Tag> : null}
         </div>
-        {error ? <p className="mt-2 truncate text-xs text-accent" role="alert">{error}</p> : null}
+        {resolvedErrorMessage ? <p className="mt-2 truncate text-xs text-accent" role="alert">{resolvedErrorMessage}</p> : null}
       </div>
     </div>
   );

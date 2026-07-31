@@ -12,7 +12,7 @@ import { PlayerVolume } from './PlayerVolume';
 import { ImmersivePlayerPanel } from './ImmersivePlayerPanel';
 import { usePlayerRuntime } from '../hooks/usePlayerRuntime';
 import { usePlayerState } from '../hooks/usePlayerState';
-import { formatTime, getQueueDisplayItems } from '../utils/playerPresentation';
+import { formatTime, getPlaybackErrorMessage, getQueueDisplayItems } from '../utils/playerPresentation';
 
 export function PlayerBar() {
   const playerRuntime = usePlayerRuntime();
@@ -27,6 +27,8 @@ export function PlayerBar() {
     ? `ادامه از ${formatTime(currentPosition)}`
     : null;
   const canRetry = Boolean(currentItem?.audioUrl) && Boolean(error) && playbackStatus !== 'loading';
+  const showRecoveryAction = Boolean(error) && !currentItem?.audioUrl;
+  const resolvedErrorMessage = getPlaybackErrorMessage(error, currentItem);
   const queueDialogId = 'player-queue-panel';
 
   useEffect(() => {
@@ -75,9 +77,9 @@ export function PlayerBar() {
           ) : null}
           {playbackStatus === 'loading' ? <p className="mt-2 text-xs text-text-secondary">در حال آماده‌سازی پخش…</p> : null}
           {resumeHint ? <p className="mt-2 text-xs text-text-secondary">{resumeHint}</p> : null}
-          {error ? (
+          {resolvedErrorMessage ? (
             <div className="mt-2 flex flex-wrap items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-3 py-2" role="alert">
-              <p className="text-xs text-accent">{error}</p>
+              <p className="text-xs text-accent">{resolvedErrorMessage}</p>
               {canRetry ? (
                 <Button
                   type="button"
@@ -88,6 +90,18 @@ export function PlayerBar() {
                   aria-label="تلاش مجدد برای پخش"
                 >
                   تلاش مجدد
+                </Button>
+              ) : null}
+              {showRecoveryAction ? (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="rounded-full px-3 py-1 text-[11px]"
+                  onClick={() => setIsQueueOpen(true)}
+                  aria-label="انتخاب اپیزود دیگر"
+                >
+                  انتخاب اپیزود دیگر
                 </Button>
               ) : null}
             </div>

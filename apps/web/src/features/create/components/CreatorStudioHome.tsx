@@ -23,10 +23,10 @@ export function CreatorStudioHome() {
                 استودیو سازنده
               </Tag>
               <h1 id="creator-studio-heading" className="text-heading">
-                از ایده تا انتشار، همه‌ی مسیر خلق را در یک تجربه‌ی حرفه‌ای تجربه کن
+                از ایده تا انتشار، مسیر خلق را در یک تجربه‌ی روشن و قابل فهم ببین
               </h1>
               <p className="m-0 text-body">
-                اینجا مسیر خلق، پیش‌نمایش، انتشار و بازگشت به جامعه در یک تجربه‌ی حرفه‌ای و آرام برای سازنده‌ها جمع شده است. اگر برای اولین بار می‌خواهی شروع کنی، از انتخاب نوع محتوا شروع کن و سپس با یک انتشار ساده، مسیر رشد و هویت خود را در پلتفرم روشن‌تر بساز.
+                اینجا مسیر ساخت، پیش‌نمایش و انتشار در یک نسخه‌ی بتا جمع شده است؛ برای شروع، فقط کافی است نوع محتوا را انتخاب کنی و اولین قدم را با یک انتشار ساده برداری.
               </p>
             </div>
             <Button variant="secondary">ایجاد محتوا</Button>
@@ -53,7 +53,7 @@ export function CreatorStudioHome() {
                 </div>
               </MediaCard>
 
-              <MediaCard title="بازخورد مخاطب" subtitle="دیدگاه‌ها، واکنش‌ها و مسیر رشد در یک نگاه" meta="Audience Feedback">
+              <MediaCard title="بازخورد مخاطب" subtitle="دیدگاه‌ها، واکنش‌ها و مسیر رشد در یک نگاه" meta="Audience Feedback · Beta">
                 <div className="space-y-2">
                   {mockPreviews.map((preview) => (
                     <div key={preview.id} className="rounded-[1rem] border border-border/70 bg-surface-secondary/70 p-3">
@@ -69,14 +69,14 @@ export function CreatorStudioHome() {
                 </div>
               </MediaCard>
 
-              <MediaCard title="مسیر رشد سازنده" subtitle="از اولین ایده تا تاثیر بر جامعه و بازگشت مخاطب" meta="Creator Growth">
+              <MediaCard title="مسیر رشد سازنده" subtitle="از اولین ایده تا تاثیر بر جامعه و بازگشت مخاطب" meta="Creator Growth · Preview">
                 <div className="space-y-3 rounded-[1rem] border border-border/70 bg-surface-secondary/70 p-3">
                   <p className="text-sm font-semibold text-text-primary">هر انتشار، یک نقطه‌ی بازگشت برای جامعه و یک نشانه‌ی رشد برای شما ایجاد می‌کند.</p>
-                  <p className="text-sm text-text-secondary">پیش‌نمایش مخاطب، بازخورد و حضور در Profile همگی به شما نشان می‌دهند که کار شما در Castaminofen معنی‌دار است و چرا باید دوباره بازگردید.</p>
+                  <p className="text-sm text-text-secondary">پیش‌نمایش مخاطب، بازخورد و حضور در Profile به شما کمک می‌کنند بفهمید کار شما در Castaminofen چه جایگاهی دارد و چرا دوباره بازگشت، ارزش پیدا می‌کند.</p>
                 </div>
               </MediaCard>
 
-              <MediaCard title="درآمد و رشد" subtitle="دیدگاه‌های کلیدی برای آینده" meta="Analytics Preview">
+              <MediaCard title="درآمد و رشد" subtitle="دیدگاه‌های کلیدی برای آینده" meta="Analytics Preview · Beta">
                 <div className="grid gap-3 sm:grid-cols-2">
                   <div className="rounded-[1rem] border border-border/70 bg-surface-secondary/70 p-3">
                     <div className="flex items-center gap-2 text-sm font-semibold text-text-primary">
