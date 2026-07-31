@@ -54,12 +54,12 @@ export function CommunityHome() {
                 اجتماع
               </Tag>
               <h1 id="community-heading" className="text-heading">
-                جامعه‌ی Castaminofen برای ادامه‌ی مسیر، مشارکت و بازگشت دوباره
+                جامعه‌ی Castaminofen برای ادامه‌ی مسیر، گفت‌وگو و بازگشت دوباره
               </h1>
               <p className="m-0 text-body">
-                از لحظه‌های پخش تا موضوعات داغ، اینجا می‌توانید با دیگران درباره‌ی ایده‌ها، صداها و تجربه‌های شنیداری تبادل فکر کنید و در مسیر رشد شخصی‌تان قدم بعدی را بردارید.
+                اینجا جایی است که گوش دادن ساده می‌تواند به گفت‌وگوی معنادار تبدیل شود؛ اگر چیزی برایت مهم بود، می‌توانی آن را با دیگران به اشتراک بگذاری و در مسیر بازگشت، حس تعلق بیشتری داشته باشی.
               </p>
-              <p className="text-sm leading-7 text-text-secondary">این بخش هنوز در نسخه‌ی بتا تکامل می‌کند؛ با این حال، هر بحثی که می‌پیوندی، بخشی از هویت مشارکتی‌ات در Castaminofen می‌شود و به شما کمک می‌کند از یک گوش دادن ساده به یک تجربه‌ی مداوم و معنادار برسید.</p>
+              <p className="text-sm leading-7 text-text-secondary">این بخش در نسخه‌ی بتا هنوز تکامل می‌کند، اما هر مشارکتِ کوچک در اینجا به شما کمک می‌کند هویت شنیداری و مشارکتی‌ات در Castaminofen روشن‌تر شود.</p>
             </div>
             <Tag className="w-fit border-border bg-surface-secondary/80 text-text-secondary">
               <Sparkles className="ml-1 h-4 w-4 text-accent" aria-hidden="true" />
@@ -230,8 +230,8 @@ export function CommunityHome() {
               <DiscussionCard title="چرا مشارکت کنیم؟" body="با دیدن ارزش مشارکت، مسیرهای کوتاه و قابل فهم برای بازگشت به بحث‌های فعال و موضوعات داغ مشخص می‌شود." actions={<Tag className="border-border bg-surface-secondary/80 text-text-secondary">Retention</Tag>}>
                 <div className="space-y-3 rounded-[1rem] border border-border/70 bg-surface-secondary/70 p-3">
                   <p className="text-sm font-semibold text-text-primary">مشارکت در جامعه، در واقع بازگشت به مسیرهای الهام‌بخش و دانشی است.</p>
-                  <p className="text-sm text-text-secondary">در هر بار ورود، یک سؤال تازه، یک موضوع داغ یا یک نگاه حرفه‌ای برای رشد شما در دسترس است و به شما نشان می‌دهد که حضور شما در Castaminofen به‌مرور شکل می‌گیرد.</p>
-                  <p className="text-sm text-accent">هویت مشارکتی شما در اینجا، از همین لحظه‌های کوچک ساخته می‌شود.</p>
+                  <p className="text-sm text-text-secondary">در هر بار ورود، یک سؤال تازه، یک موضوع داغ یا یک نگاه تازه برای بازگشت به تجربه‌ی شنیداری‌ات در دسترس است و نشان می‌دهد حضور شما در Castaminofen به‌مرور معنا پیدا می‌کند.</p>
+                  <p className="text-sm text-accent">هویت مشارکتی شما در اینجا از همین لحظه‌های کوچک ساخته می‌شود.</p>
                 </div>
               </DiscussionCard>
 

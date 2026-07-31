@@ -59,7 +59,7 @@ export function CreatorProfilePage({ mode = 'viewer' }: CreatorProfilePageProps)
                     </div>
                     <p className="max-w-2xl text-sm leading-7 text-text-secondary">{profile.bio}</p>
                     <div className="rounded-[1rem] border border-accent/20 bg-accent/10 p-3 text-sm text-text-secondary">
-                      هر بار که یک اثر منتشر می‌کنید، مخاطب از طریق پروفایل، جامعه و مسیر بازگشت، می‌تواند رشد و هویت شما را دنبال کند.
+                      هر بار که یک اثر منتشر می‌کنید، مخاطب از طریق پروفایل، جامعه و مسیر بازگشت می‌تواند هویت و رشد شما را بهتر ببیند.
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {profile.topics.map((topic) => (

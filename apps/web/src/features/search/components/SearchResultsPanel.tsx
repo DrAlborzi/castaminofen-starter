@@ -97,7 +97,7 @@ export function SearchResultsPanel({ query, page }: SearchResultsPanelProps) {
             <div className="space-y-2">
               <p className="text-sm font-medium text-accent">پیشنهادهای کشف سریع</p>
               <h2 className="text-subheading">شناخت مسیر بعدی در یک نگاه</h2>
-              <p className="text-sm text-text-secondary">جستجو در پادکست، اپیزود، سازنده و موضوعات مورد علاقه‌تان را از همین صفحه شروع کنید.</p>
+              <p className="text-sm text-text-secondary">برای شروع، یک موضوع، نام پادکست یا عنوان اپیزود را وارد کن؛ Castaminofen در اینجا مسیر بعدیِ شنیداری‌ات را روشن‌تر می‌کند.</p>
             </div>
             <Tag className="border-accent/20 bg-accent/10 text-accent">Discovery Ready</Tag>
           </div>
@@ -116,7 +116,7 @@ export function SearchResultsPanel({ query, page }: SearchResultsPanelProps) {
         </div>
         <EmptyState
           title="جستجو را شروع کنید"
-          description="برای یافتن پادکست‌ها و اپیزودهای موجود، عبارتی را در کادر جستجو وارد کنید."
+          description="برای یافتن پادکست‌ها و اپیزودهای مرتبط، یک عبارت ساده در کادر جستجو وارد کن. اگر هنوز مطمئن نیستی، از یک موضوع آشنا یا نام پادکست شروع کن."
         />
       </div>
     );
@@ -126,7 +126,7 @@ export function SearchResultsPanel({ query, page }: SearchResultsPanelProps) {
     return (
       <EmptyState
         title="نتیجه‌ای یافت نشد"
-        description={`برای «${debouncedQuery}» هیچ نتیجه‌ای در پادکست‌ها یا اپیزودهای موجود پیدا نشد.`}
+        description={`برای «${debouncedQuery}» نتیجه‌ای پیدا نشد. شاید نام دقیق‌تر یا موضوع نزدیک‌تر به آنچه دنبال می‌کنی، بهتر جواب می‌دهد.`}
       />
     );
   }
