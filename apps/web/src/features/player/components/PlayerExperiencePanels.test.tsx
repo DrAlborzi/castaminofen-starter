@@ -1,6 +1,6 @@
 import { act } from 'react-dom/test-utils';
 import { createRoot, type Root } from 'react-dom/client';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it } from 'vitest';
 import { BookmarkPanel } from './BookmarkPanel';
 import { TimelineMarkers } from './TimelineMarkers';
 

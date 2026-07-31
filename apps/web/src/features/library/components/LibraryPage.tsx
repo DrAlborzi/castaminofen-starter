@@ -15,7 +15,6 @@ import { PageContainer } from '@/components/design-system/layout/page-container'
 import { SectionHeader } from '@/components/design-system/layout/section-header';
 import { MediaCarousel } from '@/components/design-system/media/media-carousel';
 import { MediaCard } from '@/components/design-system/media/media-card';
-import { Tag } from '@/components/design-system/common/tag';
 
 export function LibraryPage() {
   const overviewQuery = useLibraryOverview();

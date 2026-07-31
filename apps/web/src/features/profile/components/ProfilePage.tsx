@@ -1,13 +1,9 @@
 'use client';
 
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { logoutUser } from '@/lib/auth';
-import { apiFetch } from '@/lib/api';
-import type { UserProfile } from '@/lib/types';
 import { useAuthStore } from '@/stores/authStore';
 import { PageContainer } from '@/components/design-system/layout/page-container';
 import { SectionHeader } from '@/components/design-system/layout/section-header';
@@ -44,14 +40,7 @@ export function normalizeProfileName(rawValue: string) {
 
 export function ProfilePage() {
   const router = useRouter();
-  const queryClient = useQueryClient();
   const user = useAuthStore((state) => state.user);
-  const [isEditing, setIsEditing] = useState(false);
-  const [nameInput, setNameInput] = useState('');
-  const [feedback, setFeedback] = useState<{
-    type: 'success' | 'error';
-    message: string;
-  } | null>(null);
 
   const displayName = useMemo(
     () => user?.name?.trim() || user?.email?.split('@')[0] || 'کاربر',
@@ -59,64 +48,9 @@ export function ProfilePage() {
   );
   const isAuthenticated = Boolean(user);
 
-  const updateProfileMutation = useMutation({
-    mutationFn: async (name: string) =>
-      apiFetch<UserProfile>('users/me', { method: 'PUT', body: { name } }),
-    onSuccess: (updatedUser) => {
-      queryClient.setQueryData<UserProfile | null>(['session'], (current) => {
-        if (!current) {
-          return updatedUser;
-        }
-
-        return { ...current, ...updatedUser };
-      });
-
-      const authStore = useAuthStore.getState();
-      authStore.setUser(updatedUser);
-      setFeedback({
-        type: 'success',
-        message: 'Profile updated successfully.',
-      });
-      setIsEditing(false);
-    },
-    onError: (error) => {
-      setFeedback({
-        type: 'error',
-        message:
-          error instanceof Error
-            ? error.message
-            : 'Profile update failed.',
-      });
-    },
-  });
-
   async function handleLogout() {
     await logoutUser();
     router.push('/login');
-  }
-
-  function resetEditState() {
-    setIsEditing(false);
-    setNameInput(user?.name?.trim() ?? '');
-    setFeedback(null);
-  }
-
-  function handleEditStart() {
-    setFeedback(null);
-    setNameInput(user?.name?.trim() ?? '');
-    setIsEditing(true);
-  }
-
-  function handleSave() {
-    const normalizedName = normalizeProfileName(nameInput);
-
-    if (!normalizedName) {
-      setFeedback({ type: 'error', message: 'Name cannot be empty.' });
-      return;
-    }
-
-    setFeedback(null);
-    updateProfileMutation.mutate(normalizedName);
   }
 
   return (

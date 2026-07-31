@@ -60,8 +60,8 @@
 - Frontend با Next.js و feature-based structure در حال حاضر برای MVP آماده است.
 - App shell، routing، provider، feature folders و UI state structure در حالت سازگار و قابل‌استفاده هستند.
 - Build، lint و تست وب با موفقیت اجرا شده‌اند.
-- Validation gates برای phase PRODUCT.POLISH.2 با `tsc --noEmit` ، `next build`، `vitest run` و `next lint` تأیید شدند؛ خطاهای موجود تنها در سطح warnings غیرمسدود هستند.
-- لایه‌ی shared UI در Design System اکنون با polish سطح premium برای mobile navigation، cards، container rhythm و state surfaces تقویت شده است.
+- Validation gates برای phase PRODUCTION.READINESS.1 با `pnpm lint:web`، `pnpm --filter @castaminofen/web test` و `pnpm build` تأیید شدند؛ پس از پاک‌سازی warnings، lint وب در وضعیت بدون warning/error اجرا می‌شود.
+- لایه‌ی shared UI در Design System اکنون با polish سطح premium برای mobile navigation، cards، container rhythm و state surfaces تقویت شده است و از primitives مشترک با API پایدار استفاده می‌کند.
 - Integrating RSS-backed podcast and episode content into the frontend now preserves the public podcast/episode domain experience without exposing internal RSS metadata.
 
 ## وضعیت Player

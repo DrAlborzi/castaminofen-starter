@@ -1,6 +1,5 @@
 'use client';
 
-import { BarChart3, Sparkles } from 'lucide-react';
 import { EmptyState } from '@/components/design-system/states/empty-state';
 import { LoadingState } from '@/components/design-system/states/loading-state';
 import { PageContainer } from '@/components/design-system/layout/page-container';
