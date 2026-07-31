@@ -26,7 +26,7 @@ export function CreatorStudioHome() {
                 از ایده تا انتشار، همه‌ی مسیر خلق را در یک تجربه‌ی حرفه‌ای تجربه کن
               </h1>
               <p className="m-0 text-body">
-                اینجا فضای ساختن، سازمان‌دهی، انتشار و رشد هویت سازنده در کنار جامعه، Player و پروفایل جمع شده است.
+                اینجا مسیر خلق، پیش‌نمایش، انتشار و بازگشت به جامعه در یک تجربه‌ی حرفه‌ای و آرام برای سازنده‌ها جمع شده است.
               </p>
             </div>
             <Button variant="secondary">ایجاد محتوا</Button>
@@ -41,7 +41,7 @@ export function CreatorStudioHome() {
             </div>
 
             <div className="space-y-4">
-              <MediaCard title="هویت سازنده" subtitle="آواتار، بیو، موضوعات و حضور جامعه" meta="Creator Identity">
+              <MediaCard title="هویت سازنده" subtitle="آواتار، بیو، موضوعات و حضور جامعه برای اعتماد و شناخت بهتر مخاطب" meta="Creator Identity">
                 <div className="rounded-[1rem] border border-border/70 bg-surface-secondary/70 p-3">
                   <div className="flex items-center gap-3">
                     <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/10 text-sm font-semibold text-accent">ک</div>
@@ -53,7 +53,7 @@ export function CreatorStudioHome() {
                 </div>
               </MediaCard>
 
-              <MediaCard title="پیش‌نمایش مخاطب" subtitle="Player، Community و Profile" meta="Preview">
+              <MediaCard title="بازخورد مخاطب" subtitle="دیدگاه‌ها، واکنش‌ها و مسیر رشد در یک نگاه" meta="Audience Feedback">
                 <div className="space-y-2">
                   {mockPreviews.map((preview) => (
                     <div key={preview.id} className="rounded-[1rem] border border-border/70 bg-surface-secondary/70 p-3">
@@ -66,6 +66,13 @@ export function CreatorStudioHome() {
                       </div>
                     </div>
                   ))}
+                </div>
+              </MediaCard>
+
+              <MediaCard title="مسیر رشد سازنده" subtitle="از اولین ایده تا تاثیر بر جامعه و بازگشت مخاطب" meta="Creator Growth">
+                <div className="space-y-3 rounded-[1rem] border border-border/70 bg-surface-secondary/70 p-3">
+                  <p className="text-sm font-semibold text-text-primary">هر انتشار، یک نقطه‌ی بازگشت برای جامعه و یک نشانه‌ی رشد برای شما ایجاد می‌کند.</p>
+                  <p className="text-sm text-text-secondary">پیش‌نمایش مخاطب، بازخورد و حضور در Profile همگی به شما نشان می‌دهند که کار شما در Castaminofen معنی‌دار است.</p>
                 </div>
               </MediaCard>
 

@@ -10,6 +10,9 @@
 
 ## فاز جاری
 
+- Phase RETENTION.1 — Retention UX Narrative Foundation
+- Phase PRODUCT.POLISH.1 — Full Experience Refinement & Premium UX Optimization
+- Phase PRODUCT.POLISH.2 — Feature Experience Refinement & Retention UX Layer
 - Phase COMMUNITY.2 — Community Ecosystem Experience
 - Phase CREATE.2 — Creator Studio & Content Creation Ecosystem
 - Phase CREATOR.1 — Public Creator Identity & Channel Experience
@@ -25,6 +28,8 @@
 - Phase PROFILE.2 — Social Identity & Personal Knowledge Hub
 - Phase ADMIN.1 — Platform Control Center & Admin Experience
 - Phase ADMIN.2 — Platform Governance, Moderation & Operations System
+- Phase ADMIN.4 — Platform Configuration, Feature Management & System Control Center
+- Phase ADMIN.5 — AI Platform Assistant & Autonomous Operations Layer
 
 ## پیشرفت کلی
 
@@ -55,6 +60,8 @@
 - Frontend با Next.js و feature-based structure در حال حاضر برای MVP آماده است.
 - App shell، routing، provider، feature folders و UI state structure در حالت سازگار و قابل‌استفاده هستند.
 - Build، lint و تست وب با موفقیت اجرا شده‌اند.
+- Validation gates برای phase PRODUCT.POLISH.2 با `tsc --noEmit` ، `next build`، `vitest run` و `next lint` تأیید شدند؛ خطاهای موجود تنها در سطح warnings غیرمسدود هستند.
+- لایه‌ی shared UI در Design System اکنون با polish سطح premium برای mobile navigation، cards، container rhythm و state surfaces تقویت شده است.
 - Integrating RSS-backed podcast and episode content into the frontend now preserves the public podcast/episode domain experience without exposing internal RSS metadata.
 
 ## وضعیت Player
@@ -87,9 +94,10 @@
 
 ## وضعیت Build
 
-- Lint: passed
-- Library TypeScript validation: resolved
-- Web build: blocked by an unrelated Search page suspense issue during prerender (`useSearchParams()` on `/search`)
+- Lint: passed with existing warnings only
+- TypeScript validation: passed
+- Web tests: passed
+- Web build: passed
 - RSS ingestion regression tests: added for persistence boundary, matching decisions, and the new idempotent synchronization engine; backend build passed; Prisma schema validation and direct TypeScript verification confirmed the RSS sync behavior
 - End-to-end RSS orchestration now coordinates fetch, parse, normalize, match, persist, and FeedSource state transitions for a single feed without introducing background execution or new business ownership
 
@@ -103,6 +111,8 @@
 - Phase PLAYER.6 — Advanced Immersive Player Experience تکمیل شد. تجربه‌ی Player با پنل تعاملی Immersive، تب‌های discussion/memory/queue، timeline markers، controls پیشرفته و stateهای richer UI به سمت تجربه‌ی Premium ارتقا یافت و در عین حال runtime، queue، persistence و API contracts بدون تغییر باقی ماندند.
 - Phase PLAYER.7 — Player Data Integration & Social Memory Layer تکمیل شد. تجربه‌ی Player حالا از داده‌های mock-backed برای نشانک‌ها، هایلایت‌ها، یادداشت‌های شخصی، بحث‌های لحظه‌ای، رونویس، creator context و پیشنهادهای مرتبط استفاده می‌کند و در عین حال مرزهای runtime و design-system بدون تغییر باقی مانده‌اند.
 - Phase ADMIN.2 — Platform Governance, Moderation & Operations System تکمیل شد. داشبورد Admin از یک نمای کلی ساده به یک فضای عملیاتی حرفه‌ای برای governance، moderation queue، content review، creator review، user trust، audit timeline، platform alerts، trust/safety overview، roles preview و operations dashboard تبدیل شد. همه‌ی بخش‌ها با داده‌های mock-backed و بدون تغییر در auth، API، DB، permission engine یا runtime Player پیاده‌سازی شدند.
+- Phase ADMIN.4 — Platform Configuration, Feature Management & System Control Center تکمیل شد. داشبورد Admin اکنون یک فضای mock-backed برای کنترل پلتفرم، مدیریت قابلیت‌ها، تنظیمات محتوا، دسته‌بندی و موضوع، پیکربندی ناوبری، تنظیمات سازنده، جامعه، پخش، اعلان‌ها، هویت برند، و ترجیحات سیستم فراهم می‌کند. این تغییر بدون ایجاد backend، API واقعی، permission engine، یا تغییر در مالکیت runtime/feature انجام شد.
+- Phase ADMIN.5 — AI Platform Assistant & Autonomous Operations Layer تکمیل شد. داشبورد Admin اکنون یک لایه‌ی تصمیم‌هوشمند mock-backed برای خلاصه‌ی روزانه، هوش سلامت پلتفرم، تشخیص ریسک، پیشنهاد فرصت رشد، راهنمای محتوا، هوش سازنده و جامعه، گفتگو با دستیار، پیشنهاد اقدام و تاریخچه‌ی تصمیم‌ها دارد. این تغییر در مرز feature Admin باقی مانده و بدون ورود به backend، AI API، database، permission model یا runtime Player انجام شده است.
 
 ## تغییر اخیر — 2026-07-29
 

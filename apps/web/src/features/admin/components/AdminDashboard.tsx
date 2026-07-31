@@ -10,6 +10,8 @@ import { Tag } from '@/components/design-system/common/tag';
 import { Button } from '@/components/ui/button';
 import { PageState } from '@/components/ui/page-state';
 import { adminContent, adminCreators, adminDiscussions, adminOverviewMetrics, adminReports, adminSectionConfig, adminUsers } from '../data/mockAdminData';
+import { AdminAIAssistant } from './AdminAIAssistant';
+import { AdminConfigurationCenter } from './AdminConfigurationCenter';
 import { AdminGovernanceDashboard } from './AdminGovernanceDashboard';
 import { AdminIntelligenceDashboard } from './AdminIntelligenceDashboard';
 import { AdminRolesPreview } from './AdminRolesPreview';
@@ -41,6 +43,7 @@ const sectionComponents: Record<AdminSectionKey, { title: string; description: s
   community: { title: 'مدیریت جامعه', description: 'نظارت روی بحث‌ها و سلامت تعامل' },
   reports: { title: 'مرکز گزارش‌ها', description: 'گردش کار بررسی و تصمیم گیری' },
   analytics: { title: 'مرکز هوش پلتفرم', description: 'درک رشد، محبوبیت و رفتار مخاطب' },
+  assistant: { title: 'AI Executive Assistant', description: 'دستیار اجرایی برای درک سلامت، ریسک و فرصت‌های پلتفرم' },
   settings: { title: 'تنظیمات پلتفرم', description: 'پیکربندی تجربه و قابلیت‌های آینده' },
   system: { title: 'وضعیت سیستم', description: 'مرکز کنترل راه‌اندازی و پشتیبانی' },
 };
@@ -63,6 +66,7 @@ const iconMap = {
   community: BellRing,
   reports: ShieldCheck,
   analytics: BarChart3,
+  assistant: Sparkles,
   settings: Blocks,
   system: AlertTriangle,
 };
@@ -198,17 +202,10 @@ export function AdminDashboard() {
         );
       case 'analytics':
         return <AdminIntelligenceDashboard />;
+      case 'assistant':
+        return <AdminAIAssistant />;
       case 'settings':
-        return (
-          <div className="grid gap-4 lg:grid-cols-2">
-            <MediaCard title="تنظیمات عمومی" subtitle="نام برند، زبان، تجربه‌ی ورود" meta="Ready" className="space-y-3">
-              <p className="text-sm text-text-secondary">پیکربندی قابلیت‌های اساسی برای آینده‌ی پلتفرم</p>
-            </MediaCard>
-            <MediaCard title="کنترل ویژگی‌ها" subtitle="پرچم‌های آزمایشی و تنظیمات تجربه" meta="Flags" className="space-y-3">
-              <p className="text-sm text-text-secondary">آماده برای اتصال به یک موتور تنظیمات واقعی</p>
-            </MediaCard>
-          </div>
-        );
+        return <AdminConfigurationCenter />;
       case 'system':
         return (
           <div className="grid gap-4 lg:grid-cols-2">
