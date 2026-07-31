@@ -54,12 +54,12 @@ export function CommunityHome() {
                 اجتماع
               </Tag>
               <h1 id="community-heading" className="text-heading">
-                یک تجربه‌ی اجتماعی برای ادامه‌ی مسیر، مشارکت و بازگشت دوباره
+                جامعه‌ی Castaminofen برای ادامه‌ی مسیر، مشارکت و بازگشت دوباره
               </h1>
               <p className="m-0 text-body">
-                از لحظه‌های پخش تا موضوعات داغ، اینجا می‌توانید در کنار دیگران درباره‌ی ایده‌ها، صداها و تجربه‌ها هم‌فکری کنید و هویت مشارکتی خود را بسازید.
+                از لحظه‌های پخش تا موضوعات داغ، اینجا می‌توانید با دیگران درباره‌ی ایده‌ها، صداها و تجربه‌های شنیداری تبادل فکر کنید و در مسیر رشد شخصی‌تان قدم بعدی را بردارید.
               </p>
-              <p className="text-sm leading-7 text-text-secondary">هر بحثی که می‌پیوندی، بخشی از هویت مشارکتی‌ات در Castaminofen می‌شود؛ از همینجا می‌توانی از یک گوش دادن ساده به یک مشارکت معنادار و بازگشتِ مداوم برسید.</p>
+              <p className="text-sm leading-7 text-text-secondary">این بخش هنوز در نسخه‌ی بتا تکامل می‌کند؛ با این حال، هر بحثی که می‌پیوندی، بخشی از هویت مشارکتی‌ات در Castaminofen می‌شود و به شما کمک می‌کند از یک گوش دادن ساده به یک تجربه‌ی مداوم و معنادار برسید.</p>
             </div>
             <Tag className="w-fit border-border bg-surface-secondary/80 text-text-secondary">
               <Sparkles className="ml-1 h-4 w-4 text-accent" aria-hidden="true" />
@@ -244,8 +244,8 @@ export function CommunityHome() {
           <div className="mt-6 rounded-[1.35rem] border border-border/80 bg-surface-card/85 p-4 shadow-soft">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <p className="text-sm font-semibold text-text-primary">مشاهده‌ی تجربه‌ی آینده‌ی Community</p>
-                <p className="mt-1 text-sm text-text-secondary">یادداشت‌ها، خلاصه‌های جمعی، و مجموعه‌های موضوعی برای مرحله‌ی بعد آماده‌اند.</p>
+                <p className="text-sm font-semibold text-text-primary">نسخه‌ی بتا برای تجربه‌ی Community</p>
+                <p className="mt-1 text-sm text-text-secondary">یادداشت‌ها، خلاصه‌های جمعی و مجموعه‌های موضوعی در مسیر تکامل هستند؛ این بخش برای آزمایش و بازخورد فعال است.</p>
               </div>
               <button type="button" className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-surface-secondary/80 px-3 py-2 text-sm font-semibold text-text-secondary">
                 <Plus className="h-4 w-4" />

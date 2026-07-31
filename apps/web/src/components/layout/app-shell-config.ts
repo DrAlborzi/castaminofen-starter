@@ -82,7 +82,7 @@ export function getMobileHeaderConfig(pathname: string): AppShellHeaderConfig {
   if (pathname.startsWith('/community')) {
     return {
       title: 'اجتماع',
-      tagline: 'از گوش دادن تا مشارکت و حس ادامه',
+      tagline: 'از گوش دادن تا مشارکت و بازگشت به مسیر',
       showSearchAction: true,
       showProfileAction: true,
       titleTone: 'feature',
@@ -102,7 +102,7 @@ export function getMobileHeaderConfig(pathname: string): AppShellHeaderConfig {
 
   return {
     title: 'کستامینوفن',
-    tagline: 'فضای صوتی شخصی',
+    tagline: 'کشف، گوش دادن و بازگشت در یک تجربه‌ی بتا',
     showSearchAction: true,
     showNotificationAction: true,
     showProfileAction: true,

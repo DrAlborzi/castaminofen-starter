@@ -54,5 +54,7 @@ describe('buildDiscoverySections', () => {
 
     expect(intro.title).toBe('از اینجا شروع کن');
     expect(intro.actionLabel).toBe('جستجو کن');
+    expect(intro.description).toContain('Castaminofen');
+    expect(intro.supportingText).toContain('جستجو');
   });
 });

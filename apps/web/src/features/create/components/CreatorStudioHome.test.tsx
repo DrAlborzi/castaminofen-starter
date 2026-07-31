@@ -44,6 +44,7 @@ describe('creator studio experience', () => {
     expect(rendered.container.textContent).toContain('پیش‌نمایش مخاطب');
     expect(rendered.container.textContent).toContain('بازخورد مخاطب');
     expect(rendered.container.textContent).toContain('مسیر رشد سازنده');
+    expect(rendered.container.textContent).toContain('نسخه‌ی بتا');
     expect(rendered.container.textContent).toContain('هر انتشار، یک نقطه‌ی بازگشت برای جامعه');
   });
 

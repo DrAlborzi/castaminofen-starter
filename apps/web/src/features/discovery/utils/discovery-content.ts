@@ -37,8 +37,8 @@ export function getDiscoveryIntroContent({
   return {
     title: isNewVisitor ? 'از اینجا شروع کن' : 'ادامه‌ی سفر',
     description: isNewVisitor
-      ? 'برای کاربر جدید، اینجا مسیر روشنِ «کشف، گوش دادن و بازگشت» را نشان می‌دهد.'
-      : 'برای حفظ حس ادامه و بازگشت، از اینجا به مسیر بعدی‌ات برو.',
+      ? 'Castaminofen فضایی است برای کشف پادکست‌ها، حفظ حس ادامه‌ی گوش دادن و بازگشت به مسیرهای شخصی‌ات.'
+      : 'در این نسخه‌ی بتا، هر بازگشت به اینجا به تو کمک می‌کند مسیر گوش دادن، یادگیری و مشارکتت را دوباره پیدا کنی.',
     eyebrow: isNewVisitor ? 'First steps' : 'Continue',
     actionLabel: isNewVisitor ? 'جستجو کن' : 'باز کردن کتابخانه',
     actionHref: isNewVisitor ? '/search' : '/library',
@@ -66,7 +66,7 @@ export function buildDiscoverySections({
     {
       id: 'featured-podcasts',
       title: 'Featured Podcasts',
-      description: 'A premium editorial starter set built from the podcasts already available in the app.',
+      description: 'یک مجموعه‌ی روشن و خوش‌خوان برای شروع سفر کشف در Castaminofen.',
       mode: featuredPodcasts.length ? 'podcasts' : 'placeholder',
       eyebrow: 'Editorial Focus',
       icon: Radio,
@@ -77,7 +77,7 @@ export function buildDiscoverySections({
     {
       id: 'trending-now',
       title: 'Trending Now',
-      description: 'Fresh conversations and new voices worth a first listen.',
+      description: 'گفت‌وگوها و صداهای تازه‌ای که ارزشِ اولین گوش دادن را دارند.',
       mode: featuredPodcasts.length ? 'podcasts' : 'placeholder',
       eyebrow: 'Trending',
       icon: TrendingUp,
@@ -87,7 +87,7 @@ export function buildDiscoverySections({
     {
       id: 'continue-listening',
       title: 'Continue Listening',
-      description: 'Resume the episodes you already started without leaving the discovery flow.',
+      description: 'اپیزودهای نیمه‌کاره‌ی خود را از همینجا دوباره ادامه بده و بدون شکستن جریان، به مسیر بازگرد.',
       mode: continueListeningCount > 0 ? 'continue-listening' : 'placeholder',
       eyebrow: 'Library',
       icon: Library,
@@ -98,8 +98,8 @@ export function buildDiscoverySections({
       id: 'recommended-for-you',
       title: 'Recommended For You',
       description: isAuthenticated
-        ? 'Personalized recommendations will appear here as your listening history grows.'
-        : 'Personalized recommendations will appear here as your listening history grows.',
+        ? 'پیشنهادهای شخصی‌سازی‌شده در آینده‌ی نزدیک بر اساس مسیر گوش‌دادنِ شما ظاهر می‌شوند.'
+        : 'پیشنهادهای شخصی‌سازی‌شده در آینده‌ی نزدیک بر اساس مسیر گوش‌دادنِ شما ظاهر می‌شوند.',
       mode: 'placeholder',
       eyebrow: 'Coming Soon',
       icon: Compass,
@@ -108,7 +108,7 @@ export function buildDiscoverySections({
     {
       id: 'browse-categories',
       title: 'Browse Categories',
-      description: 'Lightweight category cards keep the browsing experience calm and editorial.',
+      description: 'کارت‌های موضوعی بهت می‌کنند با یک نگاه سریع، مسیر بعدی خود را پیدا کنی.',
       mode: 'categories',
       eyebrow: 'Browse',
       icon: Layers3,
@@ -118,7 +118,7 @@ export function buildDiscoverySections({
     {
       id: 'new-releases',
       title: 'New Releases',
-      description: 'Freshly added episodes that are ready to discover.',
+      description: 'اپیزودهای تازه‌ی اضافه‌شده که برای کشف و شروع آماده‌اند.',
       mode: newestEpisodes.length ? 'episodes' : 'placeholder',
       eyebrow: 'New',
       icon: Mic2,
