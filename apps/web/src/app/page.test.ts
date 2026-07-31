@@ -13,4 +13,8 @@ describe('getHomePageMode', () => {
   it('keeps unauthenticated users on the welcome experience', () => {
     expect(getHomePageMode({ isAuthenticated: false, isHydrated: true, hasSessionData: false })).toBe('welcome');
   });
+
+  it('treats session-backed users as authenticated while the store catches up', () => {
+    expect(getHomePageMode({ isAuthenticated: false, isHydrated: true, hasSessionData: true })).toBe('authenticated-home');
+  });
 });

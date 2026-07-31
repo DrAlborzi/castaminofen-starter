@@ -11,7 +11,7 @@ export function getHomePageMode({
     return 'loading';
   }
 
-  if (isAuthenticated && hasSessionData) {
+  if ((isAuthenticated || hasSessionData) && isHydrated) {
     return 'authenticated-home';
   }
 

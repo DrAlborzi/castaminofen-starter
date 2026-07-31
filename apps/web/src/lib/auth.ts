@@ -109,9 +109,7 @@ export function useSession() {
       return;
     }
 
-    if (query.data) {
-      syncAuthStore(query.data, true);
-    }
+    syncAuthStore(query.data ?? null, true);
   }, [query.data, query.isError]);
 
   return query;

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { LoadingState } from '@/components/ui/loading-state';
 import { useSession } from '@/lib/auth';
 import { useAuthStore } from '@/stores/authStore';
+import { WelcomeScreen } from '@/features/onboarding/components/WelcomeScreen';
 import { DiscoveryPage } from '@/features/discovery/components/DiscoveryPage';
 import { getHomePageMode } from './home-page-mode';
 
@@ -32,6 +33,10 @@ export default function HomePage() {
 
   if (mode === 'authenticated-home') {
     return <LoadingState message="Opening your library..." />;
+  }
+
+  if (mode === 'welcome') {
+    return <WelcomeScreen />;
   }
 
   return <DiscoveryPage />;
