@@ -13,14 +13,14 @@ describe('app shell config', () => {
     const config = getMobileHeaderConfig('/library');
 
     expect(config.title).toBe('کتابخانه');
-    expect(config.tagline).toBe('مرکز گوش دادن و ادامه‌ی سفر');
+    expect(config.tagline).toBe('حافظه، ادامه‌ی سفر و بازگشت معنادار');
   });
 
   it('maps the shared header metadata for the community experience', () => {
     const config = getMobileHeaderConfig('/community');
 
     expect(config.title).toBe('اجتماع');
-    expect(config.tagline).toBe('پیشنهادها و بحث‌های زنده در مسیر شنیداری');
+    expect(config.tagline).toBe('از گوش دادن تا مشارکت و بازگشت');
   });
 
   it('maps the create experience to the shared premium header pattern', () => {

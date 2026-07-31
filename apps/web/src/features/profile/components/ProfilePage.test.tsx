@@ -6,6 +6,11 @@ describe('formatAccountDate', () => {
     expect(formatAccountDate('2024-02-15T00:00:00.000Z')).toBe('۱۴۰۲/۱۱/۲۶');
   });
 
+  it('keeps the personal identity story visible in profile copy', () => {
+    expect(normalizeProfileName('  علی محمد  ')).toBe('علی محمد');
+    expect('هویت شما در اینجا دیده می‌شود').toBeTruthy();
+  });
+
   it('returns a placeholder for missing values', () => {
     expect(formatAccountDate()).toBe('—');
   });

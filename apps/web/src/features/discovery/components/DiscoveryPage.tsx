@@ -81,8 +81,8 @@ export function DiscoveryPage() {
                 Discovery
               </Tag>
               <h1 id="discovery-heading" className="text-heading">از همینجا، مسیر بعدیِ شنیداری‌ات را انتخاب کن</h1>
-              <p className="m-0 text-body">Castaminofen شما را از «جستجو» به «ادامه‌ی گوش دادن و کشفِ مسیرهای تازه» می‌برد؛ بدون شلوغی و با حس پیشرفت.</p>
-              <p className="text-sm leading-7 text-text-secondary">اگر امروز تازه شروع کردی، این صفحه راه‌نمایی برای ادامه‌ی آرام و معنادار است. اگر بازگشته‌ای، از لحظه‌ای که قطع کردی دوباره ادامه بده.</p>
+              <p className="m-0 text-body">Castaminofen شما را از «جستجو» به «ادامه‌ی گوش دادن، حفظ لحظه و بازگشت با هدف» می‌برد؛ بدون شلوغی و با حس پیشرفت.</p>
+              <p className="text-sm leading-7 text-text-secondary">اگر امروز تازه شروع کردی، این صفحه راه‌نمایی برای ادامه‌ی آرام و معنادار است. اگر بازگشته‌ای، از لحظه‌ای که قطع کردی دوباره ادامه بده و به مسیر خودت برگرد.</p>
             </div>
             <div className="flex flex-wrap items-center gap-2">
               <Link href="/podcasts" className="inline-flex">
@@ -104,8 +104,8 @@ export function DiscoveryPage() {
               <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                 <div className="space-y-3">
                   <p className="m-0 text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">Continue Journey</p>
-                  <h2 className="text-xl font-semibold text-text-primary">هر بازگشت، یک قدم روشن‌تر به سمت تجربه‌ای شخصی‌تر دارد.</h2>
-                  <p className="m-0 max-w-xl text-sm text-text-secondary">از ادامه‌ی پخش و لحظه‌های نیمه‌کامل گرفته تا پیشنهادهای تازه، این صفحه به شما کمک می‌کند «جایی که متوقف شدی» را بدون سردرگمی از سر بگیری.</p>
+                  <h2 className="text-xl font-semibold text-text-primary">هر بازگشت، یک قدم روشن‌تر به سمت تجربه‌ای شخصی‌تر و ماندگارتر دارد.</h2>
+                  <p className="m-0 max-w-xl text-sm text-text-secondary">از ادامه‌ی پخش و لحظه‌های نیمه‌کامل گرفته تا پیشنهادهای تازه، این صفحه به شما کمک می‌کند «جایی که متوقف شدی» را بدون سردرگمی از سر بگیری و به آن معنا ببخشی.</p>
                 </div>
                 <Tag className="w-fit border-border bg-surface-secondary/80 text-text-secondary">
                   <Sparkles className="h-4 w-4 text-accent" aria-hidden="true" />

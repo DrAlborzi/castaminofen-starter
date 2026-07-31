@@ -26,7 +26,7 @@ export function CreatorStudioHome() {
                 از ایده تا انتشار، همه‌ی مسیر خلق را در یک تجربه‌ی حرفه‌ای تجربه کن
               </h1>
               <p className="m-0 text-body">
-                اینجا مسیر خلق، پیش‌نمایش، انتشار و بازگشت به جامعه در یک تجربه‌ی حرفه‌ای و آرام برای سازنده‌ها جمع شده است؛ هر قدم در اینجا، به‌خاطر کاربر و مخاطب معنا دارد.
+                اینجا مسیر خلق، پیش‌نمایش، انتشار و بازگشت به جامعه در یک تجربه‌ی حرفه‌ای و آرام برای سازنده‌ها جمع شده است؛ هر قدم در اینجا، به‌خاطر کاربر، مخاطب و حس ماندگاریِ اثر معنا دارد.
               </p>
             </div>
             <Button variant="secondary">ایجاد محتوا</Button>
@@ -72,7 +72,7 @@ export function CreatorStudioHome() {
               <MediaCard title="مسیر رشد سازنده" subtitle="از اولین ایده تا تاثیر بر جامعه و بازگشت مخاطب" meta="Creator Growth">
                 <div className="space-y-3 rounded-[1rem] border border-border/70 bg-surface-secondary/70 p-3">
                   <p className="text-sm font-semibold text-text-primary">هر انتشار، یک نقطه‌ی بازگشت برای جامعه و یک نشانه‌ی رشد برای شما ایجاد می‌کند.</p>
-                  <p className="text-sm text-text-secondary">پیش‌نمایش مخاطب، بازخورد و حضور در Profile همگی به شما نشان می‌دهند که کار شما در Castaminofen معنی‌دار است.</p>
+                  <p className="text-sm text-text-secondary">پیش‌نمایش مخاطب، بازخورد و حضور در Profile همگی به شما نشان می‌دهند که کار شما در Castaminofen معنی‌دار است و چرا باید دوباره بازگردید.</p>
                 </div>
               </MediaCard>
 

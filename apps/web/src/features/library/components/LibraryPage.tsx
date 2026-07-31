@@ -86,7 +86,7 @@ export function LibraryPage() {
             <p className="m-0 text-sm font-medium text-accent">My Knowledge · My Collections · My Memories</p>
             <h1 className="text-heading">{greeting}</h1>
             <p className="text-body m-0 max-w-2xl">این فضا یک حافظه‌ی شخصی برای بازگشت به آموخته‌ها، مسیرهای نیمه‌کامل، مجموعه‌های مورد علاقه و لحظه‌هایی است که می‌خواهی دوباره بازسازی کنی.</p>
-            <p className="text-sm leading-7 text-text-secondary">در هر بازگشت، Castaminofen به تو نشان می‌دهد که در کجای مسیر دانش و علاقه‌مندی‌هایت هستی.</p>
+            <p className="text-sm leading-7 text-text-secondary">هر بار که برمی‌گردی، اینجا به تو یادآوری می‌کند چرا این محتوا برایت مهم بوده و چرا بازگشت به آن ارزش دارد.</p>
           </div>
           <div className="flex flex-col gap-3 sm:items-end">
             <div className="flex flex-wrap items-center gap-2 text-sm text-text-secondary" role="list" aria-label="خلاصه‌ی کتابخانه">

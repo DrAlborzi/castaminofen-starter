@@ -41,7 +41,7 @@ export function getMobileHeaderConfig(pathname: string): AppShellHeaderConfig {
   if (pathname.startsWith('/library')) {
     return {
       title: 'کتابخانه',
-      tagline: 'مرکز گوش دادن و ادامه‌ی سفر',
+      tagline: 'حافظه، ادامه‌ی سفر و بازگشت معنادار',
       showSearchAction: true,
       showProfileAction: true,
       showCreateAction: true,
@@ -62,7 +62,7 @@ export function getMobileHeaderConfig(pathname: string): AppShellHeaderConfig {
   if (pathname.startsWith('/creator')) {
     return {
       title: 'سازنده',
-      tagline: 'هویت عمومی، محتوا و جامعه برای creators',
+      tagline: 'هویت، رشد و جامعه برای سازندگان',
       showSearchAction: true,
       showProfileAction: true,
       titleTone: 'feature',
@@ -82,7 +82,7 @@ export function getMobileHeaderConfig(pathname: string): AppShellHeaderConfig {
   if (pathname.startsWith('/community')) {
     return {
       title: 'اجتماع',
-      tagline: 'پیشنهادها و بحث‌های زنده در مسیر شنیداری',
+      tagline: 'از گوش دادن تا مشارکت و بازگشت',
       showSearchAction: true,
       showProfileAction: true,
       titleTone: 'feature',

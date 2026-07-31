@@ -58,6 +58,9 @@ export function CreatorProfilePage({ mode = 'viewer' }: CreatorProfilePageProps)
                       <span>{profile.location}</span>
                     </div>
                     <p className="max-w-2xl text-sm leading-7 text-text-secondary">{profile.bio}</p>
+                    <div className="rounded-[1rem] border border-accent/20 bg-accent/10 p-3 text-sm text-text-secondary">
+                      هر بار که یک اثر منتشر می‌کنید، مخاطب از طریق پروفایل، جامعه و مسیر بازگشت، می‌تواند رشد و هویت شما را دنبال کند.
+                    </div>
                     <div className="flex flex-wrap gap-2">
                       {profile.topics.map((topic) => (
                         <span key={topic} className="rounded-full border border-border/70 bg-surface-card/80 px-3 py-1 text-xs font-medium text-text-secondary">

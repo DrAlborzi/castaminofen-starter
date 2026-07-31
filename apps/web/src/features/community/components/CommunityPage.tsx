@@ -30,7 +30,7 @@ export function CommunityPage() {
                 جایی برای دنبال کردن، گفتگو و هم‌راهی با دیگر شنوندگان
               </h1>
               <p className="m-0 text-body">
-                اینجا حس حضور در جریانِ شنیداری را با بحث، پیشنهاد و تعامل حفظ می‌کنیم تا بازگشت به محتوا سخت‌تر به‌نظر نرسد.
+                اینجا حس حضور در جریانِ شنیداری را با بحث، پیشنهاد و تعامل حفظ می‌کنیم تا بازگشت به محتوا سخت‌تر به‌نظر نرسد و مشارکت، ارزش واقعی بگیرد.
               </p>
             </div>
             <Tag className="w-fit border-border bg-surface-secondary/80 text-text-secondary">
@@ -49,7 +49,7 @@ export function CommunityPage() {
                   </div>
                   <DiscussionComposer discussion={mockDiscussions[0]} />
                   <div className="rounded-[1rem] border border-dashed border-border/60 bg-surface-card/60 p-3 text-sm text-text-secondary">
-                    اینجا می‌توان رایزنی، پیشنهاد و نظرات همراه با پادکست‌ها را در یک قالب مشترک و سبک‌تر دیده کرد.
+                    چرا اینجا باید مشارکت کرد؟ چون هر نظر، سوال یا پیشنهاد، به‌تدریج به یک مسیر روشن‌تر برای دیگر شنوندگان و سازندگان تبدیل می‌شود.
                   </div>
                 </div>
               </DiscussionCard>

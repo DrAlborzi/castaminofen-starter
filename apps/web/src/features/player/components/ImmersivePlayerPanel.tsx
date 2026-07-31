@@ -157,11 +157,11 @@ export function ImmersivePlayerPanel({ onClose }: { onClose: () => void }) {
             </div>
 
             <div className="space-y-3">
-              <MediaCard title="اطلاعات محتوا" subtitle="در این بخش، تجربه‌ی پخش به‌صورت تعاملی و روایت‌محور نمایش داده می‌شود" meta="Premium" className="h-full">
+              <MediaCard title="چرا اینجا توقف کنید؟" subtitle="از لحظه‌ی گوش دادن تا حفظ، بحث و بازگشت" meta="Engagement" className="h-full">
                 <div className="space-y-2 text-sm text-text-secondary">
-                  <p className="flex items-center gap-2"><BookOpen size={14} className="text-accent" /> تجربه‌ی آموزشی و اجتماعی در یک فضای واحد</p>
-                  <p className="flex items-center gap-2"><Sparkles size={14} className="text-accent" /> لحظه‌های مهم، یادداشت‌ها و بحث‌های مرتبط</p>
-                  <p className="flex items-center gap-2"><Layers3 size={14} className="text-accent" /> پشتیبانی از حالت صوتی، ویدیویی و آموزش</p>
+                  <p className="flex items-center gap-2"><BookOpen size={14} className="text-accent" /> می‌توانید لحظه‌ی مهم را ذخیره کنید و بعداً بازگردید</p>
+                  <p className="flex items-center gap-2"><Sparkles size={14} className="text-accent" /> بحث، یادداشت و تعامل، این تجربه را به یک خاطره‌ی شخصی تبدیل می‌کند</p>
+                  <p className="flex items-center gap-2"><Layers3 size={14} className="text-accent" /> بازگشت به اینجا، به شما کمک می‌کند مسیر شنیداری‌تان را ادامه دهید</p>
                 </div>
               </MediaCard>
               <CreatorPanel />

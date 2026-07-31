@@ -41,6 +41,7 @@ describe('CommunityPage', () => {
     expect(container.textContent).toContain('The Quiet Hour');
     expect(container.textContent).toContain('نظرات');
     expect(container.textContent).toContain('در حال گوش دادن');
+    expect(container.textContent).toContain('چرا اینجا باید مشارکت کرد؟');
     expect(container.querySelector('article')).not.toBeNull();
   });
 });
