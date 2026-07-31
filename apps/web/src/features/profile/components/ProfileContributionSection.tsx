@@ -13,6 +13,7 @@ export function ProfileContributionSection({ contributions }: ProfileContributio
           <div key={item.id} className="rounded-[1rem] border border-border/70 bg-surface-secondary/70 p-3">
             <p className="text-sm font-semibold text-text-primary">{item.label}</p>
             <p className="mt-1 text-sm text-text-secondary">{item.description}</p>
+            <p className="mt-2 text-xs text-accent">نشان‌دهنده‌ی نقش شما در بازگشت و مشارکتِ مداوم</p>
           </div>
         ))}
       </div>

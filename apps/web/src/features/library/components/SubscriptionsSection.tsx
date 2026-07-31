@@ -26,6 +26,7 @@ export function SubscriptionsSection({ items }: { items: LibrarySubscription[] }
         <LibraryEmptyState
           title="هنوز پادکستی را دنبال نمی‌کنید"
           description="پادکست‌هایی که دنبال می‌کنید در این بخش ظاهر می‌شوند و بعداً در کتابخانه شما دسترسی سریعی خواهند داشت."
+          supportingText="فالو کردن، شروعی برای ساختن دنیای شخصیِ شنیداری و بازگشت به ایده‌های مورد علاقه‌تان است."
           eyebrow="جستجو و دنبال کردن"
           icon={LibraryIcon}
         />

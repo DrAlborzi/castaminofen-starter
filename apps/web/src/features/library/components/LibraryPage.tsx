@@ -62,6 +62,7 @@ export function LibraryPage() {
               <p className="m-0 text-sm font-medium text-accent">کتابخانه‌ی شما</p>
               <h1 className="text-heading">{greeting}</h1>
               <p className="text-body m-0 max-w-2xl">{greetingSubtitle}</p>
+              <p className="text-sm leading-7 text-text-secondary">هر بازگشت به اینجا، یک قدم تازه در مسیر دانش، علاقه‌مندی‌ها و خاطره‌های شخصی‌ات است.</p>
             </div>
             <div className="flex flex-wrap items-center gap-2 text-sm text-text-secondary" role="list" aria-label="خلاصه‌ی کتابخانه">
               <span className="inline-flex items-center rounded-full border border-border bg-surface-primary px-3 py-1.5">در انتظار شروع</span>
@@ -71,6 +72,7 @@ export function LibraryPage() {
         <LibraryEmptyState
           title="کتابخانه شما هنوز خالی است"
           description="همین امروز چند پادکست را پیدا کنید و این فضا به‌تدریج به یک خانه‌ی شخصی برای گوش دادن تبدیل شود."
+          supportingText="هر لحظه‌ی شروع، یک مسیر برای بازگشت و ساختن هویت شنیداری شماست."
           eyebrow="از اینجا به مسیر پادکست‌ها بروید"
         />
       </PageContainer>
@@ -82,9 +84,10 @@ export function LibraryPage() {
       <section className="rounded-[1.75rem] border border-border/80 bg-surface-secondary/70 p-4 shadow-soft sm:p-6">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="space-y-3">
-            <p className="m-0 text-sm font-medium text-accent">My Knowledge / My Collections / My Memories</p>
+            <p className="m-0 text-sm font-medium text-accent">My Knowledge · My Collections · My Memories</p>
             <h1 className="text-heading">{greeting}</h1>
             <p className="text-body m-0 max-w-2xl">این فضا یک حافظه‌ی شخصی برای بازگشت به آموخته‌ها، مسیرهای نیمه‌کامل، مجموعه‌های مورد علاقه و لحظه‌هایی است که می‌خواهی دوباره بازسازی کنی.</p>
+            <p className="text-sm leading-7 text-text-secondary">در هر بازگشت، Castaminofen به تو نشان می‌دهد که در کجای مسیر دانش و علاقه‌مندی‌هایت هستی.</p>
           </div>
           <div className="flex flex-col gap-3 sm:items-end">
             <div className="flex flex-wrap items-center gap-2 text-sm text-text-secondary" role="list" aria-label="خلاصه‌ی کتابخانه">

@@ -39,6 +39,7 @@ describe('community experience', () => {
     expect(rendered.container.textContent).toContain('اجتماع');
     expect(rendered.container.textContent).toContain('برای شما');
     expect(rendered.container.textContent).toContain('موضوعات پرطرفدار');
+    expect(rendered.container.textContent).toContain('هویت مشارکتی');
   });
 
   it('switches feed mode and updates the visible discussions', () => {

@@ -82,6 +82,7 @@ export function DiscoveryPage() {
               </Tag>
               <h1 id="discovery-heading" className="text-heading">برای بازگشت بعدی، مسیر بعدی را کشف کن</h1>
               <p className="m-0 text-body">صفحه‌ی اصلیِ Castaminofen به‌جای یک شبکه‌ی خام، یک مسیر آرام برای ادامه، کشف و بازگشت به تجربه‌ی شنیداری است.</p>
+              <p className="text-sm leading-7 text-text-secondary">هر بازگشت به اینجا، به شما کمک می‌کند مسیر کنونی‌تان را بهتر بفهمید و به تجربه‌های بعدی وصل شوید.</p>
             </div>
             <div className="flex flex-wrap items-center gap-2">
               <Link href="/podcasts" className="inline-flex">

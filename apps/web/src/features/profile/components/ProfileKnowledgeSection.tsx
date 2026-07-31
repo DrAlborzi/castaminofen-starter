@@ -24,7 +24,7 @@ export function ProfileKnowledgeSection({ memories, collections }: ProfileKnowle
             ))}
           </div>
         ) : (
-          <EmptyState title="هنوز لحظه‌ای ذخیره نشده" description="از پخش‌ها و یادداشت‌ها برای ساختن حافظه‌ی شخصی استفاده کن." />
+          <EmptyState title="هنوز لحظه‌ای ذخیره نشده" description="از پخش‌ها و یادداشت‌ها برای ساختن حافظه‌ی شخصی استفاده کن." supportingText="هر بازگشت به این بخش، به شما کمک می‌کند هویت دانشی و شنیداری‌ات را روشن‌تر ببینید." />
         )}
       </MediaCard>
 
@@ -42,7 +42,7 @@ export function ProfileKnowledgeSection({ memories, collections }: ProfileKnowle
             ))}
           </div>
         ) : (
-          <EmptyState title="هنوز مجموعه‌ای ندارید" description="مجموعه‌ها به شما کمک می‌کنند علاقه‌مندی‌های خود را سازمان‌دهی کنید." />
+          <EmptyState title="هنوز مجموعه‌ای ندارید" description="مجموعه‌ها به شما کمک می‌کنند علاقه‌مندی‌های خود را سازمان‌دهی کنید." supportingText="این مجموعه‌ها، نشانه‌ای از مسیرهای رشد و بازگشت‌های شخصی شما هستند." />
         )}
       </MediaCard>
     </section>

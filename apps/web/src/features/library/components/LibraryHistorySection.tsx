@@ -37,6 +37,7 @@ export function LibraryHistorySection({ items }: { items: LibraryListeningHistor
         <LibraryEmptyState
           title="هنوز تاریخچه‌ای برای پخش وجود ندارد"
           description="وقتی اپیزودی را گوش بدهید، تاریخچه‌ی گوش دادن شما در اینجا ظاهر خواهد شد."
+          supportingText="می‌توانید از این مسیر برای بازگشت به لحظه‌هایی استفاده کنید که برایتان ارزش و معنی داشته‌اند."
           eyebrow="شروع کن"
           icon={Clock3}
         />

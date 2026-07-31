@@ -9,9 +9,11 @@ describe('LibraryEmptyState', () => {
         title="هنوز چیزی اینجا نیست"
         description="برای شروع، اولین پادکست خود را پیدا کنید."
         eyebrow="یک قدم تا شروع"
+        supportingText="هر بازگشت، یک قدم تازه به سمت مسیر دانش و علاقه‌مندی‌های شماست."
       />,
     );
 
     expect(html).toContain('یک قدم تا شروع');
+    expect(html).toContain('هر بازگشت');
   });
 });

@@ -40,6 +40,7 @@ export function CreatorContentManager() {
                 <p className="max-w-2xl text-sm leading-7 text-text-secondary">
                   وضعیت انتشار، پیش‌نویس‌ها، زمان‌بندی و نسخه‌های قبلی در یک نمای منسجم برای تصمیم‌گیری بهتر.
                 </p>
+                <p className="max-w-2xl text-sm leading-7 text-accent">هر قدمی که در اینجا می‌گذاری، به مخاطب نشانه‌ی رشد و تأثیر شما می‌دهد.</p>
               </div>
             </div>
 
@@ -93,7 +94,7 @@ export function CreatorContentManager() {
                         <button type="button" className="rounded-full border border-border/70 bg-surface-card px-3 py-1.5 text-xs font-semibold text-text-primary">اشتراک‌گذاری</button>
                       </div>
                     </div>
-                  )) : <EmptyState title="محتوایی هنوز وجود ندارد" description="برای شروع، اولین محتوای خود را ایجاد کن." />}
+                  )) : <EmptyState title="محتوایی هنوز وجود ندارد" description="برای شروع، اولین محتوای خود را ایجاد کن." supportingText="هر محتوای تازه، فرصتی برای بازگشت مخاطب و ساختن اثر ماندگار است." />}
                 </div>
               </MediaCard>
 
