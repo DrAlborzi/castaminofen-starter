@@ -2,22 +2,22 @@
 
 ## 1. تاریخ بررسی
 - تاریخ اجرا: 2026-07-31
-- زمان گزارش: 2026-07-31 12:09
+- زمان گزارش: 2026-07-31 15:01
 - روش بررسی: تحلیل فقط، بدون اعمال هرگونه تغییر در کد، فایل، وابستگی، تنظیمات یا ساختار پروژه
 
 ## 2. نسخه / وضعیت پروژه
 - نسخه فعلی مخزن: v0.1.0
-- وضعیت کلی: پروژه در محدوده MVP در وضعیت پایدار و آماده‌سازی‌شده برای ادامه توسعه و hardening قرار دارد
-- وضعیت مستندات: به‌طور کلی با واقعیت کد هم‌راستا است، با این حال برخی بخش‌های آینده مانند i18n/RTL، PWA/offline، و background job infrastructure هنوز به‌صورت کامل در کد جاری تثبیت نشده‌اند
-- وضعیت واقعی در این Audit: ساختار frontend در سطح feature-based و قابل قبول است؛ backend نیز بر اساس feature-based folders و service-oriented architecture اجرا می‌شود و در سطح build/validation وضعیت قابل قبولی دارد
+- وضعیت کلی: پروژه در محدوده MVP در وضعیت پایدار و آماده برای ادامه توسعه، hardening و validation قرار دارد
+- وضعیت مستندات: به‌طور کلی با واقعیت کد هم‌راستا است. با این حال، برخی زیرساخت‌های آینده مانند i18n/RTL، PWA/offline و background job orchestration هنوز به‌صورت کامل در کد جاری تثبیت نشده‌اند
+- وضعیت واقعی در این Audit: ساختار frontend بر اساس feature-based و قابل قبول است؛ backend نیز بر اساس feature folders و service-oriented architecture اجرا می‌شود و در سطح build/validation وضعیت قابل قبول دارد
 
 ## 3. خلاصه اجرایی
 - معماری فعلی بر اساس feature-first، ownership-based و incremental migration پیاده‌سازی شده و با مستندات اصلی پروژه هم‌راستا است
 - frontend در مسیر apps/web با Next.js App Router، feature folders، shared infrastructure و providers اجرا می‌شود
-- backend در مسیر apps/api با NestJS، Prisma و ساختار feature-based مستقیم فعالیت می‌کند و در سطح کلی برای ادامه توسعه پایدار است
+- backend در مسیر apps/api با NestJS، Prisma و ساختار feature-based مستقیم فعالیت می‌کند و برای ادامه توسعه پایدار است
 - بررسی‌های اجرایی در این جلسه نشان داد که lint، build و تست‌های frontend با موفقیت اجرا می‌شوند
 - تفاوت اصلی بین مستندات و واقعیت بیشتر در سطح تکمیل زیرساخت‌های آینده و runtime verification کامل است، نه در ساختار اصلی معماری
-- در این جلسه، اجرای fresh verification نشان داد که pnpm lint موفق بود، pnpm build برای web/api/shared-types با موفقیت تکمیل شد و pnpm --filter @castaminofen/web test در حالت موفق با 47 فایل تست و 160 تست عبور کرده است
+- اجرای fresh verification در این جلسه نشان داد که pnpm lint موفق بود، pnpm build برای web/api/shared-types با موفقیت تکمیل شد و pnpm --filter @castaminofen/web test با 47 فایل تست و 160 تست عبور کرده است
 
 ## 4. بررسی قوانین پروژه و copilot-instructions.md
 
@@ -25,7 +25,7 @@
 1. معماری باید ساده، maintainable، scalable و feature-first باشد
 2. فرانت‌اند باید بر پایه Next.js App Router و feature boundary ساخته شود
 3. بک‌اند باید بر پایه NestJS، Prisma و PostgreSQL ساخته شود
-4. مالکیت feature باید در لایه feature نگهداری شود و از ساختار فایل‌محور یا پراکندگی غیرضروری جلوگیری شود
+4. مالکیت feature باید در لایه feature نگه داشته شود و از ساختار فایل‌محور یا پراکندگی غیرضروری جلوگیری شود
 5. Zustand فقط برای stateهای global UI مانند Player و auth استفاده شود و TanStack Query برای data fetching و cache
 6. فرم‌ها باید با React Hook Form + Zod پیاده‌سازی شوند
 7. styling باید با Tailwind انجام شود و متن‌ها باید در مسیر i18n/RTL قابل مدیریت باشند
@@ -42,8 +42,8 @@
 - حذف یا تضعیف boundaryهای feature بدون تصمیم معماری
 
 ### استانداردهای validation و تست
-- Definition of Done در مستندات، شامل build، lint، type check، تست‌های مرتبط و runtime verification است
-- در این Audit، lint، build و تست‌های وب با موفقیت اجرا شدند؛ runtime verification کامل در محیط محلی با این جلسه به‌طور مستقل تأیید نشد
+- Definition of Done در مستندات شامل build، lint، type check، تست‌های مرتبط و runtime verification است
+- در این Audit، lint، build و تست‌های وب با موفقیت اجرا شدند؛ runtime verification کامل در محیط محلی با این جلسه به‌طور مستقل تأیید نشد، اما پایگاه ساختاری و کیفیت کد در سطح قابل قبولی است
 
 ## 5. درک معماری فعلی
 

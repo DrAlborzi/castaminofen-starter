@@ -25,6 +25,7 @@
 - مسیرهای کلیدی کاربر برای کاربر تازه‌وارد، کاربر بازگشتی و creator مستندسازی شدند.
 - دسته‌بندی استاندارد مشکلات کاربر (Confusion، Friction، Value، Reliability، Participation) در قالب یک مدل قابل استفاده ثبت شد.
 - یک backlog تصمیم‌محور با مثال‌های اولیه‌ی problem/evidence/impact/priority ایجاد شد.
+- یک بهبود کوچک و مبتنی بر شواهد در Library اجرا شد تا پیام empty-state برای بازگشت کاربر روشن‌تر شود و مسیر شروع پخش برای کاربر تازه‌وارد واضح‌تر شود.
 - همه‌ی تغییرات در محدوده‌ی documentation و بدون تغییر runtime یا contract نگه داشته شدند.
 
 ## Files Created / Updated
@@ -42,10 +43,15 @@
 
 ## Commands Run
 - `git status --short`
+- `pnpm --filter @castaminofen/web test -- ContinueListeningSection.test.tsx`
+- `pnpm --filter @castaminofen/web build`
 - `pnpm lint:web`
 
 ## Validation
 - Consistency of the new phase docs was reviewed against the existing documentation structure, roadmap, project-status, and changelog.
+- The targeted Library regression test passed with 162 tests passing.
+- The web production build completed successfully.
+- Web lint completed successfully with only a pre-existing warning in the onboarding test about using an img element.
 - The phase remains aligned with the existing product direction and preserves the no-new-feature / no-architecture-change constraint.
 
 ## Known Limitations
