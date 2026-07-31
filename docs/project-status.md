@@ -25,6 +25,7 @@
 - Phase BETA.LEARNING.1 — User Behavior Insights & Product Decision Framework
 - Phase BETA.VALIDATION.1 — Real User Observation & Product Validation
 - FOUNDATION.AUTH.1 — Auth Runtime Stabilization & Routing Alignment
+- FOUNDATION.AUTH.VALIDATION.1 — Auth Flow End-to-End Validation
 - Phase COMMUNITY.2 — Community Ecosystem Experience
 - Phase CREATE.2 — Creator Studio & Content Creation Ecosystem
 - Phase CREATOR.1 — Public Creator Identity & Channel Experience
@@ -103,6 +104,7 @@
 ## وضعیت Authentication
 
 - Authentication با login، register، logout و protected routes در سطح MVP موجود است.
+- Validation runtime برای signup/login/logout/refresh/auth-protected routing با موفقیت در محیط local انجام شد.
 
 ## وضعیت Build
 
