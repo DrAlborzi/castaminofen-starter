@@ -20,13 +20,13 @@ describe('app shell config', () => {
     const config = getMobileHeaderConfig('/community');
 
     expect(config.title).toBe('اجتماع');
-    expect(config.tagline).toBe('بحث و تعامل با سایر شنوندگان در یک جریان یکپارچه');
+    expect(config.tagline).toBe('پیشنهادها و بحث‌های زنده در مسیر شنیداری');
   });
 
   it('maps the create experience to the shared premium header pattern', () => {
     const config = getMobileHeaderConfig('/podcasts/new');
 
     expect(config.title).toBe('ایجاد');
-    expect(config.tagline).toBe('پادکست و اپیزودهای جدید را در یک جریان یکپارچه منتشر کن');
+    expect(config.tagline).toBe('محتوا را از ایده تا انتشار با وضوح بیشتری پیش ببر');
   });
 });

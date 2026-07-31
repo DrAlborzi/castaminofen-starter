@@ -69,7 +69,7 @@ export function ProfilePage() {
           <SectionHeader
             eyebrow="پروفایل"
             title="هویت شخصی، دانش و مشارکت"
-            description="از لحظه‌های پخش، یادداشت‌ها و تعاملات برای ساختن تصویری انسانی از خودت استفاده کن."
+            description="از لحظه‌های پخش، مسیرهای بازگشتی و تعاملات برای ساختن تصویری انسانی از خودت استفاده کن؛ اینجا حس رشد و ادامه‌ی سفر دیده می‌شود."
           />
 
           <ProfileStats stats={mockProfileExperience.stats} />

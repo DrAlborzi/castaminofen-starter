@@ -82,7 +82,7 @@ export function getMobileHeaderConfig(pathname: string): AppShellHeaderConfig {
   if (pathname.startsWith('/community')) {
     return {
       title: 'اجتماع',
-      tagline: 'بحث و تعامل با سایر شنوندگان در یک جریان یکپارچه',
+      tagline: 'پیشنهادها و بحث‌های زنده در مسیر شنیداری',
       showSearchAction: true,
       showProfileAction: true,
       titleTone: 'feature',
@@ -92,7 +92,7 @@ export function getMobileHeaderConfig(pathname: string): AppShellHeaderConfig {
   if (pathname.startsWith('/create') || pathname.startsWith('/podcasts/new') || pathname.startsWith('/episodes/new')) {
     return {
       title: 'ایجاد',
-      tagline: 'پادکست و اپیزودهای جدید را در یک جریان یکپارچه منتشر کن',
+      tagline: 'محتوا را از ایده تا انتشار با وضوح بیشتری پیش ببر',
       showSearchAction: false,
       showProfileAction: true,
       showCreateAction: false,

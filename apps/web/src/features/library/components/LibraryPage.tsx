@@ -120,7 +120,7 @@ export function LibraryPage() {
       ) : null}
 
       <div className="space-y-4 sm:space-y-6">
-        <SectionHeader eyebrow="پلتفرم" title="مرکز شخصی شما" description="حافظه، ادامه‌ی گوش دادن، علاقه‌مندی‌ها و مسیرهای شخصی در یک فضای یکپارچه کنار هم قرار گرفته‌اند؛ اینجا مکان بازگشت شماست." />
+        <SectionHeader eyebrow="پلتفرم" title="مرکز شخصی شما" description="حافظه، ادامه‌ی گوش دادن، علاقه‌مندی‌ها و مسیرهای شخصی در یک فضای یکپارچه کنار هم قرار گرفته‌اند؛ اینجا همیشه یک نقطه‌ی روشن برای بازگشت است." />
         <MediaCarousel className="gap-3">
           <MediaCard title="My Knowledge" subtitle="آموخته‌هایی که در مسیر یادگیری حفظ شده‌اند" meta={`${history.length + continueListening.length}`} className="min-w-[11rem]" />
           <MediaCard title="My Collections" subtitle="مجموعه‌های سازمان‌یافته و شخصی" meta={`${subscriptions.length}`} className="min-w-[11rem]" />

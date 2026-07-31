@@ -30,7 +30,7 @@ export function CommunityPage() {
                 جایی برای دنبال کردن، گفتگو و هم‌راهی با دیگر شنوندگان
               </h1>
               <p className="m-0 text-body">
-                تجربه‌ی اجتماعی در اینجا با همان زبان رابط و rhythm صفحه‌های دیگر، بدون ایجاد مسیر یا runtime جداگانه، به کاربر ارائه می‌شود.
+                اینجا حس حضور در جریانِ شنیداری را با بحث، پیشنهاد و تعامل حفظ می‌کنیم تا بازگشت به محتوا سخت‌تر به‌نظر نرسد.
               </p>
             </div>
             <Tag className="w-fit border-border bg-surface-secondary/80 text-text-secondary">
