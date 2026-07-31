@@ -95,6 +95,28 @@ export function getArtworkFallback(item: Pick<PlayableItem, 'title' | 'podcastId
   return initials[0] ?? 'EP';
 }
 
+export function getPlaybackErrorMessage(error: string | null | undefined, item?: Pick<PlayableItem, 'audioUrl'> | null) {
+  if (!error) {
+    return null;
+  }
+
+  const normalizedError = error.trim().toLowerCase();
+
+  if (normalizedError.includes('audio source is unavailable') || normalizedError.includes('unavailable')) {
+    return 'در این لحظه فایل صوتی در دسترس نیست. برای ادامه، یک اپیزود دیگر را انتخاب کنید.';
+  }
+
+  if (normalizedError.includes('unable to play') || normalizedError.includes('play failed')) {
+    return 'پخش در این لحظه انجام نشد. دوباره تلاش کنید یا اپیزود دیگری را انتخاب کنید.';
+  }
+
+  if (item?.audioUrl && normalizedError.includes('no playable item')) {
+    return 'پخش در دسترس نیست. دوباره تلاش کنید.';
+  }
+
+  return error;
+}
+
 export function getQueueDisplayItems(queue: PlayableItem[], currentIndex: number): QueueDisplayState {
   if (!queue.length) {
     return { currentItem: null, upNext: [] };

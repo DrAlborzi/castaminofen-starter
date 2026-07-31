@@ -57,4 +57,13 @@ describe('image fallback behavior', () => {
 
     expect(container.textContent).toContain('پ');
   });
+
+  it('falls back immediately when the image source is blank whitespace', () => {
+    act(() => {
+      root.render(<ContentArtwork src="   " alt="Podcast artwork" fallback="پ" />);
+    });
+
+    expect(container.querySelector('img')).toBeNull();
+    expect(container.textContent).toContain('پ');
+  });
 });
