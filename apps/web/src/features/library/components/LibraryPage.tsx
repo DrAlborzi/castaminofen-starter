@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import { useLibraryOverview } from '../hooks/useLibraryOverview';
 import { buildLibraryCollectionsSummary } from '../utils/library-collections';
 import { ContinueListeningSection } from './ContinueListeningSection';
@@ -22,18 +23,18 @@ export function LibraryPage() {
   const isLoading = overviewQuery.isLoading;
   const isError = overviewQuery.isError;
 
-  const subscriptions = overviewQuery.data?.subscriptions ?? [];
-  const continueListening = overviewQuery.data?.continueListening ?? [];
-  const history = overviewQuery.data?.history ?? [];
-  const continueListeningIds = new Set(continueListening.map((item) => item.episodeId));
-  const historyItems = history.filter((item) => !continueListeningIds.has(item.episodeId));
-  const collectionSummary = buildLibraryCollectionsSummary({ subscriptions, continueListening, history });
+  const subscriptions = useMemo(() => overviewQuery.data?.subscriptions ?? [], [overviewQuery.data?.subscriptions]);
+  const continueListening = useMemo(() => overviewQuery.data?.continueListening ?? [], [overviewQuery.data?.continueListening]);
+  const history = useMemo(() => overviewQuery.data?.history ?? [], [overviewQuery.data?.history]);
+  const continueListeningIds = useMemo(() => new Set(continueListening.map((item) => item.episodeId)), [continueListening]);
+  const historyItems = useMemo(() => history.filter((item) => !continueListeningIds.has(item.episodeId)), [continueListeningIds, history]);
+  const collectionSummary = useMemo(() => buildLibraryCollectionsSummary({ subscriptions, continueListening, history }), [continueListening, history, subscriptions]);
   const hasAnyContent = subscriptions.length > 0 || continueListening.length > 0 || history.length > 0;
   const now = new Date();
   const greeting = getLibraryGreeting(now);
-  const latestActivityItem = [...history, ...continueListening]
+  const latestActivityItem = useMemo(() => [...history, ...continueListening]
     .slice()
-    .sort((left, right) => new Date(right.lastPlayedAt).getTime() - new Date(left.lastPlayedAt).getTime())[0];
+    .sort((left, right) => new Date(right.lastPlayedAt).getTime() - new Date(left.lastPlayedAt).getTime())[0], [continueListening, history]);
   const lastActivityLabel = getLastActivityLabel(latestActivityItem?.lastPlayedAt, now);
   const listeningStreak = getListeningStreakFromHistory(history);
   const greetingSubtitle = now.getHours() < 12

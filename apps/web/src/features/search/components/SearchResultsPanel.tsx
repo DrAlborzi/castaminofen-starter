@@ -21,6 +21,20 @@ type SearchResultsPanelProps = {
   page?: number;
 };
 
+function formatEpisodeDateLabel(value?: string) {
+  if (!value) {
+    return 'پخش مستقیم';
+  }
+
+  const parsedDate = new Date(value);
+
+  if (Number.isNaN(parsedDate.getTime())) {
+    return 'پخش مستقیم';
+  }
+
+  return `منتشر شده ${parsedDate.toLocaleDateString('fa-IR')}`;
+}
+
 function SearchResultsSkeleton() {
   return (
     <div className="space-y-6" aria-busy="true" aria-live="polite">
@@ -159,7 +173,7 @@ export function SearchResultsPanel({ query, page }: SearchResultsPanelProps) {
             {rankedEpisodes.map((episode: Episode) => (
               <MediaCard key={episode.id} title={episode.title} subtitle={episode.podcast?.title ?? 'پادکست'} meta={<Tag>{episode.publishedAt ? 'منتشر شده' : 'پخش مستقیم'}</Tag>} className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div className="min-w-0 space-y-2">
-                  <p className="text-sm text-text-secondary">{episode.publishedAt ? `منتشر شده ${new Date(episode.publishedAt).toLocaleDateString('fa-IR')}` : 'پخش مستقیم'}</p>
+                  <p className="text-sm text-text-secondary">{formatEpisodeDateLabel(episode.publishedAt)}</p>
                 </div>
                 <div className="flex flex-wrap items-center gap-2 sm:justify-end">
                   <Button
