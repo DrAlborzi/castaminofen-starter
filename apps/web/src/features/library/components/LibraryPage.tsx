@@ -61,7 +61,7 @@ export function LibraryPage() {
               <p className="m-0 text-sm font-medium text-accent">کتابخانه‌ی شما</p>
               <h1 className="text-heading">{greeting}</h1>
               <p className="text-body m-0 max-w-2xl">{greetingSubtitle}</p>
-              <p className="text-sm leading-7 text-text-secondary">هر بازگشت به اینجا، یک قدم تازه در مسیر دانش، علاقه‌مندی‌ها و خاطره‌های شخصی‌ات است.</p>
+              <p className="text-sm leading-7 text-text-secondary">هر بازگشت به اینجا، یک قدم تازه در مسیر دانش، علاقه‌مندی‌ها و خاطره‌های شخصی‌ات است. اگر هنوز از اینجا شروع نکرده‌ای، اولین اپیزود را انتخاب کن تا مسیر بازگشت برایت روشن‌تر شود.</p>
             </div>
             <div className="flex flex-wrap items-center gap-2 text-sm text-text-secondary" role="list" aria-label="خلاصه‌ی کتابخانه">
               <span className="inline-flex items-center rounded-full border border-border bg-surface-primary px-3 py-1.5">در انتظار شروع</span>

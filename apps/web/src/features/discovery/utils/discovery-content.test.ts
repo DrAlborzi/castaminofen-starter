@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { Episode, Podcast } from '@/lib/types';
-import { buildDiscoverySections } from './discovery-content';
+import { buildDiscoverySections, getDiscoveryIntroContent } from './discovery-content';
 
 const podcastFixture: Podcast = {
   id: 'pod-1',
@@ -47,5 +47,12 @@ describe('buildDiscoverySections', () => {
     });
 
     expect(sections[2]).toMatchObject({ title: 'Continue Listening', mode: 'continue-listening' });
+  });
+
+  it('adds first-time orientation copy for new visitors', () => {
+    const intro = getDiscoveryIntroContent({ isAuthenticated: false });
+
+    expect(intro.title).toBe('از اینجا شروع کن');
+    expect(intro.actionLabel).toBe('جستجو کن');
   });
 });

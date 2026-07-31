@@ -9,7 +9,7 @@ import { usePodcasts } from '@/features/podcasts/hooks/usePodcasts';
 import { useQuery } from '@tanstack/react-query';
 import { getEpisodes } from '@/lib/episodes';
 import { useAuthStore } from '@/stores/authStore';
-import { buildDiscoverySections } from '../utils/discovery-content';
+import { buildDiscoverySections, getDiscoveryIntroContent } from '../utils/discovery-content';
 import { DiscoverySection } from './DiscoverySection';
 import { ContinueListeningSection } from '@/features/library/components/ContinueListeningSection';
 import { PageContainer } from '@/components/design-system/layout/page-container';
@@ -27,6 +27,12 @@ export function DiscoveryPage() {
     staleTime: 1000 * 30,
   });
   const continueListeningQuery = useContinueListening();
+
+  const introContent = useMemo(() => {
+    return getDiscoveryIntroContent({
+      isAuthenticated: Boolean(sessionData || isAuthenticated),
+    });
+  }, [isAuthenticated, sessionData]);
 
   const sections = useMemo(() => {
     return buildDiscoverySections({
@@ -94,6 +100,25 @@ export function DiscoveryPage() {
                 <Button variant="primary" size="md" className="min-h-[2.75rem] gap-2">
                   Open library
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-6 rounded-[1.75rem] border border-border/80 bg-surface-card/80 p-4 shadow-soft sm:p-5">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+              <div className="max-w-2xl space-y-3">
+                <Tag className="w-fit border-accent/20 bg-accent/10 text-accent">
+                  <Sparkles className="h-4 w-4" aria-hidden="true" />
+                  {introContent.eyebrow}
+                </Tag>
+                <h2 className="text-xl font-semibold text-text-primary">{introContent.title}</h2>
+                <p className="m-0 text-sm text-text-secondary">{introContent.description}</p>
+                <p className="m-0 text-sm text-text-secondary">{introContent.supportingText}</p>
+              </div>
+              <Link href={introContent.actionHref} className="inline-flex">
+                <Button variant="secondary" size="md" className="min-h-[2.75rem]">
+                  {introContent.actionLabel}
                 </Button>
               </Link>
             </div>

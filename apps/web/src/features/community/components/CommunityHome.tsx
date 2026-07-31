@@ -59,7 +59,7 @@ export function CommunityHome() {
               <p className="m-0 text-body">
                 از لحظه‌های پخش تا موضوعات داغ، اینجا می‌توانید در کنار دیگران درباره‌ی ایده‌ها، صداها و تجربه‌ها هم‌فکری کنید و هویت مشارکتی خود را بسازید.
               </p>
-              <p className="text-sm leading-7 text-text-secondary">هر بحثی که می‌پیوندی، بخشی از هویت مشارکتی‌ات در Castaminofen می‌شود.</p>
+              <p className="text-sm leading-7 text-text-secondary">هر بحثی که می‌پیوندی، بخشی از هویت مشارکتی‌ات در Castaminofen می‌شود؛ از همینجا می‌توانی از یک گوش دادن ساده به یک مشارکت معنادار و بازگشتِ مداوم برسید.</p>
             </div>
             <Tag className="w-fit border-border bg-surface-secondary/80 text-text-secondary">
               <Sparkles className="ml-1 h-4 w-4 text-accent" aria-hidden="true" />

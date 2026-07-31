@@ -27,6 +27,27 @@ const categorySeed = [
   { id: 'culture', title: 'Culture', description: 'Arts, media, and the wider conversation.' },
 ];
 
+export function getDiscoveryIntroContent({
+  isAuthenticated,
+}: {
+  isAuthenticated: boolean;
+}) {
+  const isNewVisitor = !isAuthenticated;
+
+  return {
+    title: isNewVisitor ? 'از اینجا شروع کن' : 'ادامه‌ی سفر',
+    description: isNewVisitor
+      ? 'برای کاربر جدید، اینجا مسیر روشنِ «کشف، گوش دادن و بازگشت» را نشان می‌دهد.'
+      : 'برای حفظ حس ادامه و بازگشت، از اینجا به مسیر بعدی‌ات برو.',
+    eyebrow: isNewVisitor ? 'First steps' : 'Continue',
+    actionLabel: isNewVisitor ? 'جستجو کن' : 'باز کردن کتابخانه',
+    actionHref: isNewVisitor ? '/search' : '/library',
+    supportingText: isNewVisitor
+      ? 'از جستجو شروع کن، یک پادکست انتخاب کن و بعد از اولین گوش دادن، کتابخانه و جامعه برایت روشن‌تر می‌شوند.'
+      : 'از ادامه‌ی گوش دادن یا جستجوی موضوعی شروع کن تا مسیر شخصی‌ات دوباره زنده شود.',
+  };
+}
+
 export function buildDiscoverySections({
   podcasts,
   episodes,
