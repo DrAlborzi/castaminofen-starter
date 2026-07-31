@@ -111,6 +111,10 @@
 - RSS ingestion regression tests: added for persistence boundary, matching decisions, and the new idempotent synchronization engine; backend build passed; Prisma schema validation and direct TypeScript verification confirmed the RSS sync behavior
 - End-to-end RSS orchestration now coordinates fetch, parse, normalize, match, persist, and FeedSource state transitions for a single feed without introducing background execution or new business ownership
 
+## تغییر اخیر — 2026-07-31
+
+- بهبود UX مبتنی بر شواهد: حالت خالی جستجو در نتیجه‌ی بدون نتیجه با متن روشن‌تر و دکمه‌ی اقدام واضح‌تر بهبود یافت؛ مسیرها، قراردادهای API و رفتار Player بدون تغییر باقی ماندند و با تست‌های رگرسیون وب تأیید شدند.
+
 ## تغییر اخیر — 2026-07-30
 
 - Phase COMMUNITY.2 — Community Ecosystem Experience تکمیل شد. تجربه‌ی Community از یک نمایش ساده‌ی اجتماعی به یک تجربه‌ی Premium، چندحالته و feature-owned برای کشف، بحث، مشارکت، topic discovery، creator interaction و اتصال به لحظه‌ی فعلی Player ارتقا یافت. این تغییر بدون تغییر route، auth، یا runtime Player انجام شد و از زیرساخت‌های موجود Social/Design System/Identity استفاده کرد.
