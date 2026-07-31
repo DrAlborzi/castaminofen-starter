@@ -105,3 +105,9 @@
 - [x] Recovery-action wording for no-result searches
 - [x] Library continue-listening empty-state clarity improvement
 - [x] Lightweight documentation update for the validated iteration
+
+## Phase 14 — Beta Validation & Observation Framework
+- [x] Lightweight beta observation templates
+- [x] Session recording structure for real-user observation
+- [x] Evidence-based decision table for beta validation
+- [x] Documentation-only preparation for future user observation
