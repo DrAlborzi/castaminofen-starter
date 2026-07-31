@@ -1,5 +1,29 @@
 # Iteration Log
 
+## 2026-07-31 — Library continue-listening empty-state clarity improvement
+
+### Problem
+The Library continue-listening empty state used abstract, passive phrasing that did not clearly explain what the user should do next to create the return signal the product depends on.
+
+### Evidence
+The product learning framework and user journey map both identify first-session clarity and return continuity as important friction points. The current Library empty state was describing a future outcome without giving a concrete next step for a new user.
+
+### Decision
+Apply a small UX copy improvement to the continue-listening empty state by making the next action more explicit and linking it to the first playback moment.
+
+### Implementation
+Updated the continue-listening empty state in the library experience to:
+- use a clearer explanation of what happens after a first playback
+- present a more direct action-oriented prompt for beginning playback
+- keep routes, API contracts, player behavior, and feature ownership unchanged
+
+### Validation
+- Ran the targeted library regression test: `pnpm --filter @castaminofen/web test -- ContinueListeningSection.test.tsx`
+- Result: 48 test files passed, 161 tests passed
+
+### Result
+The continue-listening empty state now communicates the next step more clearly for first-time users without changing the underlying flow.
+
 ## 2026-07-31 — Search empty-state clarity improvement
 
 ### Problem

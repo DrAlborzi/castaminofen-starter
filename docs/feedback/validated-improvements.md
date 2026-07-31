@@ -1,5 +1,14 @@
 # Validated Improvements
 
+## 2026-07-31 — Library continue-listening empty-state clarity
+
+- Problem: The Library continue-listening empty state used passive language that did not clearly explain how a new user could trigger the return signal.
+- Evidence: The product-learning framework and user-journey map identified first-session clarity and continuity as important friction points, while the existing empty state copy did not clearly point to the first action.
+- Decision: Replace the abstract empty-state copy with a more direct message that explains that the first episode playback creates the continuation path.
+- Implementation: Updated the continue-listening empty state in the web app to describe the next action more clearly while keeping the component structure unchanged.
+- Validation: Verified through a targeted web regression test for the continue-listening empty state.
+- Result: Library users now receive clearer guidance for creating the first continue-listening moment without altering the underlying flow.
+
 ## 2026-07-31 — Search empty-state clarity
 
 - Problem: The no-result search state used abstract wording that did not clearly suggest the next action.
