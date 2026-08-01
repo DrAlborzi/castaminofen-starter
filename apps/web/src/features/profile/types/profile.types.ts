@@ -63,6 +63,45 @@ export interface ProfileContentItem {
   meta: string;
 }
 
+export interface ProfileJourneyCard {
+  id: string;
+  title: string;
+  subtitle: string;
+  detail: string;
+  type: 'listening' | 'watching' | 'audiobook';
+  progress: number;
+}
+
+export interface ProfileFavoriteItem {
+  id: string;
+  title: string;
+  detail: string;
+  meta: string;
+}
+
+export interface ProfileFavoriteCollection {
+  id: string;
+  title: string;
+  description: string;
+  meta: string;
+  items: ProfileFavoriteItem[];
+}
+
+export interface ProfileAchievement {
+  id: string;
+  title: string;
+  subtitle: string;
+  detail: string;
+  tag: string;
+}
+
+export interface ProfileCollectionLink {
+  id: string;
+  title: string;
+  subtitle: string;
+  count: string;
+}
+
 export interface ProfileExperienceData {
   profile: ProfileIdentity;
   stats: ProfileMetric[];
@@ -73,4 +112,24 @@ export interface ProfileExperienceData {
   socialGroups: ProfileSocialGroup[];
   interests: string[];
   content: ProfileContentItem[];
+  journeyCards: ProfileJourneyCard[];
+  favorites: ProfileFavoriteCollection[];
+  achievements: ProfileAchievement[];
+  libraryLinks: ProfileCollectionLink[];
+  creatorOverview: {
+    draftCount: number;
+    publishedCount: number;
+    status: string;
+    invitation: string;
+  };
+  creatorDrafts: {
+    id: string;
+    title: string;
+    status: string;
+  }[];
+  creatorPublished: {
+    id: string;
+    title: string;
+    detail: string;
+  }[];
 }

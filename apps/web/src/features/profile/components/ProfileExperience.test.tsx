@@ -2,6 +2,7 @@ import { act } from 'react-dom/test-utils';
 import { createRoot, type Root } from 'react-dom/client';
 import { afterEach, describe, expect, it } from 'vitest';
 import { ProfileHero } from './ProfileHero';
+import { ProfileJourneyStats } from './ProfileJourneyStats';
 import { ProfileKnowledgeSection } from './ProfileKnowledgeSection';
 import { mockProfileExperience } from '../data/mockProfileExperience';
 
@@ -56,6 +57,15 @@ describe('profile experience', () => {
     });
 
     expect(rendered.container.textContent).toContain('دنبال می‌کنم');
+  });
+
+  it('renders journey stats with premium identity details', () => {
+    const rendered = mount(<ProfileJourneyStats stats={mockProfileExperience.stats} />);
+    container = rendered.container;
+    root = rendered.root;
+
+    expect(rendered.container.textContent).toContain('ساعت گوش دادن');
+    expect(rendered.container.textContent).toContain('لحظه‌های ذخیره‌شده');
   });
 
   it('renders knowledge collections and memory cards', () => {

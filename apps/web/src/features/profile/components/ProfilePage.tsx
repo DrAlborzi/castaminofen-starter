@@ -6,14 +6,18 @@ import { Button } from '@/components/ui/button';
 import { logoutUser } from '@/lib/auth';
 import { useAuthStore } from '@/stores/authStore';
 import { PageContainer } from '@/components/design-system/layout/page-container';
-import { SectionHeader } from '@/components/design-system/layout/section-header';
 import { ProfileActivityTimeline } from './ProfileActivityTimeline';
 import { ProfileContributionSection } from './ProfileContributionSection';
-import { ProfileContentCollection } from './ProfileContentCollection';
+import { ProfileCreatorEntry } from './ProfileCreatorEntry';
+import { ProfileFavoriteUniverse } from './ProfileFavoriteUniverse';
 import { ProfileHero } from './ProfileHero';
+import { ProfileInterestTags } from './ProfileInterestTags';
+import { ProfileJourneyStats } from './ProfileJourneyStats';
 import { ProfileKnowledgeSection } from './ProfileKnowledgeSection';
+import { ProfilePersonalCollections } from './ProfilePersonalCollections';
+import { ProfileContinueJourney } from './ProfileContinueJourney';
+import { ProfileAchievements } from './ProfileAchievements';
 import { ProfileSocialIdentity } from './ProfileSocialIdentity';
-import { ProfileStats } from './ProfileStats';
 import { mockProfileExperience } from '../data/mockProfileExperience';
 
 export function formatAccountDate(value?: string) {
@@ -66,35 +70,84 @@ export function ProfilePage() {
             following: mockProfileExperience.profile.following,
           }} mode={isAuthenticated ? 'owner' : 'viewer'} />
 
-          <SectionHeader
-            eyebrow="پروفایل"
-            title="هویت شخصی، دانش و مشارکت"
-            description="از لحظه‌های پخش، مسیرهای بازگشتی و تعاملات برای ساختن تصویری انسانی از خودت استفاده کن؛ در اینجا می‌بینی چرا بازگشت به Castaminofen برایت ارزش دارد و چه چیزی در مسیر مشارکت و رشد برای تو شکل گرفته است."
-          />
+          <section className="space-y-6">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="text-caption uppercase tracking-[0.24em] text-accent">پروفایل</p>
+                <h2 className="mt-1 text-2xl font-semibold text-text-primary">هویت، سفر و حضور تو در Castaminofen</h2>
+                <p className="mt-2 max-w-2xl text-sm leading-7 text-text-secondary">هر بخش از این پروفایل نشانه‌ای از مسیر شنیداری، خلاقیت و جامعه‌ی توست. اینجا روایت می‌شود چه کسی هستی و به کجا می‌روی.</p>
+              </div>
+              <div className="grid gap-2 sm:auto-cols-min sm:grid-flow-col">
+                <Button type="button" variant="secondary" size="sm">فالووهای جدید</Button>
+                <Button type="button" variant="ghost" size="sm">نمایش هفتگی</Button>
+              </div>
+            </div>
 
-          <ProfileStats stats={mockProfileExperience.stats} />
+            <ProfileJourneyStats stats={mockProfileExperience.stats} />
+          </section>
 
-          <div className="grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
+          <ProfileContinueJourney journeys={mockProfileExperience.journeyCards} />
+
+          <div className="grid gap-4 xl:grid-cols-[1.3fr_0.7fr]">
             <div className="space-y-4">
               <ProfileKnowledgeSection memories={mockProfileExperience.memories} collections={mockProfileExperience.collections} />
-              <ProfileActivityTimeline activities={mockProfileExperience.activities} />
+              <ProfileFavoriteUniverse favorites={mockProfileExperience.favorites} />
+              <ProfileAchievements achievements={mockProfileExperience.achievements} />
             </div>
             <div className="space-y-4">
-              <ProfileContributionSection contributions={mockProfileExperience.contributions} />
-              <ProfileSocialIdentity groups={mockProfileExperience.socialGroups} />
-              <ProfileContentCollection items={mockProfileExperience.content} />
+              <ProfileCreatorEntry
+                overview={mockProfileExperience.creatorOverview}
+                drafts={mockProfileExperience.creatorDrafts}
+                published={mockProfileExperience.creatorPublished}
+              />
+              <ProfileInterestTags interests={mockProfileExperience.interests} />
+              <ProfilePersonalCollections collections={mockProfileExperience.libraryLinks} />
             </div>
           </div>
 
-          <div className="rounded-[2rem] border border-border/80 bg-surface-secondary/70 p-4 shadow-soft sm:p-6">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="text-caption">کنترل‌های حساب</p>
-                <h2 className="text-heading text-lg">موجودی برای ورود و مدیریت</h2>
+          <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
+            <div className="space-y-4">
+              <ProfileActivityTimeline activities={mockProfileExperience.activities} />
+              <ProfileContributionSection contributions={mockProfileExperience.contributions} />
+            </div>
+            <ProfileSocialIdentity groups={mockProfileExperience.socialGroups} />
+          </div>
+
+          <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
+            <section className="rounded-[2rem] border border-border/80 bg-gradient-to-br from-accent/10 via-surface-card to-surface-secondary p-5 shadow-soft sm:p-6">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-caption">هویت سازنده</p>
+                  <h2 className="text-heading text-lg">به‌زودی، صدایت در Castaminofen شنیده می‌شود</h2>
+                  <p className="mt-2 max-w-2xl text-sm leading-7 text-text-secondary">از پیش‌نویس‌ها، آثار منتشرشده و مسیرهای رشد برای ساختن یک هویت خلاقانه استفاده کن.</p>
+                </div>
+                <Button type="button" variant="primary">
+                  ساختن اولین محتوا
+                </Button>
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="mt-6 grid gap-3 md:grid-cols-2">
+                <div className="rounded-[1.25rem] border border-border/70 bg-surface-card/80 p-4">
+                  <p className="text-sm font-semibold text-text-primary">پیش‌نویس‌های آماده</p>
+                  <p className="mt-2 text-sm text-text-secondary">۳ یادداشت و ۲ پیشنهاد برای شروع</p>
+                </div>
+                <div className="rounded-[1.25rem] border border-border/70 bg-surface-card/80 p-4">
+                  <p className="text-sm font-semibold text-text-primary">آثار منتشرشده</p>
+                  <p className="mt-2 text-sm text-text-secondary">۱ پادکست و ۴ ویدیو در مسیر رشد</p>
+                </div>
+              </div>
+            </section>
+
+            <section className="rounded-[2rem] border border-border/80 bg-surface-secondary/70 p-5 shadow-soft sm:p-6">
+              <p className="text-caption">عضویت ممتاز</p>
+              <h2 className="text-heading text-lg">پلتفرمِ شخصی‌سازی‌شده برای مسیرهای بعدی</h2>
+              <p className="mt-2 text-sm leading-7 text-text-secondary">نسخه‌ی آینده‌ی Castaminofen، دسترسی به تجربه‌های ویژه، دسترسی زودهنگام و ابزارهای رشد را برایت آماده می‌کند.</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <span className="rounded-full border border-border/70 bg-surface-card px-3 py-1 text-sm text-text-secondary">پلان فعلی: پرمیوم</span>
+                <span className="rounded-full border border-border/70 bg-surface-card px-3 py-1 text-sm text-text-secondary">مزایا: دسترسی سریع و تجربه‌ی بدون وقفه</span>
+              </div>
+              <div className="mt-5 flex flex-wrap gap-2">
                 <Button type="button" variant="secondary" onClick={() => router.push('/settings')}>
-                  تنظیمات
+                  تنظیمات حساب
                 </Button>
                 <Button type="button" variant="ghost" onClick={() => router.push('/library')}>
                   کتابخانه
@@ -103,7 +156,7 @@ export function ProfilePage() {
                   خروج
                 </Button>
               </div>
-            </div>
+            </section>
           </div>
         </section>
       </PageContainer>
