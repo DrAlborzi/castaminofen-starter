@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { LoadingState } from '@/components/ui/loading-state';
 import { useSession } from '@/lib/auth';
 import { useAuthStore } from '@/stores/authStore';
-import { DiscoveryPage } from '@/features/discovery/components/DiscoveryPage';
+import { HomePage as PremiumHomePage } from '@/features/home/components/HomePage';
 import { getHomePageMode } from './home-page-mode';
 
 export default function HomePage() {
@@ -34,5 +34,5 @@ export default function HomePage() {
     return <LoadingState message="Opening your library..." />;
   }
 
-  return <DiscoveryPage />;
+  return <PremiumHomePage />;
 }

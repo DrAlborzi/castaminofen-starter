@@ -1,6 +1,6 @@
 # گزارش وضعیت پروژه — Castaminofen
 
-تاریخ: 2026-07-31
+تاریخ: 2026-08-01
 
 ## وضعیت فعلی
 
@@ -10,6 +10,7 @@
 
 ## فاز جاری
 
+- Premium Home Experience
 - Phase RETENTION.1 — Retention UX Narrative Foundation
 - Phase PRODUCT.POLISH.1 — Full Experience Refinement & Premium UX Optimization
 - Phase PRODUCT.POLISH.2 — Feature Experience Refinement & Retention UX Layer
@@ -111,6 +112,10 @@
 - Web build: passed
 - RSS ingestion regression tests: added for persistence boundary, matching decisions, and the new idempotent synchronization engine; backend build passed; Prisma schema validation and direct TypeScript verification confirmed the RSS sync behavior
 - End-to-end RSS orchestration now coordinates fetch, parse, normalize, match, persist, and FeedSource state transitions for a single feed without introducing background execution or new business ownership
+
+## تغییر اخیر — 2026-08-01
+
+- تجربه‌ی Home Premium با ساختار جدیدی برای خوش‌آمدگویی، ادامه‌ی تجربه، فهرست‌های کشف، پادکست/ویدیو/کتاب صوتی/کوتاه/جامعه/سازندگان و دسترسی به کتابخانه در مسیر ریشه‌ی وب اضافه شد؛ این نسخه UI-only باقی مانده و با طراحی system فعلی، tokens و shell برنامه هماهنگ است.
 
 ## تغییر اخیر — 2026-07-31
 

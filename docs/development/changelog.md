@@ -2,6 +2,8 @@
 
 | تاریخ | فاز | تغییرات | وضعیت |
 | --- | --- | --- | --- |
+| 2026-08-01 | Premium Home Experience | Replaced the root landing experience with a premium, mobile-first Castaminofen home experience covering welcome, continue experience, discovery shelves, podcast/video/audiobook/shorts/community/creator/library surfaces, and added regression coverage while keeping the implementation UI-only and aligned with the existing design-system shell | انجام شده |
+| --- | --- | --- | --- |
 | 2026-07-31 | Phase RETENTION.1 — Retention UX Narrative Foundation | Strengthened return-oriented storytelling across Discovery, Library, Profile, Community, Creator Studio, and Search with minimal presentation refinements, preserved feature ownership and runtime boundaries, and added regression coverage for the retention narrative without introducing new backend contracts or infrastructure | انجام شده |
 | 2026-07-31 | Evidence-based UX improvement — Library continue-listening empty-state clarity | Refined the Library continue-listening empty state with clearer first-step guidance tied to the first playback moment, preserved routes/API/player behavior, and validated the change through a targeted web regression test | انجام شده |
 | 2026-07-31 | Evidence-based UX improvement — Search empty-state clarity | Refined the search no-result empty state with clearer copy and a more direct recovery action, preserved routes/API/player behavior, and validated the change through a targeted web regression test | انجام شده |
