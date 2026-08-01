@@ -11,6 +11,7 @@
 ## فاز جاری
 
 - Premium Home Experience
+- Premium Search Experience
 - Premium Library UI
 - Premium Create Studio Experience
 - Phase RETENTION.1 — Retention UX Narrative Foundation

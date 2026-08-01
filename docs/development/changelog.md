@@ -3,6 +3,7 @@
 | تاریخ | فاز | تغییرات | وضعیت |
 | --- | --- | --- | --- |
 | 2026-08-01 | Premium Home Experience | Replaced the root landing experience with a premium, mobile-first Castaminofen home experience covering welcome, continue experience, discovery shelves, podcast/video/audiobook/shorts/community/creator/library surfaces, and added regression coverage while keeping the implementation UI-only and aligned with the existing design-system shell | انجام شده |
+| 2026-08-01 | Premium Search Experience | Elevated the Search route into a premium, discovery-first experience with landing guidance, recent/trending suggestions, filter UI, featured results, and community placeholders while preserving the existing route, UI-only scope, and feature boundaries | انجام شده |
 | 2026-08-01 | Premium Library UI | Elevated the Library route into a premium, mobile-first media space with a richer header, category tabs, continue-media cards, saved-content rails, and polished loading states while preserving the existing route, library/player boundaries, and UI-only scope | انجام شده |
 | 2026-08-01 | Premium Create Studio Experience | Reworked the Create route into a premium, mobile-first creator studio with guided workflow stages, content-type selection, identity metadata, publishing preview, draft management, and future-ready AI/community collaboration surfaces while keeping the implementation UI-only and aligned with the existing design-system shell | انجام شده |
 | --- | --- | --- | --- |
