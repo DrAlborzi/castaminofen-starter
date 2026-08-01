@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { BarChart3, BookOpen, Camera, Compass, Layers3, MessageSquareText, Mic, Sparkles, Stars, Users, Wand2 } from 'lucide-react';
+import { CreationWizard } from './CreationWizard';
 import { PageContainer } from '@/components/design-system/layout/page-container';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { Tag } from '@/components/design-system/common/tag';
@@ -67,6 +68,7 @@ export function CreatorStudioHome() {
           <div className="mt-6 grid gap-4 xl:grid-cols-[1.15fr_0.85fr]">
             <div className="space-y-4">
               <ContentTypeSelector selectedType={selectedType} onSelectType={setSelectedType} />
+              <CreationWizard />
               <ContentMetadataEditor />
               <PublishingPanel />
               <DraftManager drafts={mockDrafts} />
@@ -96,6 +98,17 @@ export function CreatorStudioHome() {
                       جامعه فعال
                     </div>
                     <p className="mt-2 text-2xl font-semibold text-text-primary">۲٬۴۸۰</p>
+                  </div>
+                </div>
+
+                <div className="mt-4 rounded-[1.25rem] border border-border/70 bg-gradient-to-br from-accent/10 via-surface-secondary to-surface-card p-4">
+                  <p className="text-sm font-semibold text-text-primary">Creator Journey</p>
+                  <div className="mt-3 flex items-center justify-between rounded-[1rem] border border-border/70 bg-surface-card/80 p-3">
+                    <div>
+                      <p className="text-sm font-semibold text-text-primary">۵ روایت ساخته‌شده</p>
+                      <p className="mt-1 text-sm text-text-secondary">از اولین ایده تا اولین تعامل جامعه</p>
+                    </div>
+                    <div className="rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">Milestone</div>
                   </div>
                 </div>
               </section>

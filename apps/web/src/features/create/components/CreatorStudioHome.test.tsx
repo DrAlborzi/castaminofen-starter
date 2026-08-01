@@ -5,6 +5,7 @@ import { CreatorStudioHome } from './CreatorStudioHome';
 import { ContentTypeSelector } from './ContentTypeSelector';
 import { DraftManager } from './DraftManager';
 import { ContentMetadataEditor } from './ContentMetadataEditor';
+import { CreationWizard } from './CreationWizard';
 
 function mount(ui: React.ReactElement) {
   const container = document.createElement('div');
@@ -86,5 +87,15 @@ describe('creator studio experience', () => {
     expect(rendered.container.textContent).toContain('عنوان');
     expect(rendered.container.textContent).toContain('توضیحات');
     expect(rendered.container.textContent).toContain('برچسب‌ها');
+  });
+
+  it('renders a premium multi-step creation wizard', () => {
+    const rendered = mount(<CreationWizard />);
+    container = rendered.container;
+    root = rendered.root;
+
+    expect(rendered.container.textContent).toContain('مرحله ۱');
+    expect(rendered.container.textContent).toContain('مرحله ۶');
+    expect(rendered.container.textContent).toContain('پیش‌نمایش');
   });
 });
