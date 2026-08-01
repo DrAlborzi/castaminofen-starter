@@ -8,7 +8,7 @@ export function ContentMetadataEditor() {
     <section className="space-y-4 rounded-[1.75rem] border border-border/80 bg-surface-card/85 p-4 shadow-soft sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="text-caption">متادیتا و انتشار</p>
+          <p className="text-caption">مرحله ۲ · ایده و هویت</p>
           <h3 className="text-heading text-lg">برای ساختن تجربه‌ی قابل‌پیدا و قابل‌فهم</h3>
         </div>
         <Tag className="border-accent/20 bg-accent/10 text-accent">SEO Ready</Tag>
