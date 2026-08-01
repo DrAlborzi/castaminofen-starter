@@ -4,6 +4,9 @@ import { useEffect, useMemo, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import SearchInput from './components/SearchInput';
 import { SearchResultsPanel } from './components/SearchResultsPanel';
+import SearchLandingExperience from './components/SearchLandingExperience';
+import SearchFilterDrawer from './components/SearchFilterDrawer';
+import SearchResultsExperience from './components/SearchResultsExperience';
 import { PageContainer } from '@/components/design-system/layout/page-container';
 import { SectionHeader } from '@/components/design-system/layout/section-header';
 
@@ -35,7 +38,7 @@ export default function SearchPage() {
 
   const searchSummary = useMemo(() => {
     const value = debouncedQuery.trim();
-    return value ? `نتایج برای «${value}»` : 'جستجو در پادکست‌ها و اپیزودها';
+    return value ? `نتایج برای «${value}»` : 'جستجو در پادکست‌ها، ویدیو، کتاب صوتی و جامعه';
   }, [debouncedQuery]);
 
   const handleNavigate = (value: string) => {
@@ -60,11 +63,11 @@ export default function SearchPage() {
   return (
     <main className="page-container">
       <PageContainer>
-        <section className="rounded-[2rem] border border-border/80 bg-surface-secondary/70 p-4 shadow-soft sm:p-6 lg:p-8 space-y-6">
+        <section className="space-y-6 rounded-[2rem] border border-border/80 bg-surface-secondary/70 p-4 shadow-soft sm:p-6 lg:p-8">
           <SectionHeader
             eyebrow="جستجو"
-            title="موتور کشف Castaminofen"
-            description="جستجو فقط برای پیدا کردن یک نتیجه نیست؛ برای بازگشت به مسیرهای شنیداری، فرهنگی و حرفه‌ای که به آن‌ها علاقه دارید."
+            title="دروازه‌ی هوشمند به دنیای Castaminofen"
+            description="از پیدا کردن یک نتیجه‌ی دقیق تا کشف چیزی جدید، این تجربه برای ورود آرام و منظم به پادکست، ویدیو، کتاب صوتی، سازنده و جامعه طراحی شده است."
           />
 
           <SearchInput
@@ -72,11 +75,31 @@ export default function SearchPage() {
             onNavigate={handleNavigate}
           />
 
-          <div className="rounded-2xl border border-border/80 bg-surface-secondary/70 px-4 py-3 text-sm text-text-secondary">
+          <div className="rounded-[1.5rem] border border-border/80 bg-surface-card/80 px-4 py-3 text-sm text-text-secondary shadow-sm">
             {searchSummary}
           </div>
 
-          <SearchResultsPanel query={debouncedQuery} page={page} />
+          <div className="grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">
+            <div className="space-y-4">
+              {debouncedQuery ? (
+                <>
+                  <SearchFilterDrawer isOpen />
+                  <SearchResultsExperience query={debouncedQuery} />
+                </>
+              ) : (
+                <SearchLandingExperience onSelectSearch={handleNavigate} />
+              )}
+              <SearchResultsPanel query={debouncedQuery} page={page} />
+            </div>
+            <div className="space-y-4">
+              <SearchFilterDrawer isOpen />
+              <div className="rounded-[1.5rem] border border-border/80 bg-surface-card/90 p-4 shadow-soft sm:p-5">
+                <p className="text-sm font-medium text-accent">پیشنهادهای آینده</p>
+                <h3 className="mt-2 text-base font-semibold text-text-primary">جست‌وجوی معنایی، mood discovery و کشف شخصی‌سازی‌شده</h3>
+                <p className="mt-2 text-sm leading-7 text-text-secondary">این لایه‌ی UI برای زمانی آماده شده که تجربه‌ی جستجو از یک فرم ساده به یک مسیر کشفِ همه‌جانبه تبدیل شود.</p>
+              </div>
+            </div>
+          </div>
         </section>
       </PageContainer>
     </main>
