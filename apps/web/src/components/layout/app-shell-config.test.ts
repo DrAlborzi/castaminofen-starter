@@ -9,6 +9,13 @@ describe('app shell config', () => {
     expect(items.find((item) => item.href === '/')?.isActive).toBe(false);
   });
 
+  it('exposes the requested six-item mobile navigation structure', () => {
+    const items = getBottomNavigationItems('/home');
+
+    expect(items).toHaveLength(6);
+    expect(items.map((item) => item.id)).toEqual(['home', 'library', 'create', 'search', 'community', 'profile']);
+  });
+
   it('maps route-specific header metadata for the library view', () => {
     const config = getMobileHeaderConfig('/library');
 

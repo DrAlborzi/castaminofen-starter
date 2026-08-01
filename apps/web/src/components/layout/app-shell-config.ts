@@ -1,4 +1,4 @@
-import { Home, Layers, Plus, Search, Sparkles, User, Users } from 'lucide-react';
+import { Bookmark, Home, Plus, Search, UserRound, Users } from 'lucide-react';
 import type { ComponentType } from 'react';
 
 export type AppShellNavigationItem = {
@@ -21,13 +21,12 @@ export type AppShellHeaderConfig = {
 };
 
 const navigationDefinitions = [
-  { id: 'home', label: 'خانه', href: '/', icon: Home },
-  { id: 'library', label: 'کتابخانه', href: '/library', icon: Layers },
-  { id: 'create', label: 'ایجاد', href: '/create', icon: Plus, isPrimary: true },
-  { id: 'search', label: 'جستجو', href: '/search', icon: Search },
-  { id: 'community', label: 'اجتماع', href: '/community', icon: Users },
-  { id: 'creator', label: 'سازنده', href: '/creator', icon: Sparkles },
-  { id: 'profile', label: 'پروفایل', href: '/profile', icon: User },
+  { id: 'home', label: 'Home', href: '/', icon: Home },
+  { id: 'library', label: 'Library', href: '/library', icon: Bookmark },
+  { id: 'create', label: 'Create', href: '/create', icon: Plus, isPrimary: true },
+  { id: 'search', label: 'Search', href: '/search', icon: Search },
+  { id: 'community', label: 'Community', href: '/community', icon: Users },
+  { id: 'profile', label: 'Profile', href: '/profile', icon: UserRound },
 ] as const;
 
 export function getBottomNavigationItems(pathname: string): AppShellNavigationItem[] {
