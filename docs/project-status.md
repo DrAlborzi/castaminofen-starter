@@ -28,6 +28,7 @@
 - Phase BETA.POST.LAUNCH.2 — Evidence-Based UX Improvement & Retention Optimization
 - Phase BETA.LEARNING.1 — User Behavior Insights & Product Decision Framework
 - Phase BETA.VALIDATION.1 — Real User Observation & Product Validation
+- PLAYER.HARDENING.1 — Queue determinism and current-item removal hardening
 - FOUNDATION.AUTH.1 — Auth Runtime Stabilization & Routing Alignment
 - FOUNDATION.AUTH.VALIDATION.1 — Auth Flow End-to-End Validation
 - Phase COMMUNITY.2 — Community Ecosystem Experience

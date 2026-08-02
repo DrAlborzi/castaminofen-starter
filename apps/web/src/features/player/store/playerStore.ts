@@ -17,6 +17,7 @@ export type PlayerState = {
   setPlaybackState: (state: Partial<PlayerRuntimeState>) => void;
   replaceQueue: (items: PlayableItem[], startIndex?: number) => void;
   appendToQueue: (item: PlayableItem) => void;
+  moveQueueItem: (fromIndex: number, toIndex: number) => boolean;
   removeFromQueue: (itemId: string) => boolean;
   clearQueue: () => void;
   goToNext: () => PlayableItem | null;
@@ -102,25 +103,63 @@ export const usePlayerStore = create<PlayerState>((set) => ({
         currentItem,
       };
     }),
+  moveQueueItem: (fromIndex, toIndex) => {
+    let changed = false;
+
+    set((state) => {
+      if (!state.queue.length || fromIndex === toIndex) {
+        return state;
+      }
+
+      const safeFromIndex = Math.max(0, Math.min(fromIndex, state.queue.length - 1));
+      const safeToIndex = Math.max(0, Math.min(toIndex, state.queue.length - 1));
+      const nextQueue = [...state.queue];
+      const [movedItem] = nextQueue.splice(safeFromIndex, 1);
+
+      if (!movedItem) {
+        return state;
+      }
+
+      nextQueue.splice(safeToIndex, 0, movedItem);
+      const normalizedCurrentIndex = state.currentItem
+        ? nextQueue.findIndex((item) => item.id === state.currentItem?.id)
+        : -1;
+
+      changed = true;
+      return {
+        ...state,
+        queue: nextQueue,
+        currentIndex: normalizedCurrentIndex >= 0 ? normalizedCurrentIndex : state.currentIndex,
+        currentItem: normalizedCurrentIndex >= 0 ? nextQueue[normalizedCurrentIndex] ?? state.currentItem ?? null : state.currentItem ?? null,
+      };
+    });
+
+    return changed;
+  },
   removeFromQueue: (itemId) => {
     let removed = false;
 
     set((state) => {
       const currentItemId = state.currentItem?.id;
       const nextQueue = state.queue.filter((item) => item.id !== itemId);
-      const shouldPreserveCurrentItem = currentItemId === itemId;
+      const shouldRemoveCurrentItem = currentItemId === itemId;
 
       if (nextQueue.length === state.queue.length) {
         return state;
       }
 
-      if (shouldPreserveCurrentItem) {
+      const removedIndex = state.queue.findIndex((item) => item.id === itemId);
+
+      if (shouldRemoveCurrentItem) {
+        const nextIndex = nextQueue.length > 0 ? Math.min(Math.max(removedIndex, 0), nextQueue.length - 1) : -1;
+        const nextItem = nextIndex >= 0 ? nextQueue[nextIndex] ?? null : null;
+
         removed = true;
         return {
           ...state,
           queue: nextQueue,
-          currentIndex: -1,
-          currentItem: null,
+          currentIndex: nextIndex,
+          currentItem: nextItem,
           playbackStatus: 'idle',
           isPlaying: false,
           currentPosition: 0,
@@ -129,7 +168,6 @@ export const usePlayerStore = create<PlayerState>((set) => ({
         };
       }
 
-      const removedIndex = state.queue.findIndex((item) => item.id === itemId);
       const nextIndex = removedIndex >= 0 && removedIndex < state.currentIndex ? state.currentIndex - 1 : state.currentIndex;
       const normalizedIndex = nextQueue.length === 0 ? -1 : Math.max(0, Math.min(nextIndex, nextQueue.length - 1));
       const normalizedItem = normalizedIndex >= 0 ? nextQueue[normalizedIndex] ?? null : state.currentItem ?? null;
