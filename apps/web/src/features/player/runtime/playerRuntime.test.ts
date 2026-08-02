@@ -496,6 +496,59 @@ describe('PlayerRuntime controller', () => {
     controller.destroy();
   });
 
+  test('removeFromQueue keeps the queue empty-safe when the final current item is removed', () => {
+    const store = usePlayerStore.getState();
+    const controller = createPlayerRuntimeController(store, createEngineMock());
+    const currentItem = createItem('single');
+
+    usePlayerStore.setState({
+      ...store,
+      currentItem,
+      queue: [currentItem],
+      currentIndex: 0,
+      playbackStatus: 'playing',
+      error: null,
+      isPlaying: true,
+    });
+
+    const removed = controller.removeFromQueue(currentItem.id);
+
+    const state = usePlayerStore.getState();
+    expect(removed).toBe(true);
+    expect(state.queue).toEqual([]);
+    expect(state.currentItem).toBeNull();
+    expect(state.currentIndex).toBe(-1);
+    expect(state.playbackStatus).toBe('idle');
+    controller.destroy();
+  });
+
+  test('removeFromQueue preserves the current item identity when a non-current item is removed', () => {
+    const store = usePlayerStore.getState();
+    const controller = createPlayerRuntimeController(store, createEngineMock());
+    const currentItem = createItem('a');
+    const upcomingItem = createItem('b');
+    const trailingItem = createItem('c');
+
+    usePlayerStore.setState({
+      ...store,
+      currentItem,
+      queue: [currentItem, upcomingItem, trailingItem],
+      currentIndex: 0,
+      playbackStatus: 'playing',
+      error: null,
+      isPlaying: true,
+    });
+
+    const removed = controller.removeFromQueue(upcomingItem.id);
+
+    const state = usePlayerStore.getState();
+    expect(removed).toBe(true);
+    expect(state.queue.map((item) => item.id)).toEqual(['a', 'c']);
+    expect(state.currentItem?.id).toBe('a');
+    expect(state.currentIndex).toBe(0);
+    controller.destroy();
+  });
+
   test('loadItem loads the episode audio source before playback starts', async () => {
     const store = usePlayerStore.getState();
     const engine = createEngineMock();

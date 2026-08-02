@@ -5,6 +5,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 const mockRuntime = {
   appendToQueue: vi.fn(),
   removeFromQueue: vi.fn(),
+  moveQueueItem: vi.fn(),
   clearQueue: vi.fn(),
   loadItem: vi.fn(),
 };
@@ -55,9 +56,11 @@ describe('PlayerBar', () => {
     root = createRoot(container);
     mockRuntime.appendToQueue.mockReset();
     mockRuntime.removeFromQueue.mockReset();
+    mockRuntime.moveQueueItem.mockReset();
     mockRuntime.clearQueue.mockReset();
     mockRuntime.loadItem.mockReset();
     mockRuntime.removeFromQueue.mockReturnValue(true);
+    mockRuntime.moveQueueItem.mockReturnValue(true);
     mockState = {
       currentItem: createItem('current', 'Current Episode'),
       playbackStatus: 'playing',
@@ -114,6 +117,66 @@ describe('PlayerBar', () => {
     });
 
     expect(mockRuntime.removeFromQueue).toHaveBeenCalledWith('next');
+  });
+
+  it('renders reorder controls for upcoming items and delegates to the runtime', () => {
+    act(() => {
+      root.render(<PlayerBar />);
+    });
+
+    const openButton = container.querySelector('button[aria-label="باز کردن صف پخش"]') as HTMLButtonElement;
+    act(() => {
+      openButton.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    const moveUpButton = container.querySelector('button[aria-label="انتقال Next Episode به بالا"]') as HTMLButtonElement | null;
+    expect(moveUpButton).not.toBeNull();
+
+    act(() => {
+      moveUpButton?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(mockRuntime.moveQueueItem).toHaveBeenCalledWith(1, 0);
+  });
+
+  it('renders a current-item removal action for the active episode', () => {
+    act(() => {
+      root.render(<PlayerBar />);
+    });
+
+    const openButton = container.querySelector('button[aria-label="باز کردن صف پخش"]') as HTMLButtonElement;
+    act(() => {
+      openButton.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    const removeCurrentButton = container.querySelector('button[aria-label="حذف Current Episode"]') as HTMLButtonElement | null;
+    expect(removeCurrentButton).not.toBeNull();
+
+    act(() => {
+      removeCurrentButton?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(mockRuntime.removeFromQueue).toHaveBeenCalledWith('current');
+  });
+
+  it('delegates the clear action to the runtime from the queue panel', () => {
+    act(() => {
+      root.render(<PlayerBar />);
+    });
+
+    const openButton = container.querySelector('button[aria-label="باز کردن صف پخش"]') as HTMLButtonElement;
+    act(() => {
+      openButton.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    const clearButton = container.querySelector('button[aria-label="پاک کردن صف پخش"]') as HTMLButtonElement | null;
+    expect(clearButton).not.toBeNull();
+
+    act(() => {
+      clearButton?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(mockRuntime.clearQueue).toHaveBeenCalled();
   });
 
   it('renders a retry action for playback errors and resumes from the saved position', () => {

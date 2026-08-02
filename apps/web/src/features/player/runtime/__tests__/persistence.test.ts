@@ -131,4 +131,47 @@ describe('playerPersistence', () => {
     expect(state.queue[state.currentIndex]?.id).toBe(state.currentItem?.id);
     expect(state.queue.length).toBe(2);
   });
+
+  it('does not restore a stale current item when the queue is empty', () => {
+    applyPersistedSnapshotToStore({
+      currentItem: { id: 'stale', title: 'Stale', subtitle: '', audioUrl: 'https://stale', artworkUrl: '', duration: 10, podcastId: 'p5', sourceType: 'unknown' },
+      queue: [],
+      currentIndex: 0,
+      playbackStatus: 'paused',
+      duration: 10,
+      currentPosition: 2,
+      volume: 0.8,
+      repeatMode: 'off',
+      shuffleEnabled: false,
+      error: null,
+    });
+
+    const state = usePlayerStore.getState();
+    expect(state.queue).toEqual([]);
+    expect(state.currentIndex).toBe(-1);
+    expect(state.currentItem).toBeNull();
+  });
+
+  it('prefers the queue entry at currentIndex over a stale snapshot currentItem', () => {
+    applyPersistedSnapshotToStore({
+      currentItem: { id: 'stale', title: 'Stale', subtitle: '', audioUrl: 'https://stale', artworkUrl: '', duration: 10, podcastId: 'p5', sourceType: 'unknown' },
+      queue: [
+        { id: 'a', title: 'A', subtitle: '', audioUrl: 'https://a', artworkUrl: '', duration: 10, podcastId: 'p5', sourceType: 'unknown' },
+        { id: 'b', title: 'B', subtitle: '', audioUrl: 'https://b', artworkUrl: '', duration: 20, podcastId: 'p5', sourceType: 'unknown' },
+      ],
+      currentIndex: 1,
+      playbackStatus: 'paused',
+      duration: 20,
+      currentPosition: 5,
+      volume: 0.8,
+      repeatMode: 'off',
+      shuffleEnabled: false,
+      error: null,
+    });
+
+    const state = usePlayerStore.getState();
+    expect(state.queue.map((item) => item.id)).toEqual(['a', 'b']);
+    expect(state.currentIndex).toBe(1);
+    expect(state.currentItem?.id).toBe('b');
+  });
 });

@@ -227,6 +227,8 @@ export function ImmersivePlayerPanel({ onClose }: { onClose: () => void }) {
                   currentIndex={currentIndex}
                   onPlay={(item) => void playerRuntime.loadItem(item)}
                   onRemove={(itemId) => playerRuntime.removeFromQueue(itemId)}
+                  onMove={(fromIndex, toIndex) => playerRuntime.moveQueueItem(fromIndex, toIndex)}
+                  onClear={() => playerRuntime.clearQueue()}
                 />
                 {error ? <div className="rounded-[1rem] border border-accent/20 bg-accent/10 p-3 text-sm text-accent">{error}</div> : null}
               </div>

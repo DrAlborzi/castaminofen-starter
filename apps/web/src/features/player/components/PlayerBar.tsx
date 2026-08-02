@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ListMusic, Play, Plus, Trash2, X } from 'lucide-react';
+import { ArrowDown, ArrowUp, ListMusic, Play, Plus, Trash2, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { MiniPlayer } from '@/components/design-system/player/mini-player';
 import { Tag } from '@/components/design-system/common/tag';
@@ -180,7 +180,22 @@ export function PlayerBar() {
                 title={queueDisplay.currentItem.title}
                 subtitle={queueDisplay.currentItem.subtitle ?? 'اپیزود'}
                 className="border-accent/20 bg-accent/10"
-                actions={<Tag className="border-accent/20 bg-accent/10 text-accent">در حال پخش</Tag>}
+                actions={(
+                  <div className="flex items-center gap-2">
+                    <Tag className="border-accent/20 bg-accent/10 text-accent">در حال پخش</Tag>
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      className="rounded-full p-2"
+                      onClick={() => playerRuntime.removeFromQueue(queueDisplay.currentItem!.id)}
+                      aria-label={`حذف ${queueDisplay.currentItem!.title}`}
+                      title={`حذف ${queueDisplay.currentItem!.title}`}
+                    >
+                      <Trash2 size={14} />
+                    </Button>
+                  </div>
+                )}
               />
             ) : (
               <div className="rounded-[1rem] border border-dashed border-border/70 bg-surface-secondary/60 p-4 text-sm text-text-secondary">
@@ -224,42 +239,72 @@ export function PlayerBar() {
               </div>
               {queueDisplay.upNext.length > 0 ? (
                 <ul className="mt-3 space-y-2" aria-label="Queue items">
-                  {queueDisplay.upNext.map((item) => (
-                    <li key={item.id} className="flex items-center gap-3 rounded-[0.85rem] bg-surface-card/70 p-2">
-                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-surface-tertiary text-[11px] font-semibold text-text-secondary">
-                        {item.position}
-                      </span>
-                      <div className="min-w-0 flex-1">
-                        <p className="truncate text-sm font-medium text-text-primary">{item.title}</p>
-                        <p className="truncate text-xs text-text-secondary">{item.subtitle ?? 'اپیزود'}</p>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Button
-                          type="button"
-                          variant="ghost"
-                          size="sm"
-                          className="rounded-full p-2"
-                          onClick={() => void playerRuntime.loadItem(item)}
-                          aria-label={`پخش ${item.title}`}
-                          title={`پخش ${item.title}`}
-                        >
-                          <Play size={14} />
-                        </Button>
-                        <Button
-                          type="button"
-                          variant="ghost"
-                          size="sm"
-                          className="rounded-full p-2"
-                          onClick={() => playerRuntime.removeFromQueue(item.id)}
-                          aria-label={`حذف ${item.title}`}
-                          title={`حذف ${item.title}`}
-                          data-testid={`queue-remove-${item.id}`}
-                        >
-                          <Trash2 size={14} />
-                        </Button>
-                      </div>
-                    </li>
-                  ))}
+                  {queueDisplay.upNext.map((item) => {
+                    const queueIndex = (item.position ?? 1) - 1;
+                    const canMoveUp = queueIndex > 0;
+                    const canMoveDown = queueIndex < queue.length - 1;
+
+                    return (
+                      <li key={item.id} className="flex items-center gap-3 rounded-[0.85rem] bg-surface-card/70 p-2">
+                        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-surface-tertiary text-[11px] font-semibold text-text-secondary">
+                          {item.position}
+                        </span>
+                        <div className="min-w-0 flex-1">
+                          <p className="truncate text-sm font-medium text-text-primary">{item.title}</p>
+                          <p className="truncate text-xs text-text-secondary">{item.subtitle ?? 'اپیزود'}</p>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            className="rounded-full p-2"
+                            onClick={() => playerRuntime.moveQueueItem(queueIndex, queueIndex - 1)}
+                            disabled={!canMoveUp}
+                            aria-label={`انتقال ${item.title} به بالا`}
+                            title={`انتقال ${item.title} به بالا`}
+                          >
+                            <ArrowUp size={14} />
+                          </Button>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            className="rounded-full p-2"
+                            onClick={() => playerRuntime.moveQueueItem(queueIndex, queueIndex + 1)}
+                            disabled={!canMoveDown}
+                            aria-label={`انتقال ${item.title} به پایین`}
+                            title={`انتقال ${item.title} به پایین`}
+                          >
+                            <ArrowDown size={14} />
+                          </Button>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            className="rounded-full p-2"
+                            onClick={() => void playerRuntime.loadItem(item)}
+                            aria-label={`پخش ${item.title}`}
+                            title={`پخش ${item.title}`}
+                          >
+                            <Play size={14} />
+                          </Button>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            className="rounded-full p-2"
+                            onClick={() => playerRuntime.removeFromQueue(item.id)}
+                            aria-label={`حذف ${item.title}`}
+                            title={`حذف ${item.title}`}
+                            data-testid={`queue-remove-${item.id}`}
+                          >
+                            <Trash2 size={14} />
+                          </Button>
+                        </div>
+                      </li>
+                    );
+                  })}
                 </ul>
               ) : (
                 <div className="mt-3 rounded-[0.85rem] border border-dashed border-border/60 bg-surface-card/50 p-3 text-sm text-text-secondary">
