@@ -442,6 +442,113 @@ describe('PlayerRuntime controller', () => {
     expect(engine.stop).toHaveBeenCalled();
   });
 
+  test('moveQueueItem reorders queue items while preserving the current item identity', () => {
+    const store = usePlayerStore.getState();
+    const controller = createPlayerRuntimeController(store, createEngineMock());
+    const currentItem = createItem('a');
+    const queuedItem = createItem('b');
+    const trailingItem = createItem('c');
+
+    usePlayerStore.setState({
+      ...store,
+      currentItem,
+      queue: [currentItem, queuedItem, trailingItem],
+      currentIndex: 0,
+      playbackStatus: 'playing',
+      error: null,
+      isPlaying: true,
+    });
+
+    const moved = controller.moveQueueItem(0, 2);
+
+    const state = usePlayerStore.getState();
+    expect(moved).toBe(true);
+    expect(state.queue.map((item) => item.id)).toEqual(['b', 'c', 'a']);
+    expect(state.currentItem?.id).toBe('a');
+    expect(state.currentIndex).toBe(2);
+    controller.destroy();
+  });
+
+  test('removeFromQueue switches to the next available item when the current item is removed', () => {
+    const store = usePlayerStore.getState();
+    const controller = createPlayerRuntimeController(store, createEngineMock());
+    const currentItem = createItem('a');
+    const nextItem = createItem('b');
+    const trailingItem = createItem('c');
+
+    usePlayerStore.setState({
+      ...store,
+      currentItem,
+      queue: [currentItem, nextItem, trailingItem],
+      currentIndex: 0,
+      playbackStatus: 'playing',
+      error: null,
+      isPlaying: true,
+    });
+
+    const removed = controller.removeFromQueue(currentItem.id);
+
+    const state = usePlayerStore.getState();
+    expect(removed).toBe(true);
+    expect(state.queue.map((item) => item.id)).toEqual(['b', 'c']);
+    expect(state.currentItem?.id).toBe('b');
+    expect(state.currentIndex).toBe(0);
+    controller.destroy();
+  });
+
+  test('removeFromQueue keeps the queue empty-safe when the final current item is removed', () => {
+    const store = usePlayerStore.getState();
+    const controller = createPlayerRuntimeController(store, createEngineMock());
+    const currentItem = createItem('single');
+
+    usePlayerStore.setState({
+      ...store,
+      currentItem,
+      queue: [currentItem],
+      currentIndex: 0,
+      playbackStatus: 'playing',
+      error: null,
+      isPlaying: true,
+    });
+
+    const removed = controller.removeFromQueue(currentItem.id);
+
+    const state = usePlayerStore.getState();
+    expect(removed).toBe(true);
+    expect(state.queue).toEqual([]);
+    expect(state.currentItem).toBeNull();
+    expect(state.currentIndex).toBe(-1);
+    expect(state.playbackStatus).toBe('idle');
+    controller.destroy();
+  });
+
+  test('removeFromQueue preserves the current item identity when a non-current item is removed', () => {
+    const store = usePlayerStore.getState();
+    const controller = createPlayerRuntimeController(store, createEngineMock());
+    const currentItem = createItem('a');
+    const upcomingItem = createItem('b');
+    const trailingItem = createItem('c');
+
+    usePlayerStore.setState({
+      ...store,
+      currentItem,
+      queue: [currentItem, upcomingItem, trailingItem],
+      currentIndex: 0,
+      playbackStatus: 'playing',
+      error: null,
+      isPlaying: true,
+    });
+
+    const removed = controller.removeFromQueue(upcomingItem.id);
+
+    const state = usePlayerStore.getState();
+    expect(removed).toBe(true);
+    expect(state.queue.map((item) => item.id)).toEqual(['a', 'c']);
+    expect(state.currentItem?.id).toBe('a');
+    expect(state.currentIndex).toBe(0);
+    controller.destroy();
+  });
+
   test('loadItem loads the episode audio source before playback starts', async () => {
     const store = usePlayerStore.getState();
     const engine = createEngineMock();

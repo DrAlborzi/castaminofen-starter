@@ -62,3 +62,11 @@
 - Phase PLAYER.7 — UX & Accessibility Polish: completed
 - The current player experience now includes clearer resume hints, actionable retry flows for playback failures, improved accessibility labels/ARIA values, Escape-based queue dismissal, and stronger state messaging while preserving the existing runtime architecture.
 - Web test/lint/build verification: passed
+
+## Frontend Profile Architecture Status
+
+- Phase PROFILE.4 — Profile Modular Migration & Architecture Consolidation: completed
+- The Profile page is now assembled from modular feature-owned sections with a single shared profile section shell and the existing Hero/Journey/Knowledge/Creator/Social collection components.
+- Continue Listening is now wired to the real Library continuation hook and reused through the existing Library continuation section, avoiding duplicated fetch logic or state.
+- The deprecated profile experience fields that were no longer needed after the migration were removed from the shared profile experience type.
+- Web regression coverage for Profile rendering, section visibility, loading state, empty state, and continue-listening display is passing.

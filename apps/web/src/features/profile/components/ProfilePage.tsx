@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { logoutUser } from '@/lib/auth';
 import { useAuthStore } from '@/stores/authStore';
 import { PageContainer } from '@/components/design-system/layout/page-container';
+import { useContinueListening } from '@/features/library/hooks/useContinueListening';
+import { ContinueListeningSection } from '@/features/library/components/ContinueListeningSection';
 import { ProfileActivityTimeline } from './ProfileActivityTimeline';
 import { ProfileContributionSection } from './ProfileContributionSection';
 import { ProfileCreatorEntry } from './ProfileCreatorEntry';
@@ -15,9 +17,9 @@ import { ProfileInterestTags } from './ProfileInterestTags';
 import { ProfileJourneyStats } from './ProfileJourneyStats';
 import { ProfileKnowledgeSection } from './ProfileKnowledgeSection';
 import { ProfilePersonalCollections } from './ProfilePersonalCollections';
-import { ProfileContinueJourney } from './ProfileContinueJourney';
 import { ProfileAchievements } from './ProfileAchievements';
 import { ProfileSocialIdentity } from './ProfileSocialIdentity';
+import { ProfileSection } from './ProfileSection';
 import { mockProfileExperience } from '../data/mockProfileExperience';
 
 export function formatAccountDate(value?: string) {
@@ -45,6 +47,7 @@ export function normalizeProfileName(rawValue: string) {
 export function ProfilePage() {
   const router = useRouter();
   const user = useAuthStore((state) => state.user);
+  const continueListeningQuery = useContinueListening();
 
   const displayName = useMemo(
     () => user?.name?.trim() || user?.email?.split('@')[0] || 'کاربر',
@@ -56,6 +59,8 @@ export function ProfilePage() {
     await logoutUser();
     router.push('/login');
   }
+
+  const continueListeningItems = continueListeningQuery.data ?? [];
 
   return (
     <main className="page-container">
@@ -70,23 +75,41 @@ export function ProfilePage() {
             following: mockProfileExperience.profile.following,
           }} mode={isAuthenticated ? 'owner' : 'viewer'} />
 
-          <section className="space-y-6">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="text-caption uppercase tracking-[0.24em] text-accent">پروفایل</p>
-                <h2 className="mt-1 text-2xl font-semibold text-text-primary">هویت، سفر و حضور تو در Castaminofen</h2>
-                <p className="mt-2 max-w-2xl text-sm leading-7 text-text-secondary">هر بخش از این پروفایل نشانه‌ای از مسیر شنیداری، خلاقیت و جامعه‌ی توست. اینجا روایت می‌شود چه کسی هستی و به کجا می‌روی.</p>
-              </div>
-              <div className="grid gap-2 sm:auto-cols-min sm:grid-flow-col">
+          <ProfileSection
+            eyebrow="پروفایل"
+            title="هویت، سفر و حضور تو در Castaminofen"
+            description="هر بخش از این پروفایل نشانه‌ای از مسیر شنیداری، خلاقیت و جامعه‌ی توست. اینجا روایت می‌شود چه کسی هستی و به کجا می‌روی."
+            actions={(
+              <>
                 <Button type="button" variant="secondary" size="sm">فالووهای جدید</Button>
                 <Button type="button" variant="ghost" size="sm">نمایش هفتگی</Button>
-              </div>
-            </div>
-
+              </>
+            )}
+            className="space-y-6"
+          >
             <ProfileJourneyStats stats={mockProfileExperience.stats} />
-          </section>
+          </ProfileSection>
 
-          <ProfileContinueJourney journeys={mockProfileExperience.journeyCards} />
+          <ProfileSection
+            eyebrow="ادامه پخش"
+            title="لحظه‌های نیمه‌تمام شما"
+            description="اپیزودهایی که اخیراً باز کرده‌اید در این بخش سریع دسترس‌پذیرند."
+            className="space-y-4"
+          >
+            {continueListeningQuery.isLoading ? (
+              <div className="rounded-[1.75rem] border border-border/80 bg-surface-secondary/70 p-4 text-sm text-text-secondary sm:p-5">
+                در حال بارگذاری
+              </div>
+            ) : null}
+            {!continueListeningQuery.isLoading && continueListeningQuery.isError ? (
+              <div className="rounded-[1.75rem] border border-border/80 bg-surface-secondary/70 p-4 text-sm text-text-secondary sm:p-5">
+                امکان بارگذاری ادامه پخش در این لحظه وجود ندارد.
+              </div>
+            ) : null}
+            {!continueListeningQuery.isLoading && !continueListeningQuery.isError ? (
+              <ContinueListeningSection items={continueListeningItems} />
+            ) : null}
+          </ProfileSection>
 
           <div className="grid gap-4 xl:grid-cols-[1.3fr_0.7fr]">
             <div className="space-y-4">
