@@ -49,37 +49,6 @@ export const mockProfileExperience: ProfileExperienceData = {
     { id: 'topics', title: 'موضوعات', items: ['هوش مصنوعی', 'روانشناسی', 'توسعه شخصی'] },
   ],
   interests: ['فناوری', 'روانشناسی', 'کارآفرینی', 'تاریخ', 'علوم'],
-  content: [
-    { id: 'content-1', title: 'اخیراً پخش شده', subtitle: 'Atomic Habits', meta: '۲۹ دقیقه' },
-    { id: 'content-2', title: 'سازندگان مورد علاقه', subtitle: 'James Clear', meta: 'پادکست‌ساز' },
-    { id: 'content-3', title: 'دسته‌بندی‌های محبوب', subtitle: 'توسعه شخصی', meta: '۳۲ درصد' },
-  ],
-  journeyCards: [
-    {
-      id: 'journey-1',
-      title: 'در حال گوش دادن به Siren Stories',
-      subtitle: 'پادکست نیمه‌تمام',
-      detail: '۳۵٪ پیشرفت',
-      type: 'listening',
-      progress: 35,
-    },
-    {
-      id: 'journey-2',
-      title: 'سریال مستند ذهن‌سنجی',
-      subtitle: 'ویدیوی بعدی در فهرست',
-      detail: '۵۰٪ تکمیل‌شده',
-      type: 'watching',
-      progress: 50,
-    },
-    {
-      id: 'journey-3',
-      title: 'کتاب صوتی The Power of Habit',
-      subtitle: 'فصل سوم در حال پخش',
-      detail: '۲۱٪ پیشرفت',
-      type: 'audiobook',
-      progress: 21,
-    },
-  ],
   favorites: [
     {
       id: 'favorite-1',

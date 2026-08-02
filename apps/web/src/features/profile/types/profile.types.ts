@@ -111,8 +111,6 @@ export interface ProfileExperienceData {
   contributions: ProfileContributionItem[];
   socialGroups: ProfileSocialGroup[];
   interests: string[];
-  content: ProfileContentItem[];
-  journeyCards: ProfileJourneyCard[];
   favorites: ProfileFavoriteCollection[];
   achievements: ProfileAchievement[];
   libraryLinks: ProfileCollectionLink[];
