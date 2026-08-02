@@ -8,7 +8,7 @@ export function PublishingPanel() {
     <section className="space-y-4 rounded-[1.75rem] border border-border/80 bg-surface-card/85 p-4 shadow-soft sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="text-caption">انتشار</p>
+          <p className="text-caption">مرحله ۶ · انتشار</p>
           <h3 className="text-heading text-lg">آماده‌ی نمایش در فضای Castaminofen</h3>
         </div>
         <Tag className="border-accent/20 bg-accent/10 text-accent">Publish Ready</Tag>

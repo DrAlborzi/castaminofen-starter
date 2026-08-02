@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useLibraryOverview } from '../hooks/useLibraryOverview';
 import { buildLibraryCollectionsSummary } from '../utils/library-collections';
 import { ContinueListeningSection } from './ContinueListeningSection';
@@ -13,12 +13,15 @@ import { LibraryCollectionsSection } from './LibraryCollectionsSection';
 import { LibraryFavoritesSection } from './LibraryFavoritesSection';
 import { getLastActivityLabel, getLibraryGreeting, getListeningStreakFromHistory } from '../utils/library-personalization';
 import { PageContainer } from '@/components/design-system/layout/page-container';
-import { SectionHeader } from '@/components/design-system/layout/section-header';
-import { MediaCarousel } from '@/components/design-system/media/media-carousel';
-import { MediaCard } from '@/components/design-system/media/media-card';
+import { LibraryHeader } from './LibraryHeader';
+import { LibraryCategoryTabs, type LibraryCategory } from './LibraryCategoryTabs';
+import { ContinueMediaSection } from './ContinueMediaSection';
+import { SavedContentCarousel } from './SavedContentCarousel';
+import { LibrarySkeleton } from './LibrarySkeleton';
 
 export function LibraryPage() {
   const overviewQuery = useLibraryOverview();
+  const [activeCategory, setActiveCategory] = useState<LibraryCategory>('all');
 
   const isLoading = overviewQuery.isLoading;
   const isError = overviewQuery.isError;
@@ -37,16 +40,22 @@ export function LibraryPage() {
     .sort((left, right) => new Date(right.lastPlayedAt).getTime() - new Date(left.lastPlayedAt).getTime())[0], [continueListening, history]);
   const lastActivityLabel = getLastActivityLabel(latestActivityItem?.lastPlayedAt, now);
   const listeningStreak = getListeningStreakFromHistory(history);
-  const greetingSubtitle = now.getHours() < 12
-    ? 'برای شروع روز، یک اپیزود آرام انتخاب کن.'
-    : now.getHours() < 18
-      ? 'برای ادامه‌ی گوش دادن، اینجا جای خوبی برای برگرداندن خودت است.'
-      : now.getHours() < 22
-        ? 'امشب هم می‌توانی به جایی که قطع کردی برگردی.'
-        : 'شب آرامی برای گوش دادن داشته باش.';
+  const headerSummary = [
+    `${collectionSummary.continueListeningCount} in progress`,
+    `${collectionSummary.subscriptionsCount} followed`,
+    lastActivityLabel ? `last seen ${lastActivityLabel}` : null,
+    listeningStreak ? `streak ${listeningStreak} days` : null,
+  ].filter(Boolean).join(' · ');
 
   if (isLoading) {
-    return <div className="space-y-4"><LibraryLoadingState /></div>;
+    return (
+      <PageContainer>
+        <div className="space-y-4">
+          <LibrarySkeleton />
+          <LibraryLoadingState />
+        </div>
+      </PageContainer>
+    );
   }
 
   if (isError && !hasAnyContent) {
@@ -56,83 +65,97 @@ export function LibraryPage() {
   if (!hasAnyContent) {
     return (
       <PageContainer>
-        <section className="rounded-[1.75rem] border border-border/80 bg-gradient-to-br from-accent/10 via-surface-secondary to-surface-card/90 p-4 shadow-soft sm:p-6">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-            <div className="space-y-3">
-              <p className="m-0 text-sm font-medium text-accent">کتابخانه‌ی شما</p>
-              <h1 className="text-heading">{greeting}</h1>
-              <p className="text-body m-0 max-w-2xl">{greetingSubtitle}</p>
-              <p className="text-sm leading-7 text-text-secondary">هر بازگشت به اینجا، یک قدم تازه در مسیر دانش، علاقه‌مندی‌ها و خاطره‌های شخصی‌ات است. اگر هنوز از اینجا شروع نکرده‌ای، اولین اپیزود را انتخاب کن تا مسیر بازگشت برایت روشن‌تر شود.</p>
-            </div>
-            <div className="flex flex-wrap items-center gap-2 text-sm text-text-secondary" role="list" aria-label="خلاصه‌ی کتابخانه">
-              <span className="inline-flex items-center rounded-full border border-border bg-surface-primary px-3 py-1.5">در انتظار شروع</span>
-            </div>
-          </div>
-        </section>
-        <LibraryEmptyState
-          title="کتابخانه شما هنوز خالی است"
-          description="همین امروز چند پادکست را پیدا کنید و این فضا به‌تدریج به یک خانه‌ی شخصی برای گوش دادن تبدیل شود."
-          supportingText="هر لحظه‌ی شروع، یک مسیر برای بازگشت و ساختن هویت شنیداری شماست."
-          eyebrow="از اینجا به مسیر پادکست‌ها بروید"
-        />
+        <div className="space-y-4 sm:space-y-6">
+          <LibraryHeader
+            eyebrow="Premium personal space"
+            title="Your Library"
+            summary="Ready for your first save"
+            description="Build a calm, personal collection of podcasts, videos, audiobooks, and favorites that feel like your own home base."
+          />
+          <LibraryCategoryTabs activeCategory={activeCategory} onSelect={setActiveCategory} />
+          <LibraryEmptyState
+            title="کتابخانه شما هنوز خالی است"
+            description="همین امروز چند پادکست را پیدا کنید و این فضا به‌تدریج به یک خانه‌ی شخصی برای گوش دادن تبدیل شود."
+            supportingText="هر لحظه‌ی شروع، یک مسیر برای بازگشت و ساختن هویت شنیداری شماست."
+            eyebrow="از اینجا به مسیر پادکست‌ها بروید"
+          />
+        </div>
       </PageContainer>
     );
   }
 
   return (
     <PageContainer>
-      <section className="rounded-[1.75rem] border border-border/80 bg-surface-secondary/70 p-4 shadow-soft sm:p-6">
-        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-          <div className="space-y-3">
-            <p className="m-0 text-sm font-medium text-accent">My Knowledge · My Collections · My Memories</p>
-            <h1 className="text-heading">{greeting}</h1>
-            <p className="text-body m-0 max-w-2xl">این فضا یک حافظه‌ی شخصی برای بازگشت به آموخته‌ها، مسیرهای نیمه‌کامل، مجموعه‌های مورد علاقه و لحظه‌هایی است که می‌خواهی دوباره بازسازی کنی.</p>
-            <p className="text-sm leading-7 text-text-secondary">هر بار که برمی‌گردی، اینجا به تو یادآوری می‌کند چرا این محتوا برایت مهم بوده و چرا بازگشت به آن ارزش دارد؛ در نسخه‌ی بتا، این مسیر هنوز در حال روشن‌تر شدن است.</p>
-          </div>
-          <div className="flex flex-col gap-3 sm:items-end">
-            <div className="flex flex-wrap items-center gap-2 text-sm text-text-secondary" role="list" aria-label="خلاصه‌ی کتابخانه">
-              {collectionSummary.continueListeningCount > 0 ? (
-                <span className="inline-flex items-center rounded-full border border-border bg-surface-primary px-3 py-1.5">{collectionSummary.continueListeningCount} اپیزود در ادامه پخش</span>
-              ) : null}
-              {collectionSummary.subscriptionsCount > 0 ? (
-                <span className="inline-flex items-center rounded-full border border-border bg-surface-primary px-3 py-1.5">{collectionSummary.subscriptionsCount} اشتراک فعال</span>
-              ) : null}
-              {history.length > 0 ? (
-                <span className="inline-flex items-center rounded-full border border-border bg-surface-primary px-3 py-1.5">{history.length} اپیزود در تاریخچه</span>
-              ) : null}
-              {lastActivityLabel ? (
-                <span className="inline-flex items-center rounded-full border border-border bg-surface-primary px-3 py-1.5">آخرین فعالیت · {lastActivityLabel}</span>
-              ) : null}
-              {listeningStreak ? (
-                <span className="inline-flex items-center rounded-full border border-border bg-surface-primary px-3 py-1.5">استریک · {listeningStreak} روز</span>
-              ) : null}
-            </div>
-            {lastActivityLabel ? (
-              <p className="text-sm text-text-secondary">آخرین بازدید شما در این کتابخانه · {lastActivityLabel}</p>
-            ) : null}
-          </div>
-        </div>
-      </section>
-
-      {isError ? (
-        <div className="rounded-2xl border border-warning/40 bg-surface-secondary/70 p-3 sm:p-4">
-          <LibraryErrorState onRetry={() => { void overviewQuery.refetch(); }} />
-        </div>
-      ) : null}
-
       <div className="space-y-4 sm:space-y-6">
-        <SectionHeader eyebrow="پلتفرم" title="مرکز شخصی شما" description="حافظه، ادامه‌ی گوش دادن، علاقه‌مندی‌ها و مسیرهای شخصی در یک فضای یکپارچه کنار هم قرار گرفته‌اند؛ اینجا همیشه یک نقطه‌ی روشن برای بازگشت است." />
-        <MediaCarousel className="gap-3">
-          <MediaCard title="My Knowledge" subtitle="آموخته‌هایی که در مسیر یادگیری حفظ شده‌اند" meta={`${history.length + continueListening.length}`} className="min-w-[11rem]" />
-          <MediaCard title="My Collections" subtitle="مجموعه‌های سازمان‌یافته و شخصی" meta={`${subscriptions.length}`} className="min-w-[11rem]" />
-          <MediaCard title="My Memories" subtitle="لحظه‌های ذخیره‌شده برای بازبینی" meta={`${continueListening.length}`} className="min-w-[11rem]" />
-          <MediaCard title="Recently Revisited" subtitle="مسیرهای اخیراً بازگشتی" meta={`${history.length}`} className="min-w-[11rem]" />
-        </MediaCarousel>
-        <LibraryCollectionsSection summary={collectionSummary} />
-        <LibraryFavoritesSection />
-        <ContinueListeningSection items={continueListening} />
-        <LibraryHistorySection items={historyItems} />
-        <SubscriptionsSection items={subscriptions} />
+        <LibraryHeader
+          eyebrow="Premium personal space"
+          title={greeting}
+          summary={headerSummary}
+          description="Your library is now a curated space for unfinished stories, saved favorites, and the voices you keep returning to."
+        />
+
+        <LibraryCategoryTabs activeCategory={activeCategory} onSelect={setActiveCategory} />
+
+        {activeCategory === 'all' || activeCategory === 'podcasts' ? (
+          <ContinueMediaSection />
+        ) : null}
+
+        {activeCategory === 'all' ? (
+          <>
+            <SavedContentCarousel />
+            <LibraryCollectionsSection summary={collectionSummary} />
+            <LibraryFavoritesSection />
+            <ContinueListeningSection items={continueListening} />
+            <LibraryHistorySection items={historyItems} />
+            <SubscriptionsSection items={subscriptions} />
+          </>
+        ) : null}
+
+        {activeCategory === 'podcasts' ? (
+          <>
+            <LibraryCollectionsSection summary={collectionSummary} />
+            <ContinueListeningSection items={continueListening} />
+            <SubscriptionsSection items={subscriptions} />
+          </>
+        ) : null}
+
+        {activeCategory === 'videos' ? (
+          <div className="rounded-[1.75rem] border border-border/70 bg-surface-secondary/70 p-5 shadow-soft">
+            <p className="text-sm font-medium text-accent">My Videos</p>
+            <h2 className="mt-2 text-subheading">Saved films, clips, and creator moments</h2>
+            <p className="mt-2 text-sm text-text-secondary">A dedicated home for video content you want to revisit without losing context.</p>
+          </div>
+        ) : null}
+
+        {activeCategory === 'audiobooks' ? (
+          <div className="rounded-[1.75rem] border border-border/70 bg-surface-secondary/70 p-5 shadow-soft">
+            <p className="text-sm font-medium text-accent">My Audiobooks</p>
+            <h2 className="mt-2 text-subheading">Immersive listening with chapter-aware progress</h2>
+            <p className="mt-2 text-sm text-text-secondary">A premium reading space for books you want to keep close and continue later.</p>
+          </div>
+        ) : null}
+
+        {activeCategory === 'shorts' ? (
+          <div className="rounded-[1.75rem] border border-border/70 bg-surface-secondary/70 p-5 shadow-soft">
+            <p className="text-sm font-medium text-accent">Shorts</p>
+            <h2 className="mt-2 text-subheading">Quick, delightful moments you saved for later</h2>
+            <p className="mt-2 text-sm text-text-secondary">Packed with the pace of modern short-form content and the calm of a curated collection.</p>
+          </div>
+        ) : null}
+
+        {activeCategory === 'favorites' ? (
+          <LibraryFavoritesSection />
+        ) : null}
+
+        {activeCategory === 'playlists' ? (
+          <SavedContentCarousel />
+        ) : null}
+
+        {isError ? (
+          <div className="rounded-2xl border border-warning/40 bg-surface-secondary/70 p-3 sm:p-4">
+            <LibraryErrorState onRetry={() => { void overviewQuery.refetch(); }} />
+          </div>
+        ) : null}
       </div>
     </PageContainer>
   );

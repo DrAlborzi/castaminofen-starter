@@ -54,4 +54,77 @@ export const mockProfileExperience: ProfileExperienceData = {
     { id: 'content-2', title: 'سازندگان مورد علاقه', subtitle: 'James Clear', meta: 'پادکست‌ساز' },
     { id: 'content-3', title: 'دسته‌بندی‌های محبوب', subtitle: 'توسعه شخصی', meta: '۳۲ درصد' },
   ],
+  journeyCards: [
+    {
+      id: 'journey-1',
+      title: 'در حال گوش دادن به Siren Stories',
+      subtitle: 'پادکست نیمه‌تمام',
+      detail: '۳۵٪ پیشرفت',
+      type: 'listening',
+      progress: 35,
+    },
+    {
+      id: 'journey-2',
+      title: 'سریال مستند ذهن‌سنجی',
+      subtitle: 'ویدیوی بعدی در فهرست',
+      detail: '۵۰٪ تکمیل‌شده',
+      type: 'watching',
+      progress: 50,
+    },
+    {
+      id: 'journey-3',
+      title: 'کتاب صوتی The Power of Habit',
+      subtitle: 'فصل سوم در حال پخش',
+      detail: '۲۱٪ پیشرفت',
+      type: 'audiobook',
+      progress: 21,
+    },
+  ],
+  favorites: [
+    {
+      id: 'favorite-1',
+      title: 'پادکست‌های مورد علاقه',
+      description: 'کست‌هایی که بیشتر از همه به آن‌ها برمی‌گردی',
+      meta: 'Podcasts',
+      items: [
+        { id: 'fav-1', title: 'Siren Stories', detail: 'پادکست داستانی', meta: '35 قسمت' },
+        { id: 'fav-2', title: 'Future Minds', detail: 'هوش مصنوعی و آینده', meta: '21 قسمت' },
+      ],
+    },
+    {
+      id: 'favorite-2',
+      title: 'سازندگان مورد علاقه',
+      description: 'صداهایی که مسیر فکری تو را شکل داده‌اند',
+      meta: 'Creators',
+      items: [
+        { id: 'fav-3', title: 'James Clear', detail: 'پادکست‌ساز', meta: 'Followed' },
+        { id: 'fav-4', title: 'Nadia Azar', detail: 'گفتگوهای ذهن‌آگاه', meta: 'Following' },
+      ],
+    },
+  ],
+  achievements: [
+    { id: 'achievement-1', title: 'اولین اپیزود کامل', subtitle: 'به یک گوش‌دهنده معتبر تبدیل شدی', detail: 'این شروع مسیر جدید است.', tag: 'Milestone' },
+    { id: 'achievement-2', title: '۱۰ ساعت گوش دادن', subtitle: 'عمیق در تجربه', detail: 'گوش دادن به محتوای ارزشمند', tag: 'Journey' },
+    { id: 'achievement-3', title: 'اولین نظر', subtitle: 'قدم در جامعه', detail: 'با دیدگاه خود به گفتگوها اضافه شدی', tag: 'Community' },
+  ],
+  libraryLinks: [
+    { id: 'link-1', title: 'لیست‌های مورد علاقه', subtitle: 'پلی‌لیست‌های خودت', count: '16' },
+    { id: 'link-2', title: 'تاریخچه', subtitle: 'آخرین لحظات پخش', count: '24' },
+    { id: 'link-3', title: 'محتوای ذخیره‌شده', subtitle: 'مجموعه‌های شخصی', count: '12' },
+    { id: 'link-4', title: 'نشانک‌ها', subtitle: 'لحظه‌های بازگشتی', count: '9' },
+  ],
+  creatorOverview: {
+    draftCount: 3,
+    publishedCount: 5,
+    status: 'Ready to share your first story',
+    invitation: 'یک مسیر خلاقانه جدید با صدای شخصی شما منتظر است. وارد فضای سازنده‌ی Castaminofen شو و اولین محتوای خود را تعریف کن.',
+  },
+  creatorDrafts: [
+    { id: 'draft-1', title: 'مینی‌سری امروزهای آینده', status: 'در انتظار بازبینی' },
+    { id: 'draft-2', title: 'لحظه‌های طلایی مطالعه', status: 'مستعد تبدیل به پادکست' },
+  ],
+  creatorPublished: [
+    { id: 'published-1', title: 'شروع به یادگیری عمیق', detail: 'پادکست شخصی شما درباره‌ی عادت‌ها' },
+    { id: 'published-2', title: 'صدای شهرهای آینده', detail: 'رفع موانع خلاقیت و ساخت مسیر' },
+  ],
 };
