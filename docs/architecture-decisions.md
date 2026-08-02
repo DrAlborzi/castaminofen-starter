@@ -52,3 +52,9 @@
 - تصمیم: سطح Configuration Admin به‌صورت UI-only، typed mock-backed و کاملاً در مرز feature Admin نگهداری می‌شود؛ هیچ API واقعی، فیلتر feature flag واقعی، موتور permission، و یا mutation runtime برای تنظیمات دستگاه اجرا نمی‌شود.
 - دلیل: در این فاز هدف کنترل و نمایش سیاست‌ها و تنظیمات پلتفرم به‌صورت preview و workspace است؛ این نمایش باید بدون ایجاد drift در معماری محصول، auth، routeها، یا runtime Player به‌صورت قابل‌اتکا در دسترس باشد.
 - پیامد: مدل‌های typed configuration، داده‌های mock، و کامپوننت‌های preview به‌صورت یک لایه‌ی نمایشی در Admin حفظ می‌شوند و مسیرهای ورود، auth flow، owner feature boundaries، و runtime Player بدون تغییر باقی می‌مانند.
+
+## ADR-025 — Auth runtime uses a single resolved state path for protected routing
+
+- تصمیم: برای مسیرهای محافظت‌شده، تصمیم احراز هویت باید بر اساس یک مسیر واحد از state‌ی حل‌شده انجام شود و از ترکیب چند منبع state در زمان‌های حساس پرهیز شود.
+- دلیل: در جریان ورود/ثبت‌نام، React Query session و Zustand auth store می‌توانند در بازه‌ی کوتاهی از هم فاصله بگیرند و باعث redirect اشتباه یا خطای «شما باید ابتدا وارد شوید» شوند.
+- پیامد: Guardهای محافظت‌شده بر پایه‌ی یک state‌ی حل‌شده و قابل‌اعتماد عمل می‌کنند و رفتار ورود/ثبت‌نام در مسیرهای خصوصی هم‌راستا می‌شود بدون تغییر در API auth یا معماری کلی.
