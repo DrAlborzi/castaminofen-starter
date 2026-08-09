@@ -15,6 +15,7 @@ export function ProgressIndicator({ progress, className, label = 'پیشرفت' 
       aria-valuetext={hasProgress ? `${safeProgress}%` : 'پیشرفت نامشخص'}
     >
       {hasProgress ? <div className="h-full rounded-full bg-accent transition-all duration-200 motion-reduce:transition-none" style={{ width: `${safeProgress}%` }} /> : null}
+      {!hasProgress ? <div className="h-full w-1/3 rounded-full bg-accent/70 motion-safe:animate-pulse" aria-hidden="true" /> : null}
     </div>
   );
 }
