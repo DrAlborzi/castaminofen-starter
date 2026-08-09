@@ -1,5 +1,5 @@
 import { FormField, FormLabel } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
+import { Input } from '@/components/design-system';
 import type { FieldErrors, UseFormRegister } from 'react-hook-form';
 import type { PodcastFormValues } from '@/lib/types';
 

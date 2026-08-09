@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { Tag } from '@/components/design-system/common/tag';
 
 export function PublishingPanel() {

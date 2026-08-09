@@ -1,6 +1,7 @@
 import { DEFAULT_SETTINGS_PREFERENCES, type SettingsNotificationPreferences, type SettingsPreferences, type SettingsThemePreference } from '../model/preferences';
 
 const SETTINGS_PREFERENCES_STORAGE_KEY = 'castaminofen-settings-preferences';
+export const SETTINGS_THEME_CHANGE_EVENT = 'castaminofen-theme-change';
 
 type BrowserWindowLike = Window & typeof globalThis;
 
@@ -79,6 +80,7 @@ export function writeSettingsPreferences(preferences: SettingsPreferences): Sett
 
   try {
     storage.setItem(SETTINGS_PREFERENCES_STORAGE_KEY, JSON.stringify(normalizedPreferences));
+    getBrowserWindow()?.dispatchEvent(new Event(SETTINGS_THEME_CHANGE_EVENT));
   } catch {
     // Ignore persistence failures in non-browser environments.
   }

@@ -2,10 +2,12 @@
 
 import Link from 'next/link';
 import { Bell, Plus, Search, Sparkles, UserRound } from 'lucide-react';
-import { getMobileHeaderConfig } from '@/components/layout/app-shell-config';
+import { getAppShellNavigationItems, getMobileHeaderConfig } from '@/components/layout/app-shell-config';
+import { DesktopNavigation } from '@/components/design-system';
 
 export function MobileHeader({ pathname }: { pathname: string }) {
   const config = getMobileHeaderConfig(pathname);
+  const navigationItems = getAppShellNavigationItems(pathname);
 
   return (
     <header className="app-header sticky top-0 z-30 border-b border-border/70 bg-surface-secondary/80 backdrop-blur-2xl">
@@ -19,6 +21,17 @@ export function MobileHeader({ pathname }: { pathname: string }) {
             <p className="truncate text-sm text-text-secondary">{config.tagline}</p>
           </div>
         </div>
+
+        <DesktopNavigation
+          className="hidden min-w-0 flex-1 justify-center md:flex"
+          items={navigationItems.map((item) => ({
+            id: item.id,
+            label: item.label,
+            href: item.href,
+            active: item.isActive,
+            icon: item.icon,
+          }))}
+        />
 
         <div className="flex shrink-0 items-center gap-1.5">
           {config.showCreateAction ? (

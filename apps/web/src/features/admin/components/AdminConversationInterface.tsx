@@ -1,5 +1,5 @@
 import { MediaCard } from '@/components/design-system/media/media-card';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { Chip } from '@/components/design-system/common/chip';
 import type { AdminAIConversationPrompt } from '../types/ai.types';
 

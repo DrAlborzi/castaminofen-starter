@@ -10,6 +10,11 @@ vi.mock('next/image', () => ({
 
 const { Avatar } = await import('../identity/avatar');
 const { ContentArtwork } = await import('./content-artwork');
+const { Duration } = await import('./duration');
+const { MediaCard } = await import('./media-card');
+const { MediaRow } = await import('./media-row');
+const { PlaybackAffordance } = await import('./playback-affordance');
+const { ProgressIndicator } = await import('../player/progress-indicator');
 
 describe('image fallback behavior', () => {
   let container: HTMLDivElement;
@@ -65,5 +70,41 @@ describe('image fallback behavior', () => {
 
     expect(container.querySelector('img')).toBeNull();
     expect(container.textContent).toContain('پ');
+  });
+
+  it('formats numeric durations and labels unknown values honestly', () => {
+    act(() => {
+      root.render(<><Duration value={90} /><Duration /></>);
+    });
+
+    expect(container.textContent).toContain('1:30');
+    expect(container.textContent).toContain('مدت نامشخص');
+  });
+
+  it('keeps unknown progress indeterminate instead of reporting zero', () => {
+    act(() => {
+      root.render(<ProgressIndicator />);
+    });
+
+    const progress = container.querySelector('[role="progressbar"]');
+    expect(progress?.getAttribute('aria-valuenow')).toBeNull();
+    expect(progress?.getAttribute('aria-valuetext')).toBe('پیشرفت نامشخص');
+  });
+
+  it('exposes playback state and composes media slots', () => {
+    act(() => {
+      root.render(
+        <>
+          <PlaybackAffordance isPlaying />
+          <MediaCard title="Podcast" artwork={<span>art</span>} playback={<span>play</span>} actions={<span>action</span>} />
+          <MediaRow title="Episode" artwork={<span>art</span>} actions={<span>action</span>} />
+        </>,
+      );
+    });
+
+    expect(container.querySelector('button')?.getAttribute('aria-pressed')).toBe('true');
+    expect(container.textContent).toContain('Podcast');
+    expect(container.textContent).toContain('Episode');
+    expect(container.textContent).toContain('action');
   });
 });

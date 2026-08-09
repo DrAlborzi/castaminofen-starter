@@ -28,6 +28,7 @@ describe('AdminDashboard', () => {
 
     expect(container.textContent).toContain('Platform Control Center');
     expect(container.textContent).toContain('Governance Mission Control');
+    expect(container.textContent).toContain('Preview');
     expect(container.textContent).toContain('کاربران');
 
     const userButton = Array.from(container.querySelectorAll('button')).find((button) => button.textContent?.includes('کاربران'));

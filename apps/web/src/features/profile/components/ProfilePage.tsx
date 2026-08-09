@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useMemo } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button, ErrorState, LoadingState } from '@/components/design-system';
 import { logoutUser } from '@/lib/auth';
 import { useAuthStore } from '@/stores/authStore';
 import { PageContainer } from '@/components/design-system/layout/page-container';
@@ -97,14 +97,10 @@ export function ProfilePage() {
             className="space-y-4"
           >
             {continueListeningQuery.isLoading ? (
-              <div className="rounded-[1.75rem] border border-border/80 bg-surface-secondary/70 p-4 text-sm text-text-secondary sm:p-5">
-                در حال بارگذاری
-              </div>
+              <LoadingState variant="section" message="در حال بارگذاری" />
             ) : null}
             {!continueListeningQuery.isLoading && continueListeningQuery.isError ? (
-              <div className="rounded-[1.75rem] border border-border/80 bg-surface-secondary/70 p-4 text-sm text-text-secondary sm:p-5">
-                امکان بارگذاری ادامه پخش در این لحظه وجود ندارد.
-              </div>
+              <ErrorState message="امکان بارگذاری ادامه پخش در این لحظه وجود ندارد." />
             ) : null}
             {!continueListeningQuery.isLoading && !continueListeningQuery.isError ? (
               <ContinueListeningSection items={continueListeningItems} />

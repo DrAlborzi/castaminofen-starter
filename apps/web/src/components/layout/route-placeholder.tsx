@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Card } from '@/components/ui/card';
+import { Card } from '@/components/design-system';
 import { PageState, type PageStateVariant } from '@/components/ui/page-state';
 
 type RouteLink = {

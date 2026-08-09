@@ -4,6 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
 @layer base {
   :root {
     font-family: var(--font-body);
@@ -19,7 +30,6 @@
   html {
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    direction: rtl;
     scroll-behavior: smooth;
   }
 
@@ -171,6 +181,20 @@
     color: var(--text-secondary);
   }
 
+  .button-destructive {
+    background: var(--status-error);
+    color: var(--text-inverse);
+    box-shadow: var(--shadow-xs);
+  }
+
+  .button-destructive:hover {
+    filter: brightness(0.92);
+  }
+
+  .button-destructive:active {
+    filter: brightness(0.84);
+  }
+
   .button-ghost:hover {
     background: var(--surface-hover);
     color: var(--text-primary);
@@ -248,7 +272,7 @@
   }
 
   .app-shell__content {
-    @apply pb-28 pt-1 sm:pb-32;
+    @apply pt-1;
   }
 
   .app-header {

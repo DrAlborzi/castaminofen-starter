@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Bookmark as BookmarkIcon, PencilLine, Trash2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { formatTime } from '../utils/playerPresentation';
 import { getPlayerExperienceViewModel } from '../data/mockPlayerExperience';
 

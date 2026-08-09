@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import type { LucideIcon } from 'lucide-react';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 
 export function LibraryCollectionCard({
   title,

@@ -1,5 +1,5 @@
 import { Play } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 
 export function PlaylistActionBar({ onCreate, onRetry, onDelete, onPlayAll }: { onCreate?: () => void; onRetry?: () => void; onDelete?: () => void; onPlayAll?: () => void }) {
   return (
@@ -16,7 +16,7 @@ export function PlaylistActionBar({ onCreate, onRetry, onDelete, onPlayAll }: { 
         </Button>
       ) : null}
       {onDelete ? (
-        <Button type="button" variant="secondary" onClick={onDelete}>
+        <Button type="button" variant="destructive" onClick={onDelete}>
           حذف
         </Button>
       ) : null}

@@ -1,5 +1,5 @@
 import { Form, FormMessage } from '@/components/ui/form';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { SectionHeader } from '@/components/design-system/layout/section-header';
 import type { ReactNode, FormHTMLAttributes } from 'react';

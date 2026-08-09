@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { LoaderCircle } from 'lucide-react';
 import type { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost';
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'destructive';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export function Button({
@@ -24,14 +24,13 @@ export function Button({
   return (
     <button
       type={type}
-      aria-busy={loading || undefined}
-      disabled={isDisabled}
       className={clsx(
         'button shadow-sm',
         {
           'button-primary': variant === 'primary',
           'button-secondary': variant === 'secondary',
           'button-ghost': variant === 'ghost',
+          'button-destructive': variant === 'destructive',
           'px-3 py-2 text-xs': size === 'sm',
           'px-4 py-3 text-sm': size === 'md',
           'px-5 py-4 text-base': size === 'lg',
@@ -39,6 +38,8 @@ export function Button({
         className,
       )}
       {...props}
+      aria-busy={loading || undefined}
+      disabled={isDisabled}
     >
       {loading ? <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" /> : null}
       <span className="truncate">{children as ReactNode}</span>

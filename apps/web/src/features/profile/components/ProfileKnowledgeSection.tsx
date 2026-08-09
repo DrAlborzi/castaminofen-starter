@@ -1,4 +1,4 @@
-import { EmptyState } from '@/components/ui/empty-state';
+import { EmptyState } from '@/components/design-system';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import type { ProfileCollection, ProfileMemory } from '../types/profile.types';
 

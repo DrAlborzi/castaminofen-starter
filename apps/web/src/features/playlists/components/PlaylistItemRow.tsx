@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import type { PlaylistItem } from '../types';
 
 export function PlaylistItemRow({ item, onPlay, onRemove }: { item: PlaylistItem; onPlay: (item: PlaylistItem) => void; onRemove: (item: PlaylistItem) => void }) {

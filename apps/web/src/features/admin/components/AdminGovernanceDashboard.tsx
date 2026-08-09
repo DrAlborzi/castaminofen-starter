@@ -4,7 +4,7 @@ import { LoadingState } from '@/components/design-system/states/loading-state';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { Tag } from '@/components/design-system/common/tag';
 import { Chip } from '@/components/design-system/common/chip';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { adminGovernanceMetrics, adminGovernanceOperations, adminGovernanceTrustSignals } from '../data/mockAdminGovernanceData';
 
 export function AdminGovernanceDashboard() {

@@ -1,8 +1,7 @@
 'use client';
 
 import { Play, Plus } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Button, Card } from '@/components/design-system';
 import { usePlayerRuntime } from '@/features/player';
 import { mapEpisodeToPlayableItem } from '@/features/player/adapters/episodeToPlayable';
 import type { Episode } from '@/lib/types';

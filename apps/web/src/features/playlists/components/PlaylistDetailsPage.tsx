@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { ArrowLeft, Plus } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { usePlayerRuntime } from '@/features/player';
 import { mapEpisodeToPlayableItem } from '@/features/player/adapters/episodeToPlayable';
 import { PlaylistActionBar } from './PlaylistActionBar';
@@ -106,12 +106,12 @@ export function PlaylistDetailsPage() {
       </section>
 
       <section className="card space-y-4">
-        <div className="flex items-center justify-between gap-4">
-          <div>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="min-w-0">
             <h2 className="text-subheading">اپیزودهای این لیست</h2>
             <p className="text-caption m-0">برای افزودن اپیزود، از صفحه اپیزودها یا پادکست‌ها استفاده کنید.</p>
           </div>
-          <Button type="button" variant="secondary" disabled>
+          <Button type="button" variant="secondary" className="shrink-0 self-start sm:self-auto" disabled aria-label="افزودن اپیزود هنوز پشتیبانی نمی‌شود">
             <Plus className="h-4 w-4" aria-hidden="true" />
             افزودن اپیزود
           </Button>

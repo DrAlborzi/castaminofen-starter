@@ -7,7 +7,7 @@ import { SectionHeader } from '@/components/design-system/layout/section-header'
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { Avatar } from '@/components/design-system/identity/avatar';
 import { Tag } from '@/components/design-system/common/tag';
-import { Button } from '@/components/ui/button';
+import { Button, Provenance } from '@/components/design-system';
 import { PageState } from '@/components/ui/page-state';
 import { adminContent, adminCreators, adminDiscussions, adminOverviewMetrics, adminReports, adminSectionConfig, adminUsers } from '../data/mockAdminData';
 import { AdminAIAssistant } from './AdminAIAssistant';
@@ -252,7 +252,12 @@ export function AdminDashboard() {
       <SectionHeader
         title="Platform Control Center"
         description="این فضای مدیریتی در نسخه‌ی بتا برای نظارت، کمک به تصمیم‌گیری و روشن‌کردن مسیر رشد پلتفرم طراحی شده است؛ بخش‌های مختلف هنوز در حال تکامل‌اند اما تجربه‌ی آنها برای بازخورد و آزمایش آماده است."
-        actions={<Tag className="border-accent/20 bg-accent/10 text-accent">Governance Mission Control</Tag>}
+        actions={
+          <div className="flex flex-wrap items-center gap-2">
+            <Tag className="border-accent/20 bg-accent/10 text-accent">Governance Mission Control</Tag>
+            <Provenance kind="preview" />
+          </div>
+        }
       />
 
       <div className="grid gap-4 lg:grid-cols-[260px_minmax(0,1fr)]">

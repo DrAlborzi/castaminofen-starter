@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import { ChevronLeft, ChevronRight, Pause, Play, Repeat1, Repeat2, Shuffle, Square } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { usePlayerRuntime } from '../hooks/usePlayerRuntime';
 import { usePlayerState } from '../hooks/usePlayerState';
 

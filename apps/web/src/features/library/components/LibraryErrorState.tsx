@@ -1,7 +1,6 @@
 'use client';
 
-import { ErrorState } from '@/components/ui/error-state';
-import { Button } from '@/components/ui/button';
+import { Button, ErrorState } from '@/components/design-system';
 
 export function LibraryErrorState({ onRetry }: { onRetry: () => void }) {
   return (

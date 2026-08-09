@@ -1,7 +1,7 @@
 'use client';
 
 import { useSession } from '@/lib/auth';
-import { LoadingState } from '@/components/ui/loading-state';
+import { LoadingState } from '@/components/design-system';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useAuthStore } from '@/stores/authStore';
@@ -20,11 +20,11 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   }, [hasResolvedSession, isError, isHydrated, isLoading, router]);
 
   if (isLoading || !isHydrated) {
-    return <LoadingState message="Checking session..." />;
+    return <LoadingState title="احراز هویت" message="در حال بررسی نشست شما..." />;
   }
 
   if (!hasResolvedSession) {
-    return <LoadingState message="Redirecting to login..." />;
+    return <LoadingState title="ورود به حساب" message="در حال انتقال به صفحه ورود..." />;
   }
 
   return <>{children}</>;

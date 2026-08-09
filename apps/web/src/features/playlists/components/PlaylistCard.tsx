@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { ListMusic, Pencil, Trash2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { getPlaylistPlaceholderLabel } from '../utils/playlist-utils';
 import type { Playlist } from '../types';
 
@@ -35,7 +35,7 @@ export function PlaylistCard({ playlist, onDelete, onEdit }: { playlist: Playlis
           <Pencil className="h-4 w-4" aria-hidden="true" />
           ویرایش
         </Button>
-        <Button type="button" variant="secondary" size="sm" onClick={() => onDelete?.(playlist.id)} aria-label={`حذف ${playlist.title}`}>
+        <Button type="button" variant="destructive" size="sm" onClick={() => onDelete?.(playlist.id)} aria-label={`حذف ${playlist.title}`}>
           <Trash2 className="h-4 w-4" aria-hidden="true" />
         </Button>
       </div>

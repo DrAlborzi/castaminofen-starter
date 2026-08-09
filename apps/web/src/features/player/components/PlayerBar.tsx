@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowDown, ArrowUp, ListMusic, Play, Plus, Trash2, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { MiniPlayer } from '@/components/design-system/player/mini-player';
 import { Tag } from '@/components/design-system/common/tag';
 import { PlayerControls } from './PlayerControls';

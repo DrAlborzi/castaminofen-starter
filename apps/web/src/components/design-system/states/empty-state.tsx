@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { Sparkles, type LucideIcon } from 'lucide-react';
 import type { ReactNode } from 'react';
+import type { EmptyStateCategory } from './state-types';
 
 export function EmptyState({
   title,
@@ -10,6 +11,7 @@ export function EmptyState({
   eyebrow,
   supportingText,
   icon: Icon = Sparkles,
+  category,
 }: {
   title: string;
   description?: string;
@@ -18,13 +20,16 @@ export function EmptyState({
   eyebrow?: string;
   supportingText?: string;
   icon?: LucideIcon;
+  category?: EmptyStateCategory;
 }) {
   return (
     <div
       className={clsx(
         'flex flex-col items-start gap-4 rounded-[1.5rem] border border-dashed border-border/80 bg-surface-secondary/80 p-6 text-start shadow-soft sm:p-8',
+        category ? `empty-state--${category}` : undefined,
         className,
       )}
+      data-category={category}
       role="status"
       aria-live="polite"
     >

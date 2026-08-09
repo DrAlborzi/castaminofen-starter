@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Sparkles } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { Tag } from '@/components/design-system/common/tag';
 import { mockContentTypes } from '../data/mockCreatorStudioData';
 import type { ContentTypeId } from '../types/creator.types';

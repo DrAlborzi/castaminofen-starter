@@ -37,10 +37,20 @@ export default {
           primary: 'var(--text-primary)',
           secondary: 'var(--text-secondary)',
           muted: 'var(--text-muted)',
+          disabled: 'var(--text-disabled)',
+          inverse: 'var(--text-inverse)',
         },
         border: {
           DEFAULT: 'var(--border)',
+          default: 'var(--border-default)',
           strong: 'var(--border-strong)',
+          focus: 'var(--border-focus)',
+        },
+        action: {
+          primary: 'var(--action-primary)',
+          'primary-hover': 'var(--action-primary-hover)',
+          'primary-active': 'var(--action-primary-active)',
+          'primary-soft': 'var(--action-primary-soft)',
         },
         accent: {
           DEFAULT: 'var(--accent)',
@@ -56,6 +66,12 @@ export default {
         info: 'var(--color-info)',
         selection: 'var(--color-selection)',
         focus: 'var(--color-focus-ring)',
+        playback: {
+          playing: 'var(--playback-playing)',
+          paused: 'var(--playback-paused)',
+          queued: 'var(--playback-queued)',
+          progress: 'var(--playback-progress)',
+        },
       },
       fontFamily: {
         sans: ['var(--font-body)'],
@@ -98,6 +114,7 @@ export default {
       },
       maxWidth: {
         app: 'var(--container-max)',
+        content: 'var(--container-content)',
       },
     },
   },

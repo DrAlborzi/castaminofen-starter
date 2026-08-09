@@ -2,7 +2,7 @@
 
 import { Compass, Sparkles, TrendingUp, Users, BookOpen, MessageCircleHeart, Flame, Bookmark, Share2, Plus, ChevronRight } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import { PageContainer } from '@/components/design-system/layout/page-container';
+import { IconButton, PageContainer, Provenance } from '@/components/design-system';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { DiscussionCard } from '@/components/design-system/social/discussion-card';
 import { Tag } from '@/components/design-system/common/tag';
@@ -53,6 +53,7 @@ export function CommunityHome() {
                 <Users className="ml-1 h-4 w-4" aria-hidden="true" />
                 اجتماع
               </Tag>
+              <Provenance kind="preview" />
               <h1 id="community-heading" className="text-heading">
                 جامعه‌ی Castaminofen برای ادامه‌ی مسیر، گفت‌وگو و بازگشت دوباره
               </h1>
@@ -80,6 +81,7 @@ export function CommunityHome() {
                         key={tab.id}
                         type="button"
                         onClick={() => setActiveFeed(tab.id)}
+                        aria-pressed={active}
                         className={active ? 'rounded-full bg-accent/10 px-3 py-2 text-sm font-semibold text-accent' : 'rounded-full border border-border/70 px-3 py-2 text-sm text-text-secondary'}
                       >
                         <span className="flex items-center gap-2">
@@ -95,19 +97,19 @@ export function CommunityHome() {
                     <DiscussionCard
                       key={discussion.id}
                       title={
-                        <div className="flex items-start justify-between gap-3">
-                          <div>
+                        <div className="flex flex-col items-start gap-2 sm:flex-row sm:justify-between">
+                          <div className="min-w-0">
                             <p className="text-sm font-semibold text-text-primary">{discussion.title}</p>
                             <p className="mt-1 text-sm text-text-secondary">{discussion.description}</p>
                           </div>
-                          <Tag className="w-fit border-border/70 bg-surface-secondary/70 text-text-secondary">{discussion.contextLabel}</Tag>
+                          <Tag className="w-fit shrink-0 border-border/70 bg-surface-secondary/70 text-text-secondary">{discussion.contextLabel}</Tag>
                         </div>
                       }
                       body={
                         <div className="space-y-3">
                           <div className="rounded-[1rem] border border-border/70 bg-surface-secondary/70 p-3">
-                            <div className="flex items-start justify-between gap-3">
-                              <div>
+                            <div className="flex flex-col items-start gap-2 sm:flex-row sm:justify-between">
+                              <div className="min-w-0">
                                 <p className="text-sm font-semibold text-text-primary">{discussion.contentTitle}</p>
                                 <p className="mt-1 text-sm text-text-secondary">{discussion.contentSubtitle}</p>
                               </div>
@@ -138,12 +140,18 @@ export function CommunityHome() {
                       actions={
                         <div className="flex flex-wrap items-center gap-2">
                           <ReactionBar reactions={discussion.reactions} selectedType="like" className="flex-1" />
-                          <button type="button" className="rounded-full border border-border/70 bg-surface-secondary/80 p-2 text-text-secondary">
+                          <IconButton
+                            label="ذخیره‌ی بحث"
+                            className="rounded-full border border-border/70 bg-surface-secondary/80 p-2 text-text-secondary"
+                          >
                             <Bookmark className="h-4 w-4" />
-                          </button>
-                          <button type="button" className="rounded-full border border-border/70 bg-surface-secondary/80 p-2 text-text-secondary">
+                          </IconButton>
+                          <IconButton
+                            label="اشتراک‌گذاری بحث"
+                            className="rounded-full border border-border/70 bg-surface-secondary/80 p-2 text-text-secondary"
+                          >
                             <Share2 className="h-4 w-4" />
-                          </button>
+                          </IconButton>
                         </div>
                       }
                     >

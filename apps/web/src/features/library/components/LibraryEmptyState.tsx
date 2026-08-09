@@ -2,8 +2,7 @@
 
 import type { LucideIcon } from 'lucide-react';
 import { Sparkles } from 'lucide-react';
-import { EmptyState } from '@/components/ui/empty-state';
-import { Button } from '@/components/ui/button';
+import { Button, EmptyState } from '@/components/design-system';
 import Link from 'next/link';
 
 export function LibraryEmptyState({

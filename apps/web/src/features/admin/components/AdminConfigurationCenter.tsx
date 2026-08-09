@@ -5,10 +5,10 @@ import { Avatar } from '@/components/design-system/identity/avatar';
 import { PageContainer } from '@/components/design-system/layout/page-container';
 import { SectionHeader } from '@/components/design-system/layout/section-header';
 import { MediaCard } from '@/components/design-system/media/media-card';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { PageState } from '@/components/ui/page-state';
 import { Tag } from '@/components/design-system/common/tag';
-import { Badge } from '@/components/ui/badge';
+import { Badge } from '@/components/design-system';
 import {
   adminCategoryItems,
   adminCommunityConfiguration,

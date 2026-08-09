@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowLeft, Mic, Sparkles, Clock3, Compass, PlayCircle, Search, TrendingUp } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 
 type SearchLandingExperienceProps = {
   onSelectSearch: (value: string) => void;

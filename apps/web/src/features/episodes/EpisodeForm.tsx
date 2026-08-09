@@ -1,6 +1,5 @@
 import { Form, FormField, FormLabel, FormMessage } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import { Button, Input } from '@/components/design-system';
 import type { ReactNode, ChangeEvent } from 'react';
 
 export type EpisodeFormProps = {

@@ -1,10 +1,16 @@
 import { Plus } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button, EmptyState } from '@/components/design-system';
 import type { PlaylistItem } from '../types';
 
 export function PlaylistEpisodeList({ items, onPlay, onRemove, onQueue }: { items: PlaylistItem[]; onPlay: (item: PlaylistItem) => void; onRemove: (item: PlaylistItem) => void; onQueue: (item: PlaylistItem) => void }) {
   if (!items.length) {
-    return <div className="rounded-2xl border border-dashed border-border bg-surface-primary/70 p-6 text-center text-text-secondary">این لیست هنوز اپیزودی ندارد. با افزودن اپیزودها، تجربه پخش بهتر می‌شود.</div>;
+    return (
+      <EmptyState
+        category="no-items"
+        title="این لیست هنوز اپیزودی ندارد"
+        description="با افزودن اپیزودها، تجربه پخش بهتر می‌شود."
+      />
+    );
   }
 
   return (

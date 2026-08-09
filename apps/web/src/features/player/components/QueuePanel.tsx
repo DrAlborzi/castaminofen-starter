@@ -1,5 +1,5 @@
 import { ArrowDown, ArrowUp, Play, Sparkles, Trash2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { Tag } from '@/components/design-system/common/tag';
 import { getQueueDisplayItems } from '../utils/playerPresentation';
 import type { PlayableItem } from '../types';

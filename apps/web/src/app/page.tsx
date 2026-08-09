@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { LoadingState } from '@/components/ui/loading-state';
+import { LoadingState } from '@/components/design-system';
 import { useSession } from '@/lib/auth';
 import { useAuthStore } from '@/stores/authStore';
 import { WelcomeScreen } from '@/features/onboarding/components/WelcomeScreen';

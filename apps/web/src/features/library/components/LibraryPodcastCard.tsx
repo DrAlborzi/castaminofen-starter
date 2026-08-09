@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePlayerState } from '@/features/player/hooks/usePlayerState';
 import type { Podcast } from '@/lib/types';
-import { Card } from '@/components/ui/card';
+import { Card } from '@/components/design-system';
 import { ContentArtwork } from '@/components/design-system/media/content-artwork';
 import { Tag } from '@/components/design-system/common/tag';
 import { getPodcastOwnerLabel, formatDisplayDate } from '@/features/podcasts/utils/podcastPresentation';

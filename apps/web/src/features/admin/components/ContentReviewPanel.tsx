@@ -1,6 +1,6 @@
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { Tag } from '@/components/design-system/common/tag';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { adminContentReviews } from '../data/mockAdminGovernanceData';
 
 export function ContentReviewPanel() {

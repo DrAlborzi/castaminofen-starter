@@ -1,6 +1,6 @@
 'use client';
 
-import { LoadingState } from '@/components/ui/loading-state';
+import { LoadingState } from '@/components/design-system';
 
 export function LibraryLoadingState() {
   return (

@@ -6,7 +6,7 @@ import { CreationWizard } from './CreationWizard';
 import { PageContainer } from '@/components/design-system/layout/page-container';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { Tag } from '@/components/design-system/common/tag';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { ContentMetadataEditor } from './ContentMetadataEditor';
 import { ContentTypeSelector } from './ContentTypeSelector';
 import { DraftManager } from './DraftManager';

@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { MediaCard } from '@/components/design-system/media/media-card';
 
 export type ProfileCreatorDraft = {

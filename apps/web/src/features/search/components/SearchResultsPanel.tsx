@@ -3,9 +3,8 @@
 import Link from 'next/link';
 import { Play, Plus } from 'lucide-react';
 import { useMemo } from 'react';
-import { Button } from '@/components/ui/button';
-import { EmptyState } from '@/components/ui/empty-state';
-import { ErrorState } from '@/components/ui/error-state';
+import { Button } from '@/components/design-system';
+import { EmptyState, ErrorState, LoadingState } from '@/components/design-system';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { ContentArtwork } from '@/components/design-system/media/content-artwork';
 import { Tag } from '@/components/design-system/common/tag';
@@ -36,26 +35,7 @@ function formatEpisodeDateLabel(value?: string) {
 }
 
 function SearchResultsSkeleton() {
-  return (
-    <div className="space-y-6" aria-busy="true" aria-live="polite">
-      <div className="space-y-3">
-        <div className="h-6 w-32 animate-pulse rounded-full bg-surface-secondary" />
-        <div className="grid gap-4 md:grid-cols-2">
-          {Array.from({ length: 2 }).map((_, index) => (
-            <div key={index} className="h-36 animate-pulse rounded-[1.5rem] border border-border/70 bg-surface-secondary/70" />
-          ))}
-        </div>
-      </div>
-      <div className="space-y-3">
-        <div className="h-6 w-28 animate-pulse rounded-full bg-surface-secondary" />
-        <div className="space-y-3">
-          {Array.from({ length: 3 }).map((_, index) => (
-            <div key={index} className="h-20 animate-pulse rounded-[1.25rem] border border-border/70 bg-surface-secondary/70" />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+  return <LoadingState variant="section" title="در حال جستجو" message="نتایج در حال آماده شدن است…" skeleton />;
 }
 
 export function SearchResultsPanel({ query, page }: SearchResultsPanelProps) {
@@ -126,6 +106,7 @@ export function SearchResultsPanel({ query, page }: SearchResultsPanelProps) {
     return (
       <EmptyState
         title="نتیجه‌ای یافت نشد"
+        category="no-results"
         description={`برای «${debouncedQuery}» نتیجه‌ای پیدا نشد. شاید نام دقیق‌تر یا موضوع نزدیک‌تر به آنچه دنبال می‌کنی، بهتر جواب می‌دهد.`}
       />
     );

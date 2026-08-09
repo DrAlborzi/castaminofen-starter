@@ -1,7 +1,7 @@
 "use client";
 
 import { SlidersHorizontal, Sparkles, Clock3 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 
 type SearchFilterDrawerProps = {
   isOpen?: boolean;

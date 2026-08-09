@@ -1,8 +1,5 @@
 import { Form, FormField, FormLabel } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { LoadingState } from '@/components/ui/loading-state';
-import { ErrorState } from '@/components/ui/error-state';
+import { Button, ErrorState, Input, LoadingState } from '@/components/design-system';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { SectionHeader } from '@/components/design-system/layout/section-header';
 import type { FieldErrors, UseFormRegister } from 'react-hook-form';

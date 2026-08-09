@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { MessageSquareText, Search, ChevronDown, ChevronUp } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { getPlayerExperienceViewModel } from '../data/mockPlayerExperience';
 
 type TranscriptPanelProps = {

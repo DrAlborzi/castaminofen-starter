@@ -1,5 +1,4 @@
-import { ErrorState } from '@/components/ui/error-state';
-import { Button } from '@/components/ui/button';
+import { Button, ErrorState } from '@/components/design-system';
 
 export function PlaylistErrorState({ message, onRetry }: { message?: string; onRetry?: () => void }) {
   return (

@@ -2,7 +2,7 @@
 
 import { CalendarClock, Clock3 } from 'lucide-react';
 import { MediaCard } from '@/components/design-system/media/media-card';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 
 export function ScheduledContentPanel() {
   return (
