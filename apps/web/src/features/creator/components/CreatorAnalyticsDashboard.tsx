@@ -1,7 +1,7 @@
 'use client';
 
 import { BarChart3, MessageCircleHeart, Sparkles, TrendingUp, Users, Volume2 } from 'lucide-react';
-import { EmptyState } from '@/components/design-system';
+import { EmptyState, Provenance } from '@/components/design-system';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import type { CreatorAnalyticsData } from '../types/analytics.types';
 
@@ -29,6 +29,7 @@ export function CreatorAnalyticsDashboard({ data }: { data: CreatorAnalyticsData
               <Sparkles className="h-4 w-4" />
               بازخورد رشد
             </div>
+            <Provenance kind="preview" />
             <h2 id="creator-analytics-heading" className="text-heading">
               {headline.title}
             </h2>

@@ -2,7 +2,7 @@
 
 import { Compass, Sparkles, TrendingUp, Users, BookOpen, MessageCircleHeart, Flame, Bookmark, Share2, Plus, ChevronRight } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import { PageContainer } from '@/components/design-system/layout/page-container';
+import { IconButton, PageContainer, Provenance } from '@/components/design-system';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { DiscussionCard } from '@/components/design-system/social/discussion-card';
 import { Tag } from '@/components/design-system/common/tag';
@@ -53,6 +53,7 @@ export function CommunityHome() {
                 <Users className="ml-1 h-4 w-4" aria-hidden="true" />
                 اجتماع
               </Tag>
+              <Provenance kind="preview" />
               <h1 id="community-heading" className="text-heading">
                 جامعه‌ی Castaminofen برای ادامه‌ی مسیر، گفت‌وگو و بازگشت دوباره
               </h1>
@@ -80,6 +81,7 @@ export function CommunityHome() {
                         key={tab.id}
                         type="button"
                         onClick={() => setActiveFeed(tab.id)}
+                        aria-pressed={active}
                         className={active ? 'rounded-full bg-accent/10 px-3 py-2 text-sm font-semibold text-accent' : 'rounded-full border border-border/70 px-3 py-2 text-sm text-text-secondary'}
                       >
                         <span className="flex items-center gap-2">
@@ -138,12 +140,18 @@ export function CommunityHome() {
                       actions={
                         <div className="flex flex-wrap items-center gap-2">
                           <ReactionBar reactions={discussion.reactions} selectedType="like" className="flex-1" />
-                          <button type="button" className="rounded-full border border-border/70 bg-surface-secondary/80 p-2 text-text-secondary">
+                          <IconButton
+                            label="ذخیره‌ی بحث"
+                            className="rounded-full border border-border/70 bg-surface-secondary/80 p-2 text-text-secondary"
+                          >
                             <Bookmark className="h-4 w-4" />
-                          </button>
-                          <button type="button" className="rounded-full border border-border/70 bg-surface-secondary/80 p-2 text-text-secondary">
+                          </IconButton>
+                          <IconButton
+                            label="اشتراک‌گذاری بحث"
+                            className="rounded-full border border-border/70 bg-surface-secondary/80 p-2 text-text-secondary"
+                          >
                             <Share2 className="h-4 w-4" />
-                          </button>
+                          </IconButton>
                         </div>
                       }
                     >

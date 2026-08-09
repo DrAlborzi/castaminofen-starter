@@ -40,6 +40,7 @@ describe('community experience', () => {
     expect(rendered.container.textContent).toContain('برای شما');
     expect(rendered.container.textContent).toContain('موضوعات پرطرفدار');
     expect(rendered.container.textContent).toContain('هویت مشارکتی');
+    expect(rendered.container.textContent).toContain('Preview');
   });
 
   it('switches feed mode and updates the visible discussions', () => {
@@ -55,5 +56,15 @@ describe('community experience', () => {
 
     expect(rendered.container.textContent).toContain('بحث داغ');
     expect(rendered.container.textContent).toContain('در حال رشد');
+    expect(trendingButton?.getAttribute('aria-pressed')).toBe('true');
+  });
+
+  it('names preview interaction controls for assistive technology', () => {
+    const rendered = mount(<CommunityHome />);
+    container = rendered.container;
+    root = rendered.root;
+
+    expect(rendered.container.querySelector('[aria-label="ذخیره‌ی بحث"]')).not.toBeNull();
+    expect(rendered.container.querySelector('[aria-label="اشتراک‌گذاری بحث"]')).not.toBeNull();
   });
 });

@@ -4,6 +4,7 @@ import { EmptyState } from '@/components/design-system/states/empty-state';
 import { LoadingState } from '@/components/design-system/states/loading-state';
 import { PageContainer } from '@/components/design-system/layout/page-container';
 import { SectionHeader } from '@/components/design-system/layout/section-header';
+import { Provenance } from '@/components/design-system/states/provenance';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { Chip } from '@/components/design-system/common/chip';
 import { ProgressIndicator } from '@/components/design-system/player/progress-indicator';
@@ -16,7 +17,12 @@ export function AdminIntelligenceDashboard() {
         eyebrow="Platform intelligence"
         title="Platform intelligence"
         description="A premium command center for ecosystem growth, content performance, creator health, and community momentum"
-        actions={<Chip active>Growth pulse</Chip>}
+        actions={
+          <div className="flex flex-wrap items-center gap-2">
+            <Chip active>Growth pulse</Chip>
+            <Provenance kind="preview" />
+          </div>
+        }
       />
 
       <div className="grid gap-4 xl:grid-cols-3">
@@ -31,7 +37,7 @@ export function AdminIntelligenceDashboard() {
       </div>
 
       <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
-        <MediaCard title="User growth analytics" subtitle="Acquisition, behavior and retention" meta="Live signals" className="space-y-4">
+        <MediaCard title="User growth analytics" subtitle="Acquisition, behavior and retention" meta="Preview signals" className="space-y-4">
           <div className="grid gap-3 sm:grid-cols-3">
             {adminGrowthSignals.map((signal) => (
               <div key={signal.id} className="rounded-2xl border border-border/70 bg-surface-secondary/80 p-3">

@@ -41,6 +41,7 @@ describe('creator analytics dashboard', () => {
     expect(rendered.container.textContent).toContain('۲۵K');
     expect(rendered.container.textContent).toContain('پادکست اصلی');
     expect(rendered.container.textContent).toContain('هوش مصنوعی');
+    expect(rendered.container.textContent).toContain('Preview');
   });
 
   it('shows empty-state guidance for new creators', () => {
