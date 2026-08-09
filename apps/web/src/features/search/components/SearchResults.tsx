@@ -1,9 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { LoadingState } from '@/components/ui/loading-state';
-import { EmptyState } from '@/components/ui/empty-state';
-import { ErrorState } from '@/components/ui/error-state';
+import { EmptyState, ErrorState, LoadingState } from '@/components/design-system';
 import { Button } from '@/components/ui/button';
 import { PodcastCard } from '@/features/podcasts/PodcastCard';
 import { useSearch } from '../hooks/useSearch';
@@ -25,6 +23,7 @@ export default function SearchResults({ q, page }: { q: string; page: number }) 
     return (
       <EmptyState
         title="نتیجه‌ای پیدا نشد"
+        category="no-results"
         description={offline
           ? `برای «${q || 'جستجوی شما'}» در کتابخانهٔ آفلاین نتیجه‌ای پیدا نشد. با یک عبارت ساده‌تر یا موضوع دیگری دوباره امتحان کن.`
           : `برای «${q || 'جستجوی شما'}» نتیجه‌ای پیدا نشد. اگر خواستی، با یک جستجوی ساده‌تر یا موضوع نزدیک‌تر دوباره امتحان کن.`}
