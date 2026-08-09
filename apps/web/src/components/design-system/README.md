@@ -91,3 +91,9 @@ Do not put API calls, player state, persistence, mock data, or feature-specific 
 ## Usage location
 
 These primitives are intended for reuse in app shell, discovery, community, library, profile, playlists, and upcoming creator/admin experiences.
+
+## Library and Profile adoption
+
+- Library and Profile features own their queries, identity, navigation, playback, queue, mutations, and domain-specific media composition.
+- Use `LoadingState` and `ErrorState` for equivalent feature-owned query branches so loading and failure semantics remain explicit; preserve specialized skeleton geometry when it carries feature meaning.
+- Profile may compose `Avatar`, `MediaCard`, and `MediaRow`, but identity and continuation data remain feature-owned. Use `Provenance` selectively around high-visibility mock or preview content that could be mistaken for live profile data.

@@ -103,6 +103,26 @@ describe('ProfilePage', () => {
     );
 
     expect(markup).toContain('در حال بارگذاری');
+    expect(markup).toContain('aria-busy="true"');
+    expect(markup).toContain('role="status"');
+  });
+
+  it('exposes continuation failures as an alert', () => {
+    mockUseContinueListening.mockReturnValue({
+      data: undefined,
+      isLoading: false,
+      isError: true,
+    });
+
+    const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } });
+    const markup = renderToStaticMarkup(
+      <QueryClientProvider client={queryClient}>
+        <ProfilePage />
+      </QueryClientProvider>,
+    );
+
+    expect(markup).toContain('امکان بارگذاری ادامه پخش در این لحظه وجود ندارد.');
+    expect(markup).toContain('role="alert"');
   });
 
   it('shows an empty state when there is no continue listening content', () => {
