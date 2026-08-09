@@ -20,11 +20,11 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   }, [hasResolvedSession, isError, isHydrated, isLoading, router]);
 
   if (isLoading || !isHydrated) {
-    return <LoadingState message="Checking session..." />;
+    return <LoadingState title="احراز هویت" message="در حال بررسی نشست شما..." />;
   }
 
   if (!hasResolvedSession) {
-    return <LoadingState message="Redirecting to login..." />;
+    return <LoadingState title="ورود به حساب" message="در حال انتقال به صفحه ورود..." />;
   }
 
   return <>{children}</>;

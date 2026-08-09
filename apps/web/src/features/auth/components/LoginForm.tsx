@@ -7,8 +7,8 @@ import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { fetchProfile, loginUser } from '@/lib/auth';
-import { Form, FormField, FormLabel } from '@/components/ui/form';
-import { Button, Input } from '@/components/design-system';
+import { Form } from '@/components/ui/form';
+import { Button, Field, Input } from '@/components/design-system';
 import { useState } from 'react';
 import { useAuthStore } from '@/stores/authStore';
 import { getErrorMessage } from '@/shared/lib/errors';
@@ -52,17 +52,13 @@ export function LoginPageView() {
             <p className="text-body m-0">برای ادامه پخش و دسترسی به کتابخانه، اطلاعات حساب خود را وارد کنید.</p>
           </div>
         </div>
-        <Form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-          <FormField>
-            <FormLabel htmlFor="email">ایمیل</FormLabel>
-            <Input id="email" type="email" autoComplete="email" placeholder="your@email.com" {...form.register('email')} aria-invalid={form.formState.errors.email ? 'true' : undefined} />
-            {form.formState.errors.email ? <p className="error-text">{form.formState.errors.email.message}</p> : null}
-          </FormField>
-          <FormField>
-            <FormLabel htmlFor="password">رمز عبور</FormLabel>
-            <Input id="password" type="password" autoComplete="current-password" placeholder="حداقل 6 کاراکتر" {...form.register('password')} aria-invalid={form.formState.errors.password ? 'true' : undefined} />
-            {form.formState.errors.password ? <p className="error-text">{form.formState.errors.password.message}</p> : null}
-          </FormField>
+        <Form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5" aria-busy={form.formState.isSubmitting}>
+          <Field id="email" label="ایمیل" error={form.formState.errors.email?.message}>
+            <Input type="email" autoComplete="email" placeholder="your@email.com" {...form.register('email')} />
+          </Field>
+          <Field id="password" label="رمز عبور" error={form.formState.errors.password?.message}>
+            <Input type="password" autoComplete="current-password" placeholder="حداقل 6 کاراکتر" {...form.register('password')} />
+          </Field>
           {error ? (
             <div className="rounded-2xl border border-error/30 bg-error/5 p-3" role="alert">
               <p className="error-text m-0">{error}</p>

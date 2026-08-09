@@ -25,7 +25,8 @@ export function Field({
       <label htmlFor={id} className="form-label">
         {label}
       </label>
-      {cloneElement(children as ReactElement<{ 'aria-describedby'?: string; 'aria-invalid'?: boolean }>, {
+      {cloneElement(children as ReactElement<{ id?: string; 'aria-describedby'?: string; 'aria-invalid'?: boolean }>, {
+        id,
         'aria-describedby': describedBy,
         'aria-invalid': error ? true : undefined,
       })}

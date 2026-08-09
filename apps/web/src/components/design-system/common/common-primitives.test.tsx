@@ -48,11 +48,12 @@ describe('design system common primitives', () => {
   it('associates field guidance and errors with its control', () => {
     const html = renderToStaticMarkup(
       <Field id="email" label="Email" description="Use your account email" error="Required">
-        <Input id="email" />
+        <Input />
       </Field>,
     );
 
     expect(html).toContain('for="email"');
+    expect(html).toContain('id="email"');
     expect(html).toContain('aria-describedby="email-description email-error"');
     expect(html).toContain('aria-invalid="true"');
   });
