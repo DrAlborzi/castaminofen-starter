@@ -97,3 +97,14 @@ These primitives are intended for reuse in app shell, discovery, community, libr
 - Library and Profile features own their queries, identity, navigation, playback, queue, mutations, and domain-specific media composition.
 - Use `LoadingState` and `ErrorState` for equivalent feature-owned query branches so loading and failure semantics remain explicit; preserve specialized skeleton geometry when it carries feature meaning.
 - Profile may compose `Avatar`, `MediaCard`, and `MediaRow`, but identity and continuation data remain feature-owned. Use `Provenance` selectively around high-visibility mock or preview content that could be mistaken for live profile data.
+
+## DESIGN.11 Conformance Rules
+
+- Prefer imports from `@/components/design-system` for new shared UI and safe migrations from compatibility aliases.
+- A migration is safe only when the canonical primitive preserves semantics, visual intent, accessibility behavior, feature ownership, and public behavior without moving data or business logic.
+- Local components remain valid for specialized geometry, feature-owned actions, domain-specific composition, legacy compatibility, and ambiguous equivalence. Do not replace them mechanically.
+- Use existing semantic tokens when they express the same intent. Arbitrary values require local evidence for feature geometry, browser/native requirements, or intentional one-off treatment; do not replace them repository-wide.
+- Use the state primitive matching the owning outcome: loading, empty, error, partial, offline, unsupported, or success. Never reinterpret an error as empty, fabricate success, or add offline behavior without a real capability.
+- Media primitives may own artwork, metadata, duration, playback affordance, and progress presentation. Feature code retains navigation, playback dispatch, queue behavior, fetching, and mutations.
+- Compatibility modules remain functional forwarding layers. Do not remove them until all consumers and external compatibility requirements have been proven safe.
+- Do not add a second primitive layer, move application state into this namespace, or perform broad button/card/state/token replacement without semantic evidence and focused validation.
