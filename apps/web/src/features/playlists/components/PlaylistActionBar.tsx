@@ -16,7 +16,7 @@ export function PlaylistActionBar({ onCreate, onRetry, onDelete, onPlayAll }: { 
         </Button>
       ) : null}
       {onDelete ? (
-        <Button type="button" variant="secondary" onClick={onDelete}>
+        <Button type="button" variant="destructive" onClick={onDelete}>
           حذف
         </Button>
       ) : null}
