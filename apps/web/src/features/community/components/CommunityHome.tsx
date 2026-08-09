@@ -97,19 +97,19 @@ export function CommunityHome() {
                     <DiscussionCard
                       key={discussion.id}
                       title={
-                        <div className="flex items-start justify-between gap-3">
-                          <div>
+                        <div className="flex flex-col items-start gap-2 sm:flex-row sm:justify-between">
+                          <div className="min-w-0">
                             <p className="text-sm font-semibold text-text-primary">{discussion.title}</p>
                             <p className="mt-1 text-sm text-text-secondary">{discussion.description}</p>
                           </div>
-                          <Tag className="w-fit border-border/70 bg-surface-secondary/70 text-text-secondary">{discussion.contextLabel}</Tag>
+                          <Tag className="w-fit shrink-0 border-border/70 bg-surface-secondary/70 text-text-secondary">{discussion.contextLabel}</Tag>
                         </div>
                       }
                       body={
                         <div className="space-y-3">
                           <div className="rounded-[1rem] border border-border/70 bg-surface-secondary/70 p-3">
-                            <div className="flex items-start justify-between gap-3">
-                              <div>
+                            <div className="flex flex-col items-start gap-2 sm:flex-row sm:justify-between">
+                              <div className="min-w-0">
                                 <p className="text-sm font-semibold text-text-primary">{discussion.contentTitle}</p>
                                 <p className="mt-1 text-sm text-text-secondary">{discussion.contentSubtitle}</p>
                               </div>

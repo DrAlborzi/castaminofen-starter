@@ -35,8 +35,8 @@ export function PlaylistFormDialog({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4" role="dialog" aria-modal="true" aria-labelledby="playlist-dialog-title">
-      <div className="w-full max-w-lg rounded-3xl border border-border bg-surface-primary p-5 shadow-soft sm:p-6">
+    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/50 p-4 sm:items-center" role="dialog" aria-modal="true" aria-labelledby="playlist-dialog-title">
+      <div className="my-auto max-h-[calc(100vh-2rem)] w-full max-w-lg overflow-y-auto rounded-3xl border border-border bg-surface-primary p-5 shadow-soft sm:p-6">
         <div className="mb-4 space-y-1">
           <h2 id="playlist-dialog-title" className="text-subheading">
             {mode === 'create' ? 'ایجاد لیست پخش' : 'ویرایش لیست پخش'}
