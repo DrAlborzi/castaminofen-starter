@@ -29,12 +29,19 @@ const navigationDefinitions = [
   { id: 'profile', label: 'Profile', href: '/profile', icon: UserRound },
 ] as const;
 
-export function getBottomNavigationItems(pathname: string): AppShellNavigationItem[] {
+function matchesRoute(pathname: string, href: string) {
+  const normalizedPathname = pathname.length > 1 ? pathname.replace(/\/$/, '') : pathname;
+  return href === '/' ? normalizedPathname === '/' : normalizedPathname === href || normalizedPathname.startsWith(`${href}/`);
+}
+
+export function getAppShellNavigationItems(pathname: string): AppShellNavigationItem[] {
   return navigationDefinitions.map((item) => ({
     ...item,
-    isActive: item.href === '/' ? pathname === '/' : pathname.startsWith(item.href),
+    isActive: matchesRoute(pathname, item.href),
   }));
 }
+
+export const getBottomNavigationItems = getAppShellNavigationItems;
 
 export function getMobileHeaderConfig(pathname: string): AppShellHeaderConfig {
   if (pathname.startsWith('/library')) {

@@ -8,7 +8,7 @@ export function BottomNavigation({ pathname }: { pathname: string }) {
   const items = getBottomNavigationItems(pathname);
 
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-20 pb-[calc(env(safe-area-inset-bottom)+0.75rem)]" aria-label="Main navigation">
+    <nav className="fixed inset-x-0 bottom-0 z-20 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] md:hidden" aria-label="ناوبری اصلی">
       <div className="mx-auto flex max-w-app px-2 pb-2 sm:px-4">
         <div className="relative mx-auto flex w-full max-w-[32rem] items-end justify-between rounded-[1.75rem] border border-white/10 bg-surface-secondary/95 px-2 py-3 shadow-[0_20px_55px_rgba(6,10,24,0.28)] backdrop-blur-2xl">
           {items.map((item) => {

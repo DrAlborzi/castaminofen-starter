@@ -9,6 +9,12 @@ describe('app shell config', () => {
     expect(items.find((item) => item.href === '/')?.isActive).toBe(false);
   });
 
+  it('keeps exact and nested route matching unambiguous', () => {
+    expect(getBottomNavigationItems('/library/featured')[1].isActive).toBe(true);
+    expect(getBottomNavigationItems('/library-old')[1].isActive).toBe(false);
+    expect(getBottomNavigationItems('/library/')[1].isActive).toBe(true);
+  });
+
   it('exposes the requested six-item mobile navigation structure', () => {
     const items = getBottomNavigationItems('/home');
 
