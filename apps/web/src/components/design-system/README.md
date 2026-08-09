@@ -37,6 +37,10 @@ Import shared primitives from `@/components/design-system`. This is the canonica
 
 Media components use the existing semantic tokens and breakpoints, logical flex flow, truncation, and native button semantics. They do not distinguish REAL, PARTIAL, MOCK, STATIC, or UNSUPPORTED data unless a caller supplies the relevant presentation content. Keep feature-specific composition and data ownership outside this namespace.
 
+## Catalog adoption
+
+The podcast catalog route composes `PageContainer`, `Card`, `Field`, `Input`, `EmptyState`, and `Button` for its route-level presentation. The podcast query, subscription actions, navigation links, search state, and pagination state remain feature-owned; this adoption does not make catalog primitives responsible for fetching or mutations.
+
 ## Contracts
 
 - Use semantic Tailwind tokens such as `bg-surface-card`, `text-text-primary`, `border-border`, and `text-action-primary`; do not add hardcoded brand colors to foundation code.

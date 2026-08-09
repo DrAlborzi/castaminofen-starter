@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { usePodcasts } from '@/features/podcasts/hooks/usePodcasts';
-import { ErrorState, LoadingState } from '@/components/design-system';
+import { Button, Card, EmptyState, ErrorState, Field, Input, LoadingState, PageContainer } from '@/components/design-system';
 import { PodcastCard } from '@/features/podcasts/PodcastCard';
 
 export default function PodcastsPage() {
@@ -23,56 +23,66 @@ export default function PodcastsPage() {
   }
 
   return (
-    <main className="page-container">
-      <section className="card">
-        <div className="header">
+    <main>
+      <PageContainer>
+        <Card className="space-y-6 p-4 sm:p-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <h1>Podcasts</h1>
-            <p>Browse the latest podcasts from the backend library.</p>
+              <h1 className="text-heading">Podcasts</h1>
+              <p className="text-body m-0">Browse the latest podcasts from the backend library.</p>
           </div>
-          <Link href="/podcasts/new" className="button button-primary">
+          <Link href="/podcasts/new" className="button button-primary min-h-[2.75rem] justify-center">
             New Podcast
           </Link>
-        </div>
-
-        <div className="form-field">
-          <label htmlFor="search" className="form-label">
-            Search podcasts
-          </label>
-          <input
-            id="search"
-            className="input"
-            value={search}
-            onChange={(event) => {
-              setSearch(event.target.value);
-              setPage(1);
-            }}
-            placeholder="Search by title or description"
-          />
-        </div>
-
-        {query.data?.data.length ? (
-          <div className="field-row">
-            {query.data.data.map((podcast) => (
-              <PodcastCard key={podcast.id} podcast={podcast} />
-            ))}
           </div>
-        ) : (
-          <div className="error-state">No podcasts found for “{searchText || 'your search'}”.</div>
-        )}
 
-        {totalPages > 1 ? (
-          <div className="toolbar" style={{ justifyContent: 'center', marginTop: '1.5rem' }}>
-            <button className="button button-secondary" onClick={() => setPage((current) => Math.max(1, current - 1))} disabled={page === 1}>
-              Previous
-            </button>
-            <span>{page} / {totalPages}</span>
-            <button className="button button-secondary" onClick={() => setPage((current) => Math.min(totalPages, current + 1))} disabled={page === totalPages}>
-              Next
-            </button>
-          </div>
-        ) : null}
-      </section>
+          <Field id="search" label="Search podcasts">
+            <Input
+              id="search"
+              value={search}
+              onChange={(event) => {
+                setSearch(event.target.value);
+                setPage(1);
+              }}
+              placeholder="Search by title or description"
+            />
+          </Field>
+
+          {query.data?.data.length ? (
+            <div className="field-row">
+              {query.data.data.map((podcast) => (
+                <PodcastCard key={podcast.id} podcast={podcast} />
+              ))}
+            </div>
+          ) : (
+            <EmptyState
+              category="no-results"
+              title="No podcasts found"
+              description={`No podcasts found for "${searchText || 'your search'}".`}
+            />
+          )}
+
+          {totalPages > 1 ? (
+            <div className="toolbar mt-6 justify-center">
+              <Button
+                variant="secondary"
+                onClick={() => setPage((current) => Math.max(1, current - 1))}
+                disabled={page === 1}
+              >
+                Previous
+              </Button>
+              <span aria-label={`Page ${page} of ${totalPages}`}>{page} / {totalPages}</span>
+              <Button
+                variant="secondary"
+                onClick={() => setPage((current) => Math.min(totalPages, current + 1))}
+                disabled={page === totalPages}
+              >
+                Next
+              </Button>
+            </div>
+          ) : null}
+        </Card>
+      </PageContainer>
     </main>
   );
 }
