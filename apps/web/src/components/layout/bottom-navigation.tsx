@@ -20,11 +20,12 @@ export function BottomNavigation({ pathname }: { pathname: string }) {
                   key={item.href}
                   href={item.href}
                   aria-current={item.isActive ? 'page' : undefined}
-                  className="absolute left-1/2 top-0 z-30 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center"
+                  className="group absolute left-1/2 top-0 z-30 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface-secondary"
                 >
-                  <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-gradient-to-br from-accent via-violet-500 to-fuchsia-500 text-white shadow-[0_16px_36px_rgba(119,108,254,0.35)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(119,108,254,0.42)] active:scale-[0.96]">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-gradient-to-br from-accent via-violet-500 to-fuchsia-500 text-white shadow-[0_16px_36px_rgba(119,108,254,0.35)] transition-all duration-200 group-hover:-translate-y-1 group-hover:shadow-[0_20px_40px_rgba(119,108,254,0.42)] group-active:scale-[0.96]">
                     <Icon className="h-6 w-6" aria-hidden="true" />
                   </span>
+                  <span className="sr-only">{item.label}</span>
                 </Link>
               );
             }
