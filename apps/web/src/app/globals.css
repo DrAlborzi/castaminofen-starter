@@ -30,7 +30,6 @@
   html {
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    direction: rtl;
     scroll-behavior: smooth;
   }
 

@@ -272,12 +272,12 @@ export function CreationWizard() {
           </div>
           <div className="mt-4 flex items-center justify-between gap-2">
             <Button variant="secondary" onClick={goPrev} disabled={activeStep === 0}>
-              <ChevronLeft className="ml-1 h-4 w-4" />
+              <ChevronRight className="me-1 h-4 w-4" />
               قبلی
             </Button>
             <Button variant="primary" onClick={goNext}>
+              <ChevronLeft className="me-1 h-4 w-4" />
               {activeStep === wizardSteps.length - 1 ? 'انتشار' : 'مرحله بعد'}
-              <ChevronRight className="mr-1 h-4 w-4" />
             </Button>
           </div>
         </div>

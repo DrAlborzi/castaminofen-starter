@@ -13,7 +13,7 @@ export function WelcomeScreen() {
   const podcasts = (podcastsQuery.data?.data ?? []).filter((podcast) => podcast.id && podcast.title).slice(0, 3);
 
   return (
-    <main dir="rtl" className="w-full bg-surface-canvas">
+    <main className="w-full bg-surface-canvas">
       <section aria-labelledby="welcome-heading" className="relative flex min-h-[calc(100vh-2rem)] w-full items-center overflow-hidden px-4 py-8 sm:px-8 lg:px-12">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-accent/10 to-transparent" aria-hidden="true" />
         <div className="relative mx-auto grid w-full max-w-app items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">

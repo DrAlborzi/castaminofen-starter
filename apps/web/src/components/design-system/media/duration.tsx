@@ -12,7 +12,7 @@ export function Duration({ value, className }: { value?: number | string | null;
   const displayValue = typeof value === 'number' && Number.isFinite(value) ? formatDuration(value) : typeof value === 'string' && value.trim() ? value.trim() : 'مدت نامشخص';
 
   return (
-    <span className={clsx('whitespace-nowrap text-text-secondary', className)} aria-label={`مدت ${displayValue}`}>
+    <span className={clsx('whitespace-nowrap text-text-secondary', className)} dir="ltr" aria-label={`مدت ${displayValue}`}>
       {displayValue}
     </span>
   );

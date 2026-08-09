@@ -30,7 +30,7 @@ export default function SearchInput({ defaultQuery, onNavigate }: { defaultQuery
       <div className="rounded-[1.5rem] border border-border/80 bg-surface-secondary/70 p-3 shadow-sm">
         <div className="flex flex-col gap-3 sm:flex-row">
           <div className="relative flex-1">
-            <SearchIcon className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted" aria-hidden="true" />
+            <SearchIcon className="pointer-events-none absolute end-4 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted" aria-hidden="true" />
             <Input
               id="search"
               value={value}
@@ -40,7 +40,7 @@ export default function SearchInput({ defaultQuery, onNavigate }: { defaultQuery
                 onNavigate(nextValue.trim());
               }}
               placeholder="مثلاً فناوری، داستان، آموزش"
-              className="w-full pr-11"
+              className="w-full pe-11"
               autoComplete="off"
               spellCheck={false}
               aria-label="عبارت جستجو"
@@ -51,7 +51,7 @@ export default function SearchInput({ defaultQuery, onNavigate }: { defaultQuery
                 type="button"
                 variant="ghost"
                 size="sm"
-                className="absolute left-2 top-1/2 h-9 w-9 -translate-y-1/2 rounded-full p-0"
+                className="absolute start-2 top-1/2 h-9 w-9 -translate-y-1/2 rounded-full p-0"
                 onClick={clearValue}
                 aria-label="پاک کردن عبارت جستجو"
               >

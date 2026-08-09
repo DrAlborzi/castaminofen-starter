@@ -75,6 +75,18 @@ The podcast catalog route composes `PageContainer`, `Card`, `Field`, `Input`, `E
 - Every state needs a semantic heading or clear accessible label, visible recovery/action text, and meaning that is not communicated by color alone.
 - Use logical layout and spacing properties. Mirror only directional icons; keep non-directional status icons unchanged. Isolate mixed-script URLs, durations, and identifiers where the surrounding RTL text would reduce readability.
 
+## RTL & Bidirectional UI Contract
+
+- `apps/web/src/app/layout.tsx` is the sole global direction owner: keep `<html lang="fa" dir="rtl">`. Do not add duplicate RTL wrappers or a second CSS direction owner.
+- Prefer logical Tailwind utilities (`ms-*`, `me-*`, `ps-*`, `pe-*`, `start-*`, `end-*`) and logical CSS (`margin-inline`, `padding-inline`, `inset-inline`, and `border-inline-*`) for layout. Physical left/right values are acceptable only for fixed geometry, external conventions, or intentionally isolated LTR content.
+- Mirror only semantically directional icons such as back, next, previous, and breadcrumbs. Do not mirror play, pause, stop, volume, search, settings, status, identity, or other invariant icons. Review send, share, external-link, and carousel icons in their local context.
+- Keep Persian prose in inherited RTL flow. Give URLs, email addresses, usernames, slugs, identifiers, durations, timestamps, and other inherently LTR or mixed values a local `dir="ltr"` or `dir="auto"` only when it improves reading order. Do not force a whole field or card to LTR.
+- Forms keep labels and Persian text in RTL flow; email, URL, username, search, and identifier controls may opt into local direction based on their value. Adornments and clear actions use logical placement, and every control keeps a native accessible name and focus order.
+- Media and player controls preserve product semantics. Progress remains chronological, durations remain readable, and playback icons are not mirrored automatically. Previous/next navigation is reviewed independently.
+- Preserve DOM reading order and keyboard order. Never use CSS `order` or a duplicate accessible node solely to make a visual RTL arrangement.
+
+Forbidden: global SVG mirroring, blanket `scaleX(-1)`, unnecessary `direction: ltr`, arbitrary `text-align: right`, physical spacing where logical spacing applies, duplicated RTL owners, and mixed-script content forced into RTL.
+
 ## Forbidden Patterns
 
 - Do not use fake production data to hide an empty, error, or unsupported state.

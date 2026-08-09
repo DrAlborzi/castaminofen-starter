@@ -110,7 +110,7 @@ export function LibraryFavoritesSection() {
                 onClick={() => void playerRuntime.loadItem(mapEpisodeToPlayableItem(item.episode))}
                 aria-label={`Play ${item.episode.title}`}
               >
-                <Play className="mr-2 h-4 w-4" aria-hidden="true" />
+                <Play className="me-2 h-4 w-4" aria-hidden="true" />
                 Play
               </Button>
               <Button
@@ -120,7 +120,7 @@ export function LibraryFavoritesSection() {
                 onClick={() => playerRuntime.appendToQueue(mapEpisodeToPlayableItem(item.episode))}
                 aria-label={`Add ${item.episode.title} to queue`}
               >
-                <Plus className="mr-2 h-4 w-4" aria-hidden="true" />
+                <Plus className="me-2 h-4 w-4" aria-hidden="true" />
                 افزودن به صف
               </Button>
               <FavoriteActionButton episodeId={item.episodeId} />
