@@ -3,7 +3,7 @@
 import { Bookmark, Compass, Sparkles, Users } from 'lucide-react';
 import { useState } from 'react';
 import { Avatar } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { CreatorBadge } from '@/components/design-system/identity/creator-badge';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { PageContainer } from '@/components/design-system/layout/page-container';

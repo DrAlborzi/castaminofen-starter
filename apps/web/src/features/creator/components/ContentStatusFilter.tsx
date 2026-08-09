@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import type { CreatorContentTab } from '../types/publishing.types';
 
 const tabs: Array<{ id: CreatorContentTab; label: string }> = [

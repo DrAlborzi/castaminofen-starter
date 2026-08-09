@@ -1,6 +1,6 @@
 'use client';
 
-import { Input } from '@/components/ui/input';
+import { Input } from '@/components/design-system';
 import { Tag } from '@/components/design-system/common/tag';
 
 export function ContentMetadataEditor() {

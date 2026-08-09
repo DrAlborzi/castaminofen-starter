@@ -3,7 +3,7 @@
 import { Archive, BookOpen, Sparkles, Layers3, CheckCircle2, Clock3 } from 'lucide-react';
 import { PageContainer } from '@/components/design-system/layout/page-container';
 import { MediaCard } from '@/components/design-system/media/media-card';
-import { EmptyState } from '@/components/ui/empty-state';
+import { EmptyState } from '@/components/design-system';
 import { ContentStatusFilter } from './ContentStatusFilter';
 import { DraftWorkspace } from './DraftWorkspace';
 import { PublishingWorkflow } from './PublishingWorkflow';

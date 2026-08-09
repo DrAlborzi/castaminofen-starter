@@ -1,5 +1,5 @@
 import { Plus } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import type { PlaylistItem } from '../types';
 
 export function PlaylistEpisodeList({ items, onPlay, onRemove, onQueue }: { items: PlaylistItem[]; onPlay: (item: PlaylistItem) => void; onRemove: (item: PlaylistItem) => void; onQueue: (item: PlaylistItem) => void }) {

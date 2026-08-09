@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useMemo } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { logoutUser } from '@/lib/auth';
 import { useAuthStore } from '@/stores/authStore';
 import { PageContainer } from '@/components/design-system/layout/page-container';

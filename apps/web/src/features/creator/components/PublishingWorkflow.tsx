@@ -2,7 +2,7 @@
 
 import { CheckCircle2, Radio, Send, Eye } from 'lucide-react';
 import { MediaCard } from '@/components/design-system/media/media-card';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 
 const steps = [
   { title: 'مرحله ۱', detail: 'بررسی آمادگی محتوا', icon: CheckCircle2 },

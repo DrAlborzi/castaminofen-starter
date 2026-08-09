@@ -1,7 +1,7 @@
 'use client';
 
 import { ArrowUpRight, BadgeCheck, Crown, Gift, HeartHandshake, Sparkles, Star, Trophy, WalletCards } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { MediaCard } from '@/components/design-system/media/media-card';
 
 const revenueMetrics = [

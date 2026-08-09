@@ -4,8 +4,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { useMemo } from 'react';
 import { useAuthStore } from '@/stores/authStore';
 import { useDeletePodcast, usePodcast } from '@/features/podcasts/hooks/usePodcasts';
-import { LoadingState } from '@/components/ui/loading-state';
-import { ErrorState } from '@/components/ui/error-state';
+import { ErrorState, LoadingState } from '@/components/design-system';
 import { PodcastDetails } from '@/features/podcasts/PodcastDetails';
 
 export default function PodcastDetailsPage() {

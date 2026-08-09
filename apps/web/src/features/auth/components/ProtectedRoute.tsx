@@ -1,7 +1,7 @@
 'use client';
 
 import { useSession } from '@/lib/auth';
-import { LoadingState } from '@/components/ui/loading-state';
+import { LoadingState } from '@/components/design-system';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useAuthStore } from '@/stores/authStore';

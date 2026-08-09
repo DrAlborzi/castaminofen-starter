@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Card } from '@/components/ui/card';
+import { Card } from '@/components/design-system';
 import { SubscriptionActionButton } from '@/features/library/components/SubscriptionActionButton';
 import { useLibrarySubscriptions } from '@/features/library/hooks/useLibrarySubscriptions';
 import { useSubscribePodcast } from '@/features/library/hooks/useSubscribePodcast';

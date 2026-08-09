@@ -2,8 +2,7 @@
 
 import { Search as SearchIcon, X as XIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { Button, Input } from '@/components/design-system';
 
 export default function SearchInput({ defaultQuery, onNavigate }: { defaultQuery?: string; onNavigate: (q: string) => void }) {
   const [value, setValue] = useState(defaultQuery ?? '');

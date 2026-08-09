@@ -3,8 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Check, Play, Plus, Sparkles } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Button, Card } from '@/components/design-system';
 import { SubscriptionActionButton } from '@/features/library/components/SubscriptionActionButton';
 import { useContinueListening } from '@/features/library/hooks/useContinueListening';
 import { useLibrarySubscriptions } from '@/features/library/hooks/useLibrarySubscriptions';

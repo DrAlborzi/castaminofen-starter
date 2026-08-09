@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { ArrowLeft, Plus } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { usePlayerRuntime } from '@/features/player';
 import { mapEpisodeToPlayableItem } from '@/features/player/adapters/episodeToPlayable';
 import { PlaylistActionBar } from './PlaylistActionBar';

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { ListMusic, Pencil, Trash2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { getPlaylistPlaceholderLabel } from '../utils/playlist-utils';
 import type { Playlist } from '../types';
 

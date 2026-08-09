@@ -29,6 +29,7 @@ export function EmptyState({
         category ? `empty-state--${category}` : undefined,
         className,
       )}
+      data-category={category}
       role="status"
       aria-live="polite"
     >

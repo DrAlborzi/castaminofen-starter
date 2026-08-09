@@ -3,8 +3,7 @@
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { usePodcasts } from '@/features/podcasts/hooks/usePodcasts';
-import { LoadingState } from '@/components/ui/loading-state';
-import { ErrorState } from '@/components/ui/error-state';
+import { ErrorState, LoadingState } from '@/components/design-system';
 import { PodcastCard } from '@/features/podcasts/PodcastCard';
 
 export default function PodcastsPage() {

@@ -20,6 +20,22 @@ Import shared primitives from `@/components/design-system`. This is the canonica
 - Button / IconButton / Chip / Tag — common interaction and labeling primitives.
 - Card / Input / Field / Artwork — canonical surfaces and form/media foundations.
 - ErrorState — actionable error presentation; LoadingState, EmptyState, PartialState, OfflineState, and UnsupportedState provide the other shared page states.
+- Duration — renders a supplied numeric or normalized duration without parsing media data.
+- MediaMetadata — composable title, subtitle, and metadata hierarchy for media surfaces.
+- PlaybackAffordance — presentational play/pause button; callers own playback behavior.
+- ProgressIndicator — determinate or honestly indeterminate progress presentation.
+
+## Media contracts
+
+- `ContentArtwork` is the canonical artwork surface and supports square, portrait, and landscape ratios, image-error fallback, `object-cover`, and supplied accessible alternative text. It does not fetch images or invent artwork data.
+- `Avatar` is the canonical identity image primitive. Creator and user surfaces compose it rather than duplicating image fallback behavior. Identity primitives receive presentation props only.
+- `MediaMetadata` keeps title content in a truncatable `min-w-0` hierarchy and exposes subtitle and metadata as composable children. It does not define podcast or episode domain data.
+- `Duration` accepts seconds or an already-normalized display string. Missing or non-finite numeric values render `مدت نامشخص`; no fake duration is inferred.
+- `MediaCard` and `MediaRow` provide optional `artwork`, `playback`, and `actions` slots. They are non-owning containers: they do not navigate, fetch, play audio, or mutate queue state.
+- `PlaybackAffordance` accepts `isPlaying` and an optional callback. `aria-pressed` and the accessible label communicate state; player stores and runtime remain feature-owned.
+- `ProgressIndicator` clamps determinate values to 0–100 and omits `aria-valuenow` for unknown progress. It never calculates timing or synchronizes with audio.
+
+Media components use the existing semantic tokens and breakpoints, logical flex flow, truncation, and native button semantics. They do not distinguish REAL, PARTIAL, MOCK, STATIC, or UNSUPPORTED data unless a caller supplies the relevant presentation content. Keep feature-specific composition and data ownership outside this namespace.
 
 ## Contracts
 

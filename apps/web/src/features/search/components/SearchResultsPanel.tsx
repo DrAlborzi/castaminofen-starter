@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Play, Plus } from 'lucide-react';
 import { useMemo } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { EmptyState, ErrorState, LoadingState } from '@/components/design-system';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { ContentArtwork } from '@/components/design-system/media/content-artwork';

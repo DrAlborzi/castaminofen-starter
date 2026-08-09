@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { Clock3, PlayCircle, Plus } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import type { Episode, Podcast } from '@/lib/types';
 import { getProgressMetadata } from '../utils/library-mappers';
 

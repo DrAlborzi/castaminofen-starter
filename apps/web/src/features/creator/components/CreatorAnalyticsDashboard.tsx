@@ -1,7 +1,7 @@
 'use client';
 
 import { BarChart3, MessageCircleHeart, Sparkles, TrendingUp, Users, Volume2 } from 'lucide-react';
-import { EmptyState } from '@/components/ui/empty-state';
+import { EmptyState } from '@/components/design-system';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import type { CreatorAnalyticsData } from '../types/analytics.types';
 

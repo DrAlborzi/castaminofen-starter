@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { BookOpen, Camera, CheckCircle2, ChevronLeft, ChevronRight, Mic, MessageCircleMore, Sparkles, Wand2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { Tag } from '@/components/design-system/common/tag';
 import type { ContentTypeId } from '../types/creator.types';
 

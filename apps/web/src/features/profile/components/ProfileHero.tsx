@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Avatar } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { UserBadge } from '@/components/design-system/identity/user-badge';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import type { ProfileIdentity, ProfileMode } from '../types/profile.types';

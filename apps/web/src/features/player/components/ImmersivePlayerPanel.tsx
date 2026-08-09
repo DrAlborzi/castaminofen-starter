@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { BookOpen, Circle, Clock3, Layers3, MessageCircleMore, Pause, Play, Repeat1, Repeat2, Shuffle, SkipBack, SkipForward, Sparkles, Volume2, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { ContentArtwork } from '@/components/design-system/media/content-artwork';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { Tag } from '@/components/design-system/common/tag';

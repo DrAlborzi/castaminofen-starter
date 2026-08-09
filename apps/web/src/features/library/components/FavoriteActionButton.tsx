@@ -2,7 +2,7 @@
 
 import { Heart } from 'lucide-react';
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { useFavorites, useSaveFavorite, useRemoveFavorite } from '../hooks/useFavorites';
 
 export function FavoriteActionButton({ episodeId }: { episodeId: string }) {

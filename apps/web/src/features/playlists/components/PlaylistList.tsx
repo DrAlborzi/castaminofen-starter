@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { PlaylistCard } from './PlaylistCard';
 import { PlaylistEmptyState } from './PlaylistEmptyState';
 import { PlaylistErrorState } from './PlaylistErrorState';

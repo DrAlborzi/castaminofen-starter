@@ -7,7 +7,7 @@ import { usePlayerRuntime } from '@/features/player/hooks/usePlayerRuntime';
 import { mapEpisodeToPlayableItem } from '@/features/player/adapters/episodeToPlayable';
 import { useFavorites } from '../hooks/useFavorites';
 import { LibraryEmptyState } from './LibraryEmptyState';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { FavoriteActionButton } from './FavoriteActionButton';
 import type { LibraryFavoriteResponse } from '@/lib/library';
 

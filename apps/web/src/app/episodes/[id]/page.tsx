@@ -2,8 +2,7 @@
 
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
 import { useParams } from 'next/navigation';
-import { LoadingState } from '@/components/ui/loading-state';
-import { ErrorState } from '@/components/ui/error-state';
+import { ErrorState, LoadingState } from '@/components/design-system';
 import { EpisodeDetailView } from '@/features/episodes/components/EpisodeDetailView';
 import { useEpisodeDetail } from '@/features/episodes/hooks/useEpisodeDetail';
 import { useEpisodeAudioUpload } from '@/features/episodes/hooks/useEpisodeAudioUpload';

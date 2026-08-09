@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowLeft, PlayCircle, Sparkles, Users, MessageSquareText } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 
 type SearchResultsExperienceProps = {
   query: string;

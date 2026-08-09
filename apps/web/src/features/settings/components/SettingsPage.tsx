@@ -3,8 +3,7 @@
 import Link from 'next/link';
 import { ArrowLeft, Bell, Monitor, Settings as SettingsIcon, Sparkles, Volume2 } from 'lucide-react';
 import { useMemo } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Button, Card } from '@/components/design-system';
 import { getPublicEnv } from '@/shared/lib/env';
 import packageJson from '../../../../../../package.json';
 import { settingsSections, type SettingsItemContent } from '../constants/settingsContent';

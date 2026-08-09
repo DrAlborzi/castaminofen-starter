@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import { Check, LoaderCircle, Plus } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 
 export function SubscriptionActionButton({
   isSubscribed,

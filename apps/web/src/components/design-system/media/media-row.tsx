@@ -1,13 +1,13 @@
 import clsx from 'clsx';
 import type { ReactNode } from 'react';
+import { MediaMetadata } from './media-metadata';
 
-export function MediaRow({ title, subtitle, actions, className }: { title: ReactNode; subtitle?: ReactNode; actions?: ReactNode; className?: string }) {
+export function MediaRow({ title, subtitle, artwork, playback, actions, className }: { title: ReactNode; subtitle?: ReactNode; artwork?: ReactNode; playback?: ReactNode; actions?: ReactNode; className?: string }) {
   return (
-    <div className={clsx('flex items-center justify-between gap-3 rounded-[1.1rem] border border-border/70 bg-surface-secondary/70 px-3 py-3', className)}>
-      <div className="min-w-0 space-y-1">
-        <p className="truncate text-sm font-semibold text-text-primary">{title}</p>
-        {subtitle ? <p className="truncate text-sm text-text-secondary">{subtitle}</p> : null}
-      </div>
+    <div className={clsx('flex min-w-0 items-center gap-3 rounded-[1.1rem] border border-border/70 bg-surface-secondary/70 px-3 py-3', className)}>
+      {artwork ? <div className="w-12 shrink-0">{artwork}</div> : null}
+      <MediaMetadata title={title} subtitle={subtitle} className="flex-1" />
+      {playback ? <div className="shrink-0">{playback}</div> : null}
       {actions ? <div className="shrink-0">{actions}</div> : null}
     </div>
   );

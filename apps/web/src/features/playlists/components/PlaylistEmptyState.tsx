@@ -1,5 +1,4 @@
-import { EmptyState } from '@/components/ui/empty-state';
-import { Button } from '@/components/ui/button';
+import { Button, EmptyState } from '@/components/design-system';
 
 export function PlaylistEmptyState({ onCreate }: { onCreate?: () => void }) {
   return (

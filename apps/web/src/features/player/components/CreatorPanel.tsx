@@ -1,5 +1,5 @@
 import { BellRing, MessageSquareText, Sparkles, Users } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { getPlayerExperienceViewModel } from '../data/mockPlayerExperience';
 

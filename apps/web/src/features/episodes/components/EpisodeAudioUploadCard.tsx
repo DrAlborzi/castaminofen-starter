@@ -1,5 +1,4 @@
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Button, Card } from '@/components/design-system';
 import type { ChangeEvent } from 'react';
 
 export type EpisodeAudioUploadCardProps = {

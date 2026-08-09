@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import type { PlaylistFormValues } from '../types';
 
 export function PlaylistFormDialog({

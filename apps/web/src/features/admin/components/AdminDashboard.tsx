@@ -7,7 +7,7 @@ import { SectionHeader } from '@/components/design-system/layout/section-header'
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { Avatar } from '@/components/design-system/identity/avatar';
 import { Tag } from '@/components/design-system/common/tag';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { PageState } from '@/components/ui/page-state';
 import { adminContent, adminCreators, adminDiscussions, adminOverviewMetrics, adminReports, adminSectionConfig, adminUsers } from '../data/mockAdminData';
 import { AdminAIAssistant } from './AdminAIAssistant';

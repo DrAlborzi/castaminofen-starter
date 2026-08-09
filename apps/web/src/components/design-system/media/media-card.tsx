@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import type { ReactNode } from 'react';
+import { MediaMetadata } from './media-metadata';
 
 function resolveTextContent(value: ReactNode | undefined, fallback: string) {
   if (typeof value === 'string') {
@@ -14,12 +15,18 @@ export function MediaCard({
   title,
   subtitle,
   meta,
+  artwork,
+  actions,
+  playback,
   children,
   className,
 }: {
   title: ReactNode;
   subtitle?: ReactNode;
   meta?: ReactNode;
+  artwork?: ReactNode;
+  actions?: ReactNode;
+  playback?: ReactNode;
   children?: ReactNode;
   className?: string;
 }) {
@@ -34,16 +41,13 @@ export function MediaCard({
       )}
     >
       <div className="space-y-3">
-        <div className="flex items-center justify-between gap-2">
-          <div className="min-w-0 space-y-1">
-            <h3 className="truncate text-sm font-semibold text-text-primary">{resolvedTitle}</h3>
-            {subtitle !== undefined ? <p className="truncate text-sm text-text-secondary">{resolvedSubtitle}</p> : null}
-          </div>
-          {meta ? (
-            <div className="shrink-0 rounded-full border border-border/80 bg-surface-secondary/70 px-2.5 py-1 text-[11px] font-medium text-text-secondary">
-              {meta}
-            </div>
-          ) : null}
+        <div className="flex items-start gap-3">
+          {artwork ? <div className="w-20 shrink-0">{artwork}</div> : null}
+          <MediaMetadata title={resolvedTitle} subtitle={subtitle !== undefined ? resolvedSubtitle : undefined} className="flex-1">
+            {meta}
+          </MediaMetadata>
+          {playback ? <div className="shrink-0">{playback}</div> : null}
+          {actions ? <div className="shrink-0">{actions}</div> : null}
         </div>
         {children ? <div className="space-y-2">{children}</div> : null}
       </div>

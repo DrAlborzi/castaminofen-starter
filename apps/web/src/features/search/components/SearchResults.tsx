@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { EmptyState, ErrorState, LoadingState } from '@/components/design-system';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/design-system';
 import { PodcastCard } from '@/features/podcasts/PodcastCard';
 import { useSearch } from '../hooks/useSearch';
 

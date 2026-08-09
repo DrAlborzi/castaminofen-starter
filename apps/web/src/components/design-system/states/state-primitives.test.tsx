@@ -22,7 +22,7 @@ describe('canonical state primitives', () => {
     const html = renderToStaticMarkup(<EmptyState title="No episodes" category="no-items" action={<button type="button">Browse</button>} />);
     expect(html).toContain('<h3');
     expect(html).toContain('Browse');
-    expect(html).toContain('no-items');
+    expect(html).toContain('data-category="no-items"');
   });
 
   it('renders error recovery and offline semantics', () => {
