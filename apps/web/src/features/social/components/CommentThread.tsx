@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { MessageCircle, Send } from 'lucide-react';
-import { Avatar } from '@/components/design-system/identity/avatar';
+import { Avatar, Button } from '@/components/design-system';
 import { CommentPreview } from '@/components/design-system/social/comment-preview';
 import { ReactionBar } from './ReactionBar';
 import type { SocialComment, SocialCommentSortMode } from '../types/social.types';
@@ -105,9 +105,9 @@ export function CommentThread({ comments, className }: CommentThreadProps) {
                       className="w-full rounded-full border border-border bg-surface-secondary px-3 py-2 text-sm text-text-primary"
                       placeholder="به این بحث پاسخ بدهید"
                     />
-                    <button type="button" aria-label="ارسال پاسخ" onClick={() => addReply(comment.id)} className="rounded-full bg-accent p-2 text-white">
+                    <Button type="button" size="sm" variant="primary" aria-label="ارسال پاسخ" onClick={() => addReply(comment.id)} className="rounded-full p-2">
                       <Send size={16} />
-                    </button>
+                    </Button>
                   </div>
                 </div>
               ) : null}

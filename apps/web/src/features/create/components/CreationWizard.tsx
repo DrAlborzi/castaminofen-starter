@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { BookOpen, Camera, CheckCircle2, ChevronLeft, ChevronRight, Mic, MessageCircleMore, Sparkles, Wand2 } from 'lucide-react';
-import { Button } from '@/components/design-system';
+import { Button, Input, Textarea } from '@/components/design-system';
 import { Tag } from '@/components/design-system/common/tag';
 import type { ContentTypeId } from '../types/creator.types';
 
@@ -149,20 +149,20 @@ export function CreationWizard() {
               <div className="grid gap-3 sm:grid-cols-2">
                 <label className="space-y-2 text-sm">
                   <span className="font-semibold text-text-primary">عنوان</span>
-                  <input value={title} onChange={(event) => setTitle(event.target.value)} className="w-full rounded-[1rem] border border-border/70 bg-surface-card/80 px-3 py-3 text-sm text-text-primary outline-none" />
+                  <Input value={title} onChange={(event) => setTitle(event.target.value)} />
                 </label>
                 <label className="space-y-2 text-sm">
                   <span className="font-semibold text-text-primary">دسته‌بندی</span>
-                  <input value={category} onChange={(event) => setCategory(event.target.value)} className="w-full rounded-[1rem] border border-border/70 bg-surface-card/80 px-3 py-3 text-sm text-text-primary outline-none" />
+                  <Input value={category} onChange={(event) => setCategory(event.target.value)} />
                 </label>
               </div>
               <label className="space-y-2 block text-sm">
                 <span className="font-semibold text-text-primary">توضیحات</span>
-                <textarea value={description} onChange={(event) => setDescription(event.target.value)} className="min-h-24 w-full rounded-[1rem] border border-border/70 bg-surface-card/80 px-3 py-3 text-sm text-text-primary outline-none" />
+                <Textarea value={description} onChange={(event) => setDescription(event.target.value)} />
               </label>
               <label className="space-y-2 block text-sm">
                 <span className="font-semibold text-text-primary">برچسب‌ها</span>
-                <input value={tags} onChange={(event) => setTags(event.target.value)} className="w-full rounded-[1rem] border border-border/70 bg-surface-card/80 px-3 py-3 text-sm text-text-primary outline-none" />
+                <Input value={tags} onChange={(event) => setTags(event.target.value)} />
               </label>
             </div>
           ) : null}

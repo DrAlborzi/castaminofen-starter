@@ -1,5 +1,5 @@
 import { Form, FormField, FormLabel } from '@/components/ui/form';
-import { Button, ErrorState, Input, LoadingState } from '@/components/design-system';
+import { Button, ErrorState, Input, LoadingState, Select } from '@/components/design-system';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { SectionHeader } from '@/components/design-system/layout/section-header';
 import type { FieldErrors, UseFormRegister } from 'react-hook-form';
@@ -35,14 +35,14 @@ export function EpisodeCreateForm({ form, onSubmit, podcastsQuery, error }: Epis
           ) : podcastsQuery.isError ? (
             <ErrorState message={podcastsQuery.error?.message ?? 'Unable to load podcasts'} />
           ) : (
-            <select id="podcastId" className="input" {...form.register('podcastId')}>
+            <Select id="podcastId" {...form.register('podcastId')}>
               <option value="">Select a podcast</option>
               {podcastsQuery.data?.data.map((podcast: Podcast) => (
                 <option key={podcast.id} value={podcast.id}>
                   {podcast.title}
                 </option>
               ))}
-            </select>
+            </Select>
           )}
           {form.formState.errors.podcastId && <p className="error-text">{form.formState.errors.podcastId.message}</p>}
         </FormField>

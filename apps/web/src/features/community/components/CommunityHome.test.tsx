@@ -48,7 +48,7 @@ describe('community experience', () => {
     container = rendered.container;
     root = rendered.root;
 
-    const trendingButton = Array.from(rendered.container.querySelectorAll('button')).find((button) => button.textContent?.includes('داغ'));
+    const trendingButton = Array.from(rendered.container.querySelectorAll('[role="tab"]')).find((button) => button.textContent?.includes('داغ'));
 
     act(() => {
       trendingButton?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
@@ -56,7 +56,7 @@ describe('community experience', () => {
 
     expect(rendered.container.textContent).toContain('بحث داغ');
     expect(rendered.container.textContent).toContain('در حال رشد');
-    expect(trendingButton?.getAttribute('aria-pressed')).toBe('true');
+    expect(trendingButton?.getAttribute('aria-selected')).toBe('true');
   });
 
   it('names preview interaction controls for assistive technology', () => {

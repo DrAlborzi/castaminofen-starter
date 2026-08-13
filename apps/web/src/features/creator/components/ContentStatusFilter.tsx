@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from '@/components/design-system';
+import { Tabs } from '@/components/design-system';
 import type { CreatorContentTab } from '../types/publishing.types';
 
 const tabs: Array<{ id: CreatorContentTab; label: string }> = [
@@ -18,23 +18,16 @@ export function ContentStatusFilter({ initialTab = 'all' }: { initialTab?: Creat
 
   return (
     <div className="space-y-3">
-      <div className="flex flex-wrap gap-2">
-        {tabs.map((tab) => {
-          const isActive = activeTab === tab.id;
-
-          return (
-            <Button
-              key={tab.id}
-              type="button"
-              size="sm"
-              variant={isActive ? 'secondary' : 'ghost'}
-              onClick={() => setActiveTab(tab.id)}
-            >
-              {tab.label}
-            </Button>
-          );
-        })}
-      </div>
+      <Tabs
+        items={tabs.map((tab) => ({
+          value: tab.id,
+          label: tab.label,
+        }))}
+        value={activeTab}
+        onValueChange={(value) => setActiveTab(value as CreatorContentTab)}
+        ariaLabel="فیلتر وضعیت محتوا"
+        className="flex flex-wrap items-center gap-2 pb-1"
+      />
       <div className="rounded-[1rem] border border-border/70 bg-surface-secondary/70 p-3 text-sm text-text-secondary">
         <p className="font-semibold text-text-primary">{activeTab === 'drafts' ? 'پیش‌نویس' : 'فیلتر فعال'}</p>
         <p className="mt-1">{activeTab === 'drafts' ? 'در حال آماده‌سازی' : 'به‌روزرسانی و دسترسی سریع برای مدیریت حرفه‌ای.'}</p>

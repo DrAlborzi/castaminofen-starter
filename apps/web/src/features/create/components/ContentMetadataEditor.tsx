@@ -1,6 +1,6 @@
 'use client';
 
-import { Input } from '@/components/design-system';
+import { Input, Textarea } from '@/components/design-system';
 import { Tag } from '@/components/design-system/common/tag';
 
 export function ContentMetadataEditor() {
@@ -25,7 +25,7 @@ export function ContentMetadataEditor() {
         </label>
         <label className="space-y-2 md:col-span-2">
           <span className="text-sm font-semibold text-text-primary">توضیحات</span>
-          <textarea className="min-h-24 w-full rounded-[1rem] border border-border/80 bg-surface-secondary/70 px-3 py-3 text-sm text-text-primary outline-none ring-0" placeholder="توضیحی که مخاطب را به تجربه‌ی بعدی دعوت کند" />
+          <Textarea placeholder="توضیحی که مخاطب را به تجربه‌ی بعدی دعوت کند" />
         </label>
         <label className="space-y-2">
           <span className="text-sm font-semibold text-text-primary">دسته‌بندی</span>
