@@ -14,7 +14,7 @@ type SavedContentCarouselProps = {
 const defaultItems: CarouselItem[] = [
   { title: 'Recently Saved', subtitle: 'Fresh picks from your personal queue', tag: 'New', accent: 'from-accent/20 to-accent/10' },
   { title: 'Favorites', subtitle: 'The stories and voices you return to', tag: 'Loved', accent: 'from-success/20 to-success/10' },
-  { title: 'Playlists', subtitle: 'Curated for calm, focus, and curiosity', tag: 'Curated', accent: 'from-[#8b5cf6]/20 to-[#8b5cf6]/10' },
+  { title: 'Playlists', subtitle: 'Curated for calm, focus, and curiosity', tag: 'Curated', accent: 'from-accent-purple/20 to-accent-purple/10' },
   { title: 'Offline-ready', subtitle: 'Future-ready collection space', tag: 'Coming soon', accent: 'from-surface-tertiary to-surface-secondary' },
 ];
 

@@ -158,10 +158,10 @@ export function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
                     <div>
-                      <p className="text-[10px] uppercase tracking-[0.28em] text-slate-300">پادکست منتخب</p>
-                      <h4 className="text-lg font-semibold text-white">فصل جدیدِ روایت‌های عمیق</h4>
+                      <p className="text-[10px] uppercase tracking-[0.28em] text-text-muted">پادکست منتخب</p>
+                      <h4 className="text-lg font-semibold text-accent-foreground">فصل جدیدِ روایت‌های عمیق</h4>
                     </div>
-                    <button className="flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-slate-900 shadow-lg">
+                    <button className="flex h-11 w-11 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-lg">
                       <Play className="ml-0.5 h-4 w-4" />
                     </button>
                   </div>
