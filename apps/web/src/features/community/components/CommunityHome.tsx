@@ -2,7 +2,7 @@
 
 import { Compass, Sparkles, TrendingUp, Users, BookOpen, MessageCircleHeart, Flame, Bookmark, Share2, Plus, ChevronRight } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import { IconButton, PageContainer, Provenance } from '@/components/design-system';
+import { IconButton, PageContainer, Provenance, Tabs } from '@/components/design-system';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { DiscussionCard } from '@/components/design-system/social/discussion-card';
 import { Tag } from '@/components/design-system/common/tag';
@@ -71,27 +71,21 @@ export function CommunityHome() {
           <div className="mt-8 grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
             <div className="space-y-4">
               <div className="rounded-[1.35rem] border border-border/80 bg-surface-card/85 p-4 shadow-soft">
-                <div className="flex flex-wrap items-center gap-2">
-                  {feedTabs.map((tab) => {
-                    const Icon = tab.icon;
-                    const active = activeFeed === tab.id;
-
-                    return (
-                      <button
-                        key={tab.id}
-                        type="button"
-                        onClick={() => setActiveFeed(tab.id)}
-                        aria-pressed={active}
-                        className={active ? 'rounded-full bg-accent/10 px-3 py-2 text-sm font-semibold text-accent' : 'rounded-full border border-border/70 px-3 py-2 text-sm text-text-secondary'}
-                      >
-                        <span className="flex items-center gap-2">
-                          <Icon className="h-4 w-4" />
-                          {tab.label}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
+                <Tabs
+                  items={feedTabs.map((tab) => ({
+                    value: tab.id,
+                    label: (
+                      <span className="flex items-center gap-2">
+                        <tab.icon className="h-4 w-4" />
+                        {tab.label}
+                      </span>
+                    ),
+                  }))}
+                  value={activeFeed}
+                  onValueChange={(value) => setActiveFeed(value as CommunityFeedMode)}
+                  ariaLabel="فیلتر خوراک اجتماع"
+                  className="flex flex-wrap items-center gap-2 pb-1"
+                />
                 <div className="mt-4 space-y-3">
                   {visibleDiscussions.map((discussion) => (
                     <DiscussionCard

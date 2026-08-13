@@ -35,7 +35,7 @@ export function MobileHeader({ pathname }: { pathname: string }) {
 
         <div className="flex shrink-0 items-center gap-1.5">
           {config.showCreateAction ? (
-            <Link href="/podcasts/new" className="icon-button bg-accent text-white hover:bg-accent/90" aria-label="ایجاد پادکست جدید">
+            <Link href="/podcasts/new" className="icon-button bg-accent text-accent-foreground hover:bg-accent/90" aria-label="ایجاد پادکست جدید">
               <Plus className="h-4 w-4" aria-hidden="true" />
             </Link>
           ) : null}

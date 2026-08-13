@@ -22,7 +22,7 @@ export function BottomNavigation({ pathname }: { pathname: string }) {
                   aria-current={item.isActive ? 'page' : undefined}
                   className="group absolute left-1/2 top-0 z-30 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface-secondary"
                 >
-                  <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-gradient-to-br from-accent via-violet-500 to-fuchsia-500 text-white shadow-[0_16px_36px_rgba(119,108,254,0.35)] transition-all duration-200 group-hover:-translate-y-1 group-hover:shadow-[0_20px_40px_rgba(119,108,254,0.42)] group-active:scale-[0.96]">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full border border-border/40 bg-gradient-to-br from-accent via-violet-500 to-fuchsia-500 text-accent-foreground shadow-[0_16px_36px_rgba(119,108,254,0.35)] transition-all duration-200 group-hover:-translate-y-1 group-hover:shadow-[0_20px_40px_rgba(119,108,254,0.42)] group-active:scale-[0.96]">
                     <Icon className="h-6 w-6" aria-hidden="true" />
                   </span>
                   <span className="sr-only">{item.label}</span>
@@ -45,7 +45,7 @@ export function BottomNavigation({ pathname }: { pathname: string }) {
                 <span
                   className={clsx(
                     'flex h-9 w-9 items-center justify-center rounded-2xl transition-all duration-200',
-                    item.isActive ? 'bg-accent/15 text-accent' : 'text-current group-hover:bg-white/10',
+                    item.isActive ? 'bg-accent/15 text-accent' : 'text-current group-hover:bg-surface-overlay',
                   )}
                 >
                   <Icon className={clsx('h-5 w-5 transition-transform duration-200', item.isActive && 'scale-110')} aria-hidden="true" />

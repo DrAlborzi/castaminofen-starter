@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { BookOpen, Circle, Clock3, Layers3, MessageCircleMore, Pause, Play, Repeat1, Repeat2, Shuffle, SkipBack, SkipForward, Sparkles, Volume2, X } from 'lucide-react';
-import { Button } from '@/components/design-system';
+import { Button, Tabs } from '@/components/design-system';
 import { ContentArtwork } from '@/components/design-system/media/content-artwork';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { Tag } from '@/components/design-system/common/tag';
@@ -168,19 +168,17 @@ export function ImmersivePlayerPanel({ onClose }: { onClose: () => void }) {
             </div>
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-2">
-            {tabs.map((tab) => (
-              <Button
-                key={tab.id}
-                type="button"
-                variant={activeTab === tab.id ? 'secondary' : 'ghost'}
-                size="sm"
-                className="rounded-full"
-                onClick={() => setActiveTab(tab.id)}
-              >
-                {tab.label}
-              </Button>
-            ))}
+          <div className="mt-4">
+            <Tabs
+              items={tabs.map((tab) => ({
+                value: tab.id,
+                label: tab.label,
+              }))}
+              value={activeTab}
+              onValueChange={(value) => setActiveTab(value as PanelTab)}
+              ariaLabel="پنل‌های تعاملی پخش‌کننده"
+              className="flex flex-wrap items-center gap-2 pb-1"
+            />
           </div>
 
           <div className="mt-4 grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">

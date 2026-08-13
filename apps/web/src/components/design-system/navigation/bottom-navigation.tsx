@@ -31,7 +31,7 @@ export function BottomNavigation({ items, className }: { items: BottomNavigation
                 aria-current={item.active ? 'page' : undefined}
                 className="group flex min-w-[3.8rem] flex-1 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface-secondary"
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-accent/25 bg-accent text-white shadow-[0_10px_28px_rgba(119,108,254,0.35)] transition-all duration-200 group-hover:-translate-y-0.5 group-hover:shadow-[0_14px_32px_rgba(119,108,254,0.42)] group-active:translate-y-0">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-accent/25 bg-accent text-accent-foreground shadow-[0_10px_28px_rgba(119,108,254,0.35)] transition-all duration-200 group-hover:-translate-y-0.5 group-hover:shadow-[0_14px_32px_rgba(119,108,254,0.42)] group-active:translate-y-0">
                   <Icon className="h-5 w-5" aria-hidden={true} />
                 </span>
                 <span className="sr-only">{item.label}</span>

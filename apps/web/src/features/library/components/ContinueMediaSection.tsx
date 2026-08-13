@@ -38,7 +38,7 @@ const defaultItems: ContinueMediaItem[] = [
     type: 'Video',
     progress: 75,
     remaining: '4 min left',
-    accent: 'from-[#8b5cf6]/30 to-[#8b5cf6]/10',
+    accent: 'from-accent-purple/30 to-accent-purple/10',
   },
 ];
 

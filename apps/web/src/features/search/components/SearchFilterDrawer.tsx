@@ -1,10 +1,11 @@
 "use client";
 
-import { SlidersHorizontal, Sparkles, Clock3 } from 'lucide-react';
-import { Button } from '@/components/design-system';
+import { Clock3, SlidersHorizontal, Sparkles } from 'lucide-react';
+import { Button, Sheet } from '@/components/design-system';
 
 type SearchFilterDrawerProps = {
   isOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
 };
 
 const filters = [
@@ -15,13 +16,20 @@ const filters = [
   { label: 'کوتاه', value: 'short' },
 ];
 
-export default function SearchFilterDrawer({ isOpen = true }: SearchFilterDrawerProps) {
-  if (!isOpen) {
-    return null;
-  }
-
+export default function SearchFilterDrawer({ isOpen = true, onOpenChange }: SearchFilterDrawerProps) {
   return (
-    <div className="rounded-[1.5rem] border border-border/80 bg-surface-card/90 p-4 shadow-soft sm:p-5">
+    <Sheet
+      open={isOpen}
+      onOpenChange={onOpenChange}
+      title="فیلترهای هوشمند"
+      description="مرتب‌سازی بر اساس جدیدترین یا محبوب‌ترین"
+      side="right"
+      footer={
+        <Button type="button" variant="primary" onClick={() => onOpenChange?.(false)}>
+          اعمال فیلتر
+        </Button>
+      }
+    >
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-2 text-sm font-medium text-text-primary">
           <SlidersHorizontal className="h-4 w-4 text-accent" />
@@ -52,6 +60,6 @@ export default function SearchFilterDrawer({ isOpen = true }: SearchFilterDrawer
           ))}
         </div>
       </div>
-    </div>
+    </Sheet>
   );
 }
