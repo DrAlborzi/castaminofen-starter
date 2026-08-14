@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from 'next';
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 import { Vazirmatn } from 'next/font/google';
 import './globals.css';
 import { AppProviders } from '@/providers/app-providers';
 import { AppShell } from '@/components/layout/app-shell';
-import { defaultLocale, getDirection, normalizeLocale } from '@/i18n/config';
+import { defaultLocale, getDirection, normalizeLocale, isSupportedLocale } from '@/i18n/config';
 
 const vazirmatn = Vazirmatn({
   subsets: ['arabic', 'latin'],
@@ -49,7 +49,27 @@ const themeBootstrapScript = `
 `;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const locale = normalizeLocale(cookies().get('castaminofen-locale')?.value ?? defaultLocale);
+  let locale = defaultLocale;
+  
+  // Priority 1: Get locale from middleware header (most reliable)
+  try {
+    const headersList = headers();
+    const headerLocale = headersList.get('x-locale');
+    if (headerLocale && isSupportedLocale(headerLocale)) {
+      locale = normalizeLocale(headerLocale);
+    }
+  } catch (e) {
+    // headers() might fail in some contexts
+  }
+  
+  // Priority 2: Fallback to cookie if header not available
+  if (locale === defaultLocale) {
+    const cookieValue = cookies().get('castaminofen-locale')?.value;
+    if (cookieValue && isSupportedLocale(cookieValue)) {
+      locale = normalizeLocale(cookieValue);
+    }
+  }
+
   const direction = getDirection(locale);
 
   return (

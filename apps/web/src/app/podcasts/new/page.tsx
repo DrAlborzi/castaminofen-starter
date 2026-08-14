@@ -30,7 +30,7 @@ export default function NewPodcastPage() {
 
   return (
     <ProtectedRoute>
-      <main className="page-container">
+      <div className="page-container">
         <PodcastForm
           title="New Podcast"
           submitLabel="Create Podcast"
@@ -40,7 +40,7 @@ export default function NewPodcastPage() {
         >
           <PodcastFormFields register={form.register} errors={form.formState.errors} />
         </PodcastForm>
-      </main>
+      </div>
     </ProtectedRoute>
   );
 }

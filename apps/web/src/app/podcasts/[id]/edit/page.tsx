@@ -55,7 +55,7 @@ export default function EditPodcastPage() {
 
   return (
     <ProtectedRoute>
-      <main className="page-container">
+      <div className="page-container">
         <PodcastForm
           title="Edit Podcast"
           submitLabel="Save Changes"
@@ -65,7 +65,7 @@ export default function EditPodcastPage() {
         >
           <PodcastFormFields register={form.register} errors={form.formState.errors} />
         </PodcastForm>
-      </main>
+      </div>
     </ProtectedRoute>
   );
 }

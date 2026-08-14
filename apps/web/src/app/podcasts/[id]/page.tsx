@@ -43,9 +43,9 @@ export default function PodcastDetailsPage() {
   }
 
   return (
-    <main className="page-container">
+    <div className="page-container">
       {deleteMutation.isError ? <div className="error-state">{deleteMutation.error?.message ?? 'Unable to delete podcast.'}</div> : null}
       <PodcastDetails podcast={query.data} canManage={canManage} isDeleting={deleteMutation.isPending} onDelete={handleDelete} />
-    </main>
+    </div>
   );
 }

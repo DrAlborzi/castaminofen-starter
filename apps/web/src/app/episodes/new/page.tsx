@@ -9,9 +9,9 @@ export default function NewEpisodePage() {
 
   return (
     <ProtectedRoute>
-      <main className="page-container">
+      <div className="page-container">
         <EpisodeCreateForm form={form} onSubmit={onSubmit} podcastsQuery={podcastsQuery} error={error} />
-      </main>
+      </div>
     </ProtectedRoute>
   );
 }

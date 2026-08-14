@@ -5,7 +5,7 @@ import SearchInput from '@/features/search/components/SearchInput';
 
 export default function OfflineLibraryPage() {
   return (
-    <main className="page-container items-center justify-center">
+    <div className="page-container items-center justify-center">
       <section className="card mx-auto flex w-full max-w-xl flex-col items-center gap-4 text-center">
         <p className="text-caption">Offline Library</p>
         <h1 className="text-heading">پادکست‌های آفلاین شما</h1>
@@ -22,6 +22,6 @@ export default function OfflineLibraryPage() {
           بازگشت به کتابخانه
         </Link>
       </section>
-    </main>
+    </div>
   );
 }

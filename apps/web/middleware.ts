@@ -1,32 +1,40 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { defaultLocale, localeCookieName, normalizeLocale } from '@/i18n/config';
+import { defaultLocale, localeCookieName, normalizeLocale, isSupportedLocale } from '@/i18n/config';
 
 const LOCALE_PATTERN = /^\/(fa|en)(?=\/|$)/;
 
 export function middleware(request: NextRequest) {
-  const { pathname, search } = request.nextUrl;
+  const { pathname } = request.nextUrl;
 
+  // Skip middleware for static/api routes
   if (pathname.startsWith('/_next') || pathname.startsWith('/api') || pathname.startsWith('/favicon') || pathname.includes('.')) {
     return NextResponse.next();
   }
 
+  // Extract locale from URL if present
   const localeMatch = pathname.match(LOCALE_PATTERN);
-  if (localeMatch) {
-    const locale = normalizeLocale(localeMatch[1]);
-    const strippedPath = pathname.replace(new RegExp(`^/${locale}`), '') || '/';
-
-    const rewriteUrl = new URL(request.url);
-    rewriteUrl.pathname = strippedPath;
-    rewriteUrl.search = search;
-
-    const response = NextResponse.rewrite(rewriteUrl);
-    response.cookies.set(localeCookieName, locale, { path: '/', sameSite: 'lax' });
-    return response;
+  let locale = defaultLocale;
+  
+  if (localeMatch && isSupportedLocale(localeMatch[1])) {
+    locale = normalizeLocale(localeMatch[1]);
+  } else {
+    // Try to get from existing cookie
+    const existingLocale = request.cookies.get(localeCookieName)?.value;
+    if (existingLocale && isSupportedLocale(existingLocale)) {
+      locale = normalizeLocale(existingLocale);
+    }
   }
 
+  // Create a response to set the cookie for future requests
   const response = NextResponse.next();
-  const currentLocale = request.cookies.get(localeCookieName)?.value ?? defaultLocale;
-  response.cookies.set(localeCookieName, normalizeLocale(currentLocale), { path: '/', sameSite: 'lax' });
+  
+  // Set cookie with the determined locale
+  response.cookies.set(localeCookieName, locale, { path: '/', sameSite: 'lax' });
+  
+  // Add custom header with locale AND pathname so root layout has all the info it needs
+  response.headers.set('x-locale', locale);
+  response.headers.set('x-pathname', pathname);
+  
   return response;
 }
 

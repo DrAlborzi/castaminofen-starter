@@ -20,14 +20,14 @@ export function AppShell({ children }: { children: ReactNode }) {
     return (
       <ThemeBoundary>
         <div className="app-shell min-h-screen bg-surface-primary text-text-primary">
-          <div className="min-h-screen">
+          <main className="min-h-screen">
           <div className="mx-auto flex min-h-screen w-full max-w-5xl items-center justify-center px-4 py-8 sm:px-6 lg:px-8">
             <div className="w-full">
               <InstallBanner />
               {children}
             </div>
           </div>
-          </div>
+          </main>
         </div>
       </ThemeBoundary>
     );
@@ -37,14 +37,14 @@ export function AppShell({ children }: { children: ReactNode }) {
     <ThemeBoundary>
       <div className="app-shell min-h-screen flex flex-col bg-surface-primary text-text-primary">
       {!isLanding && <MobileHeader pathname={pathname} />}
-      <div className="flex-1">
+      <main className="flex-1">
         <MobileContainer>
           <div className="app-shell__content px-1 py-3 sm:px-0 sm:py-4">
             <InstallBanner />
             {children}
           </div>
         </MobileContainer>
-      </div>
+      </main>
       {!isLanding && (
         <div className="px-3 pb-3 pt-2 sm:px-6 lg:px-8">
           <PlayerBar />

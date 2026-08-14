@@ -24,7 +24,7 @@ export default function PodcastsPage() {
   }
 
   return (
-    <main>
+    <div>
       <PageContainer>
         <Card className="space-y-6 p-4 sm:p-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -84,6 +84,6 @@ export default function PodcastsPage() {
           ) : null}
         </Card>
       </PageContainer>
-    </main>
+    </div>
   );
 }
