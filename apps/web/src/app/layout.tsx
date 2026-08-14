@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from 'next';
+import { cookies } from 'next/headers';
 import { Vazirmatn } from 'next/font/google';
 import './globals.css';
 import { AppProviders } from '@/providers/app-providers';
 import { AppShell } from '@/components/layout/app-shell';
+import { defaultLocale, getDirection, normalizeLocale } from '@/i18n/config';
 
 const vazirmatn = Vazirmatn({
   subsets: ['arabic', 'latin'],
@@ -47,8 +49,11 @@ const themeBootstrapScript = `
 `;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = normalizeLocale(cookies().get('castaminofen-locale')?.value ?? defaultLocale);
+  const direction = getDirection(locale);
+
   return (
-    <html lang="fa" dir="rtl" className={vazirmatn.variable}>
+    <html lang={locale} dir={direction} className={vazirmatn.variable}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
       </head>

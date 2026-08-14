@@ -5,8 +5,8 @@ describe('app shell config', () => {
   it('marks the active tab for the current pathname', () => {
     const items = getBottomNavigationItems('/library');
 
-    expect(items.find((item) => item.href === '/library')?.isActive).toBe(true);
-    expect(items.find((item) => item.href === '/')?.isActive).toBe(false);
+    expect(items.find((item) => item.href === '/fa/library')?.isActive).toBe(true);
+    expect(items.find((item) => item.href === '/fa')?.isActive).toBe(false);
   });
 
   it('keeps exact and nested route matching unambiguous', () => {

@@ -4,10 +4,13 @@ import Link from 'next/link';
 import { Bell, Plus, Search, Sparkles, UserRound } from 'lucide-react';
 import { getAppShellNavigationItems, getMobileHeaderConfig } from '@/components/layout/app-shell-config';
 import { DesktopNavigation } from '@/components/design-system';
+import { buildLocalePath, getDictionary, resolveLocale } from '@/i18n/config';
 
 export function MobileHeader({ pathname }: { pathname: string }) {
+  const locale = resolveLocale(pathname);
   const config = getMobileHeaderConfig(pathname);
   const navigationItems = getAppShellNavigationItems(pathname);
+  const dictionary = getDictionary(locale);
 
   return (
     <header className="app-header sticky top-0 z-30 border-b border-border/70 bg-surface-secondary/80 backdrop-blur-2xl">
@@ -35,23 +38,23 @@ export function MobileHeader({ pathname }: { pathname: string }) {
 
         <div className="flex shrink-0 items-center gap-1.5">
           {config.showCreateAction ? (
-            <Link href="/podcasts/new" className="icon-button bg-accent text-accent-foreground hover:bg-accent/90" aria-label="ایجاد پادکست جدید">
+            <Link href={buildLocalePath('/podcasts/new', locale)} className="icon-button bg-accent text-accent-foreground hover:bg-accent/90" aria-label={dictionary.createActionLabel}>
               <Plus className="h-4 w-4" aria-hidden="true" />
             </Link>
           ) : null}
           {config.showSearchAction ? (
-            <Link href="/search" className="icon-button" aria-label="جستجو در پادکست‌ها">
+            <Link href={buildLocalePath('/search', locale)} className="icon-button" aria-label={dictionary.searchActionLabel}>
               <Search className="h-4 w-4" aria-hidden="true" />
             </Link>
           ) : null}
           {config.showNotificationAction ? (
-            <Link href="/settings" className="icon-button relative" aria-label="تنظیمات برنامه">
+            <Link href={buildLocalePath('/settings', locale)} className="icon-button relative" aria-label={dictionary.settingsLabel}>
               <Bell className="h-4 w-4" aria-hidden="true" />
               <span className="absolute end-2 top-2 h-2 w-2 rounded-full bg-accent" />
             </Link>
           ) : null}
           {config.showProfileAction ? (
-            <Link href="/profile" className="icon-button" aria-label="پروفایل کاربری">
+            <Link href={buildLocalePath('/profile', locale)} className="icon-button" aria-label={dictionary.profileActionLabel}>
               <UserRound className="h-4 w-4" aria-hidden="true" />
             </Link>
           ) : null}
