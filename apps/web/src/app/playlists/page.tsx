@@ -5,10 +5,10 @@ import { PageContainer } from '@/components/design-system';
 
 export default function PlaylistsPage() {
   return (
-    <main>
+    <div>
       <PageContainer>
         <PlaylistPage />
       </PageContainer>
-    </main>
+    </div>
   );
 }

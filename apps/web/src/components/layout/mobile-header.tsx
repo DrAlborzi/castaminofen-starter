@@ -20,7 +20,7 @@ export function MobileHeader({ pathname }: { pathname: string }) {
             {config.titleTone === 'feature' ? <Sparkles className="h-4 w-4" aria-hidden="true" /> : <Sparkles className="h-4 w-4" aria-hidden="true" />}
           </div>
           <div className="min-w-0">
-            <p className="truncate text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">{config.title}</p>
+            <p className="truncate text-[11px] font-semibold uppercase tracking-[0.24em] text-text-primary">{config.title}</p>
             <p className="truncate text-sm text-text-secondary">{config.tagline}</p>
           </div>
         </div>
