@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation';
 import { isSupportedLocale } from '@/i18n/config';
-import { LocaleSetter } from '@/components/layout/locale-setter';
 
 // Import all page components that can be locale-prefixed
 import HomePage from '@/app/page';
@@ -55,13 +54,8 @@ export default async function LocalePrefixedPage({ params }: LocalePrefixedPageP
   const ComponentClass = pageComponentMap[routePath as keyof typeof pageComponentMap];
   
   if (ComponentClass) {
-    // Render the component dynamically, wrapped with LocaleSetter for client-side locale setting
-    return (
-      <>
-        <LocaleSetter locale={locale} />
-        <ComponentClass />
-      </>
-    );
+    // SSR now handles locale correctly, no client-side correction needed
+    return <ComponentClass />;
   }
 
   // Dynamic routes (/episodes, /podcasts, /playlists with IDs) are not supported via locale prefix

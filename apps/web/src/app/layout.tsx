@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { cookies, headers } from 'next/headers';
+import { headers } from 'next/headers';
 import { Vazirmatn } from 'next/font/google';
 import './globals.css';
 import { AppProviders } from '@/providers/app-providers';
@@ -52,35 +52,16 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   let locale = defaultLocale;
   let direction: 'rtl' | 'ltr' = 'rtl';
 
-  // The middleware rewrites /en/path to /path?__locale=en
-  // But the root layout can't directly access query params
-  // Try to get locale from cookies set by middleware
+  // Middleware sets the detected locale in x-castaminofen-locale header
   try {
-    const cookieValue = cookies().get('castaminofen-locale')?.value;
-    if (cookieValue && isSupportedLocale(cookieValue)) {
-      locale = normalizeLocale(cookieValue);
+    const headersList = headers();
+    const headerLocale = headersList.get('x-castaminofen-locale');
+    if (headerLocale && isSupportedLocale(headerLocale)) {
+      locale = normalizeLocale(headerLocale);
       direction = getDirection(locale);
     }
-  } catch (_) {
-    // cookies() might fail in some contexts
-  }
-  
-  // Fallback: try to extract from pathname if available via headers
-  if (locale === defaultLocale) {
-    try {
-      const headersList = headers();
-      // Check if middleware set x-pathname header
-      const pathname = headersList.get('x-pathname') || headersList.get('referer');
-      if (pathname) {
-        const localeMatch = pathname.match(/^\/(fa|en)(?=\/|$)/);
-        if (localeMatch && isSupportedLocale(localeMatch[1])) {
-          locale = normalizeLocale(localeMatch[1]);
-          direction = getDirection(locale);
-        }
-      }
-    } catch (_) {
-      // continue with default
-    }
+  } catch {
+    // continue with default
   }
 
   return (
