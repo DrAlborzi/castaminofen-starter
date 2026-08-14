@@ -53,7 +53,7 @@ export function PlayerProgress() {
 
   return (
     <div className="flex flex-1 items-center gap-3 rounded-full bg-surface-secondary/70 px-3 py-2">
-      <span className="min-w-[2.75rem] text-right text-[11px] font-medium text-text-secondary">{formatTime(displayedPosition)}</span>
+      <span className="min-w-[2.75rem] text-end text-[11px] font-medium text-text-secondary">{formatTime(displayedPosition)}</span>
       <div className="relative flex-1">
         <ProgressIndicator
           progress={hasKnownDuration ? progressRatio * 100 : undefined}
@@ -90,7 +90,7 @@ export function PlayerProgress() {
             onKeyDown={handleSeekKeyDown}
           /> : null}
       </div>
-      <span className="min-w-[2.75rem] text-left text-[11px] font-medium text-text-secondary">{hasKnownDuration ? formatTime(safeDuration) : 'مدت نامشخص'}</span>
+      <span className="min-w-[2.75rem] text-start text-[11px] font-medium text-text-secondary">{hasKnownDuration ? formatTime(safeDuration) : 'مدت نامشخص'}</span>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { Bookmark, Home, Plus, Search, UserRound, Users } from 'lucide-react';
 import type { ComponentType } from 'react';
+import { buildLocalePath, getDictionary, resolveLocale, stripLocalePrefix } from '@/i18n/config';
 
 export type AppShellNavigationItem = {
   id: string;
@@ -21,22 +22,35 @@ export type AppShellHeaderConfig = {
 };
 
 const navigationDefinitions = [
-  { id: 'home', label: 'Home', href: '/', icon: Home },
-  { id: 'library', label: 'Library', href: '/library', icon: Bookmark },
-  { id: 'create', label: 'Create', href: '/create', icon: Plus, isPrimary: true },
-  { id: 'search', label: 'Search', href: '/search', icon: Search },
-  { id: 'community', label: 'Community', href: '/community', icon: Users },
-  { id: 'profile', label: 'Profile', href: '/profile', icon: UserRound },
+  { id: 'home', labelKey: 'home', href: '/', icon: Home },
+  { id: 'library', labelKey: 'library', href: '/library', icon: Bookmark },
+  { id: 'create', labelKey: 'create', href: '/create', icon: Plus, isPrimary: true },
+  { id: 'search', labelKey: 'search', href: '/search', icon: Search },
+  { id: 'community', labelKey: 'community', href: '/community', icon: Users },
+  { id: 'profile', labelKey: 'profile', href: '/profile', icon: UserRound },
 ] as const;
 
+function normalizeRoute(value: string): string {
+  const withoutLocale = stripLocalePrefix(value);
+  const trimmed = withoutLocale === '/' ? '/' : withoutLocale.replace(/\/$/, '');
+  return trimmed || '/';
+}
+
 function matchesRoute(pathname: string, href: string) {
-  const normalizedPathname = pathname.length > 1 ? pathname.replace(/\/$/, '') : pathname;
-  return href === '/' ? normalizedPathname === '/' : normalizedPathname === href || normalizedPathname.startsWith(`${href}/`);
+  const plainPath = normalizeRoute(pathname);
+  const plainHref = normalizeRoute(href);
+
+  return plainHref === '/' ? plainPath === '/' : plainPath === plainHref || plainPath.startsWith(`${plainHref}/`);
 }
 
 export function getAppShellNavigationItems(pathname: string): AppShellNavigationItem[] {
+  const locale = resolveLocale(pathname);
+  const dictionary = getDictionary(locale);
+
   return navigationDefinitions.map((item) => ({
     ...item,
+    label: dictionary[item.labelKey],
+    href: buildLocalePath(item.href, locale),
     isActive: matchesRoute(pathname, item.href),
   }));
 }
@@ -44,10 +58,14 @@ export function getAppShellNavigationItems(pathname: string): AppShellNavigation
 export const getBottomNavigationItems = getAppShellNavigationItems;
 
 export function getMobileHeaderConfig(pathname: string): AppShellHeaderConfig {
-  if (pathname.startsWith('/library')) {
+  const normalizedPath = stripLocalePrefix(pathname);
+  const locale = resolveLocale(pathname);
+  const dictionary = getDictionary(locale);
+
+  if (normalizedPath.startsWith('/library')) {
     return {
-      title: 'کتابخانه',
-      tagline: 'از اینجا به بازگشت، ادامه‌ی مسیر و لحظه‌های ارزشمند برگرد',
+      title: dictionary.library,
+      tagline: dictionary.libraryTagline,
       showSearchAction: true,
       showProfileAction: true,
       showCreateAction: true,
@@ -55,50 +73,50 @@ export function getMobileHeaderConfig(pathname: string): AppShellHeaderConfig {
     };
   }
 
-  if (pathname.startsWith('/search')) {
+  if (normalizedPath.startsWith('/search')) {
     return {
-      title: 'جستجو',
-      tagline: 'پیدا کردن مسیر بعدیِ شنیداری با یک عبارت ساده',
+      title: dictionary.search,
+      tagline: dictionary.searchTagline,
       showSearchAction: true,
       showProfileAction: true,
       titleTone: 'feature',
     };
   }
 
-  if (pathname.startsWith('/creator')) {
+  if (normalizedPath.startsWith('/creator')) {
     return {
-      title: 'سازنده',
-      tagline: 'از اولین انتشار تا هویت روشن در جامعه',
+      title: dictionary.profile,
+      tagline: dictionary.creatorTagline,
       showSearchAction: true,
       showProfileAction: true,
       titleTone: 'feature',
     };
   }
 
-  if (pathname.startsWith('/profile')) {
+  if (normalizedPath.startsWith('/profile')) {
     return {
-      title: 'پروفایل',
-      tagline: 'تنظیمات و حساب کاربری',
+      title: dictionary.profile,
+      tagline: dictionary.profileTagline,
       showSearchAction: false,
       showProfileAction: true,
       titleTone: 'feature',
     };
   }
 
-  if (pathname.startsWith('/community')) {
+  if (normalizedPath.startsWith('/community')) {
     return {
-      title: 'اجتماع',
-      tagline: 'از گوش دادن تا گفت‌وگو و بازگشت به مسیر',
+      title: dictionary.community,
+      tagline: dictionary.communityTagline,
       showSearchAction: true,
       showProfileAction: true,
       titleTone: 'feature',
     };
   }
 
-  if (pathname.startsWith('/create') || pathname.startsWith('/podcasts/new') || pathname.startsWith('/episodes/new')) {
+  if (normalizedPath.startsWith('/create') || normalizedPath.startsWith('/podcasts/new') || normalizedPath.startsWith('/episodes/new')) {
     return {
-      title: 'ایجاد',
-      tagline: 'از ایده تا انتشار با مسیر روشن و قابل فهم',
+      title: dictionary.create,
+      tagline: dictionary.createTagline,
       showSearchAction: false,
       showProfileAction: true,
       showCreateAction: false,
@@ -107,8 +125,8 @@ export function getMobileHeaderConfig(pathname: string): AppShellHeaderConfig {
   }
 
   return {
-    title: 'کستامینوفن',
-    tagline: 'کشف، گوش دادن و بازگشت در یک تجربه‌ی روشن و بتا',
+    title: dictionary.appName,
+    tagline: dictionary.defaultTagline,
     showSearchAction: true,
     showNotificationAction: true,
     showProfileAction: true,

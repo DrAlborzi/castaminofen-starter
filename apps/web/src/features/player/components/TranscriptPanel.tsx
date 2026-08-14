@@ -39,7 +39,7 @@ export function TranscriptPanel({ currentTimestamp = 320, onSeek }: TranscriptPa
                 <button
                   key={segment.id}
                   type="button"
-                  className={`w-full rounded-[0.95rem] border px-3 py-2 text-right text-sm text-text-primary ${isActive ? 'border-accent/30 bg-accent/10' : 'border-border/70 bg-surface-card/80'}`}
+                  className={`w-full rounded-[0.95rem] border px-3 py-2 text-end text-sm text-text-primary ${isActive ? 'border-accent/30 bg-accent/10' : 'border-border/70 bg-surface-card/80'}`}
                   onClick={() => onSeek?.(segment.time)}
                 >
                   <span className="block text-[11px] text-text-secondary">{segment.time}s</span>

@@ -8,11 +8,13 @@ import { MobileContainer } from '@/components/layout/mobile-container';
 import { PlayerBar } from '@/features/player/components/PlayerBar';
 import { InstallBanner } from '@/components/pwa/install-banner';
 import { ThemeBoundary } from '@/components/layout/theme-boundary';
+import { stripLocalePrefix } from '@/i18n/config';
 
 export function AppShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const isLanding = pathname === '/';
-  const isAuthRoute = pathname === '/login' || pathname === '/register';
+  const normalizedPath = stripLocalePrefix(pathname);
+  const isLanding = normalizedPath === '/';
+  const isAuthRoute = normalizedPath === '/login' || normalizedPath === '/register';
 
   if (isAuthRoute) {
     return (

@@ -5,6 +5,7 @@ import { useMemo, useState } from 'react';
 import { usePodcasts } from '@/features/podcasts/hooks/usePodcasts';
 import { Button, Card, EmptyState, ErrorState, Field, Input, LoadingState, PageContainer } from '@/components/design-system';
 import { PodcastCard } from '@/features/podcasts/PodcastCard';
+import type { Podcast } from '@/lib/types';
 
 export default function PodcastsPage() {
   const [search, setSearch] = useState('');
@@ -50,7 +51,7 @@ export default function PodcastsPage() {
 
           {query.data?.data.length ? (
             <div className="field-row">
-              {query.data.data.map((podcast) => (
+              {query.data.data.map((podcast: Podcast) => (
                 <PodcastCard key={podcast.id} podcast={podcast} />
               ))}
             </div>
