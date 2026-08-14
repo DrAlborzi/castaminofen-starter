@@ -65,10 +65,10 @@ export function Sheet({
         tabIndex={-1}
         className={clsx(
           'absolute h-full w-full max-w-md border border-border bg-surface-primary p-4 shadow-soft sm:p-5 focus:outline-none',
-          side === 'left' && 'left-0 top-0',
-          side === 'right' && 'right-0 top-0',
-          side === 'top' && 'left-0 top-0 w-full max-w-none h-auto max-h-[80vh]',
-          side === 'bottom' && 'bottom-0 left-0 w-full max-w-none h-auto max-h-[80vh]',
+          side === 'left' && 'start-0 top-0',
+          side === 'right' && 'end-0 top-0',
+          side === 'top' && 'start-0 top-0 w-full max-w-none h-auto max-h-[80vh]',
+          side === 'bottom' && 'bottom-0 start-0 w-full max-w-none h-auto max-h-[80vh]',
           side === 'left' || side === 'right' ? 'translate-x-0' : '',
           className,
         )}

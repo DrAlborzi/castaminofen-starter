@@ -5,6 +5,7 @@ import { EmptyState, ErrorState, LoadingState } from '@/components/design-system
 import { Button } from '@/components/design-system';
 import { PodcastCard } from '@/features/podcasts/PodcastCard';
 import { useSearch } from '../hooks/useSearch';
+import type { Podcast } from '@/lib/types';
 
 export default function SearchResults({ q, page }: { q: string; page: number }) {
   const limit = 12;
@@ -17,7 +18,7 @@ export default function SearchResults({ q, page }: { q: string; page: number }) 
   if (query.isLoading) return <LoadingState title="در حال جستجو" message="در حال بررسی نتایج برای عبارت موردنظر هستیم…" />;
   if (query.isError) return <ErrorState title="جستجو با مشکل مواجه شد" message={query.error?.message ?? 'امکان انجام جستجو در این لحظه وجود ندارد.'} description="لطفاً دوباره تلاش کنید." />;
 
-  const items = query.data?.data ?? [];
+  const items: Podcast[] = query.data?.data ?? [];
 
   if (!items.length) {
     return (

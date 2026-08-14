@@ -24,7 +24,7 @@ export function Tooltip({ trigger, content, className }: { trigger: ReactNode; c
         {trigger}
       </span>
       {open ? (
-        <div id={tooltipId} role="tooltip" className={clsx('absolute left-1/2 top-full z-20 mt-2 -translate-x-1/2 rounded-full border border-border bg-surface-card px-2.5 py-1 text-xs text-text-primary shadow-soft', className)}>
+        <div id={tooltipId} role="tooltip" className={clsx('absolute left-1/2 rtl:left-auto rtl:right-1/2 top-full z-20 mt-2 -translate-x-1/2 rtl:translate-x-1/2 rounded-full border border-border bg-surface-card px-2.5 py-1 text-xs text-text-primary shadow-soft', className)}>
           {content}
         </div>
       ) : null}

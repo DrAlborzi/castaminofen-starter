@@ -7,10 +7,11 @@ import { usePodcasts } from '@/features/podcasts/hooks/usePodcasts';
 import { ContentArtwork } from '@/components/design-system/media/content-artwork';
 import { MediaCard } from '@/components/design-system/media/media-card';
 import { Button } from '@/components/design-system/common/button';
+import type { Podcast } from '@/lib/types';
 
 export function WelcomeScreen() {
   const podcastsQuery = usePodcasts({ page: 1, limit: 3, sort: 'newest' });
-  const podcasts = (podcastsQuery.data?.data ?? []).filter((podcast) => podcast.id && podcast.title).slice(0, 3);
+  const podcasts = (podcastsQuery.data?.data ?? []).filter((podcast: Podcast) => podcast.id && podcast.title).slice(0, 3);
 
   return (
     <main className="w-full bg-surface-canvas">
@@ -88,7 +89,7 @@ export function WelcomeScreen() {
             </div>
           ) : podcasts.length ? (
             <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {podcasts.map((podcast) => (
+              {podcasts.map((podcast: Podcast) => (
                 <MediaCard key={podcast.id} title={podcast.title} subtitle={podcast.description}>
                   <ContentArtwork src={podcast.artworkUrl} alt="" className="aspect-video w-full" />
                   <Link href={`/podcasts/${podcast.id}`} className="button button-secondary min-h-11 w-full justify-center text-sm" aria-label={`${podcast.title}، باز کردن پادکست`}>

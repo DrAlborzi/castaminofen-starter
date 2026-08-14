@@ -125,11 +125,11 @@ export function ImmersivePlayerPanel({ onClose }: { onClose: () => void }) {
                     </Button>
                     <Button type="button" variant="secondary" size="sm" className="rounded-full" onClick={() => handleSkip(-30)} aria-label="پرش ۳۰ ثانیه به عقب">
                       <SkipBack size={14} />
-                      <span className="mr-2">-30s</span>
+                      <span className="ms-2">-30s</span>
                     </Button>
                     <Button type="button" variant="secondary" size="sm" className="rounded-full" onClick={() => handleSkip(30)} aria-label="پرش ۳۰ ثانیه به جلو">
                       <SkipForward size={14} />
-                      <span className="mr-2">+30s</span>
+                      <span className="ms-2">+30s</span>
                     </Button>
                     <Button type="button" variant={shuffleEnabled ? 'secondary' : 'ghost'} size="sm" className="rounded-full" onClick={() => toggleShuffle()} aria-label="تغییر حالت تصادفی">
                       <Shuffle size={14} />
@@ -139,7 +139,7 @@ export function ImmersivePlayerPanel({ onClose }: { onClose: () => void }) {
                     </Button>
                     <Button type="button" variant="ghost" size="sm" className="rounded-full" onClick={handleCycleSpeed} aria-label="تغییر سرعت پخش">
                       <Volume2 size={14} />
-                      <span className="mr-2">{playbackSpeed.toFixed(2)}x</span>
+                      <span className="ms-2">{playbackSpeed.toFixed(2)}x</span>
                     </Button>
                   </div>
                 </div>

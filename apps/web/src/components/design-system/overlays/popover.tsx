@@ -33,7 +33,7 @@ export function Popover({
       >
         {trigger}
       </button>
-      {isOpen ? <div className={clsx('absolute left-0 top-full z-20 mt-2 rounded-[1rem] border border-border bg-surface-card p-3 shadow-soft', className)}>{content}</div> : null}
+      {isOpen ? <div className={clsx('absolute start-0 top-full z-20 mt-2 rounded-[1rem] border border-border bg-surface-card p-3 shadow-soft', className)}>{content}</div> : null}
     </div>
   );
 }

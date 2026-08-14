@@ -47,7 +47,7 @@ export function MobileHeader({ pathname }: { pathname: string }) {
           {config.showNotificationAction ? (
             <Link href="/settings" className="icon-button relative" aria-label="تنظیمات برنامه">
               <Bell className="h-4 w-4" aria-hidden="true" />
-              <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-accent" />
+              <span className="absolute end-2 top-2 h-2 w-2 rounded-full bg-accent" />
             </Link>
           ) : null}
           {config.showProfileAction ? (

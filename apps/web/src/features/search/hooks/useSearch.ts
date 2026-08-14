@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import type { Podcast } from '@/lib/types';
+import type { Podcast, PaginatedResponse } from '@/lib/types';
 
 type UseSearchParams = {
   q?: string;
@@ -12,7 +12,7 @@ export function useSearch(params: UseSearchParams) {
   const page = params.page ?? 1;
   const limit = params.limit ?? 12;
 
-  return useQuery({
+  return useQuery<PaginatedResponse<Podcast>>({
     queryKey: ['search', params.offline ? 'offline' : params.q ?? '', page, limit, params.offline ? 'offline' : 'online'],
     queryFn: async () => {
       if (params.offline) {
@@ -37,7 +37,7 @@ export function useSearch(params: UseSearchParams) {
             page: 1,
             limit,
           },
-        } as { data: Podcast[]; pagination: { total: number; totalPages: number; page: number; limit: number } };
+        } as PaginatedResponse<Podcast>;
       }
 
       return import('@/lib/podcasts').then((m) => m.getPodcasts({ search: params.q, page, limit }));
