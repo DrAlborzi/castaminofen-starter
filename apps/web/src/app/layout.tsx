@@ -48,29 +48,40 @@ const themeBootstrapScript = `
   })();
 `;
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   let locale = defaultLocale;
-  
-  // Priority 1: Get locale from middleware header (most reliable)
+  let direction: 'rtl' | 'ltr' = 'rtl';
+
+  // The middleware rewrites /en/path to /path?__locale=en
+  // But the root layout can't directly access query params
+  // Try to get locale from cookies set by middleware
   try {
-    const headersList = headers();
-    const headerLocale = headersList.get('x-locale');
-    if (headerLocale && isSupportedLocale(headerLocale)) {
-      locale = normalizeLocale(headerLocale);
-    }
-  } catch (e) {
-    // headers() might fail in some contexts
-  }
-  
-  // Priority 2: Fallback to cookie if header not available
-  if (locale === defaultLocale) {
     const cookieValue = cookies().get('castaminofen-locale')?.value;
     if (cookieValue && isSupportedLocale(cookieValue)) {
       locale = normalizeLocale(cookieValue);
+      direction = getDirection(locale);
+    }
+  } catch (_) {
+    // cookies() might fail in some contexts
+  }
+  
+  // Fallback: try to extract from pathname if available via headers
+  if (locale === defaultLocale) {
+    try {
+      const headersList = headers();
+      // Check if middleware set x-pathname header
+      const pathname = headersList.get('x-pathname') || headersList.get('referer');
+      if (pathname) {
+        const localeMatch = pathname.match(/^\/(fa|en)(?=\/|$)/);
+        if (localeMatch && isSupportedLocale(localeMatch[1])) {
+          locale = normalizeLocale(localeMatch[1]);
+          direction = getDirection(locale);
+        }
+      }
+    } catch (_) {
+      // continue with default
     }
   }
-
-  const direction = getDirection(locale);
 
   return (
     <html lang={locale} dir={direction} className={vazirmatn.variable}>
