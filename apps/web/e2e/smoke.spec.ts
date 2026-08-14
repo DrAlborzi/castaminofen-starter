@@ -1,17 +1,12 @@
 import { test, expect } from '@playwright/test';
-import { injectAxe, checkA11y } from 'axe-playwright';
+import { AxeBuilder } from '@axe-core/playwright';
 
 test.describe('Accessibility Smoke Tests', () => {
   test.describe('App Shell', () => {
     test('should have no accessibility violations on home page', async ({ page }) => {
       await page.goto('/');
-      await injectAxe(page);
-      await checkA11y(page, null, {
-        detailedReport: true,
-        detailedReportOptions: {
-          html: true,
-        },
-      });
+      const results = await new AxeBuilder({ page }).analyze();
+      expect(results.violations).toHaveLength(0);
     });
 
     test('should have proper landmark structure', async ({ page }) => {
@@ -32,12 +27,8 @@ test.describe('Accessibility Smoke Tests', () => {
       // Set mobile viewport
       await page.setViewportSize({ width: 390, height: 844 });
       await page.goto('/');
-      await injectAxe(page);
-      await checkA11y(page, 'nav', {
-        rules: {
-          'color-contrast': { enabled: false }, // May fail due to dynamic theming
-        },
-      });
+      const results = await new AxeBuilder({ page }).include('nav').analyze();
+      expect(results.violations).toHaveLength(0);
     });
 
     test('should have accessible bottom navigation tabs', async ({ page }) => {
@@ -53,12 +44,8 @@ test.describe('Accessibility Smoke Tests', () => {
   test.describe('Forms', () => {
     test('should have accessible form on login page', async ({ page }) => {
       await page.goto('/login');
-      await injectAxe(page);
-      await checkA11y(page, 'form', {
-        rules: {
-          'color-contrast': { enabled: false },
-        },
-      });
+      const results = await new AxeBuilder({ page }).include('form').analyze();
+      expect(results.violations).toHaveLength(0);
     });
 
     test('should have proper form labels', async ({ page }) => {
@@ -79,16 +66,11 @@ test.describe('Accessibility Smoke Tests', () => {
       
       // Look for dialog or sheet elements
       const dialogs = await page.locator('[role="dialog"]').count();
-      const sheets = await page.locator('[role="dialog"][aria-modal="true"]').count();
       
       // Note: this test is informational - dialogs may not be present on page load
-      if (sheets > 0) {
-        await injectAxe(page);
-        await checkA11y(page, '[role="dialog"]', {
-          rules: {
-            'color-contrast': { enabled: false },
-          },
-        });
+      if (dialogs > 0) {
+        const results = await new AxeBuilder({ page }).include('[role="dialog"]').analyze();
+        expect(results.violations).toHaveLength(0);
       }
     });
   });
