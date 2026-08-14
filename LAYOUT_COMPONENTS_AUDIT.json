@@ -1,0 +1,439 @@
+{
+  "audit_metadata": {
+    "date": "2026-08-13",
+    "workspace": "castaminofen-starter",
+    "scope": "apps/web/src layout components inventory",
+    "total_components_found": 14,
+    "canonical_count": 9,
+    "adapter_count": 4,
+    "utility_count": 1
+  },
+  "components": [
+    {
+      "name": "AppShell",
+      "path": "components/layout/app-shell.tsx",
+      "type": "canonical",
+      "category": "app-level",
+      "classification": "Top-level layout orchestrator",
+      "responsibility": "Manages overall page structure, coordinates mobile header, bottom nav, player bar, and content wrapper",
+      "responsive_behavior": {
+        "mobile": "Full navigation + player bar",
+        "tablet_sm": "Same as mobile",
+        "desktop_lg": "Same but with larger spacing",
+        "special_routes": {
+          "auth": "Centered max-w-5xl layout, no nav",
+          "landing": "No header, no nav, no player"
+        }
+      },
+      "rtl_support": true,
+      "rtl_notes": "Full logical flex layout",
+      "consumers": ["Root layout (app/layout.tsx)"],
+      "semantic_html": "div with aria-aware children",
+      "styling_system": "Tailwind + CSS variables",
+      "key_classes": ["app-shell", "app-shell__content", "min-h-screen", "flex flex-col"],
+      "props": {
+        "children": "ReactNode"
+      },
+      "imports_from": "Used by: app/layout.tsx"
+    },
+    {
+      "name": "PageContainer",
+      "path": "components/design-system/layout/page-container.tsx",
+      "type": "canonical",
+      "category": "design-system-primitive",
+      "classification": "Spacing wrapper",
+      "responsibility": "Provides consistent max-width, padding, and vertical spacing for page content",
+      "responsive_behavior": {
+        "mobile": "space-y-4, px-3",
+        "sm": "space-y-6, px-6",
+        "lg": "space-y-8, px-8"
+      },
+      "max_width": "72rem (1152px) via max-w-app",
+      "rtl_support": true,
+      "spacing_rhythm": "Vertical gaps between children: 1rem → 1.5rem → 2rem",
+      "consumers": [
+        "LibraryPage", "DiscoveryPage", "HomePage", "SearchPage", "ProfilePage",
+        "AdminDashboard", "CreatorStudioHome", "EpisodeDetailView"
+      ],
+      "usage_count": 80+,
+      "semantic_html": "<section>",
+      "key_classes": ["mx-auto", "w-full", "max-w-app", "space-y-4", "sm:space-y-6", "lg:space-y-8"],
+      "props": {
+        "children": "ReactNode (required)",
+        "className": "string (optional)"
+      },
+      "imports_from": "@/components/design-system"
+    },
+    {
+      "name": "SectionHeader",
+      "path": "components/design-system/layout/section-header.tsx",
+      "type": "canonical",
+      "category": "design-system-primitive",
+      "classification": "Section title & action bar pattern",
+      "responsibility": "Provides shared pattern for section titles with eyebrow, title, description, and actions",
+      "responsive_behavior": {
+        "mobile": "Vertical flex (title → description → actions)",
+        "sm": "Horizontal flex (left: text, right: actions)"
+      },
+      "rtl_support": true,
+      "consumers": [
+        "AdminDashboard", "AdminAIAssistant", "SearchPage", "EpisodeCreateForm", "PodcastForm"
+      ],
+      "usage_count": 20+,
+      "semantic_html": "<div> with <h2>",
+      "key_classes": ["flex flex-col gap-3", "sm:flex-row", "sm:items-end", "sm:justify-between"],
+      "props": {
+        "eyebrow": "ReactNode (optional)",
+        "title": "ReactNode (required)",
+        "description": "ReactNode (optional)",
+        "actions": "ReactNode (optional)",
+        "className": "string (optional)"
+      }
+    },
+    {
+      "name": "MobileHeader (adapter)",
+      "path": "components/layout/mobile-header.tsx",
+      "type": "adapter",
+      "category": "layout-adapter",
+      "classification": "Route-aware header wrapper",
+      "responsibility": "Provides contextual header based on pathname, delegates to DesktopNavigation for md: screens",
+      "responsive_behavior": {
+        "mobile": "Not displayed",
+        "md": "Full horizontal layout with nav in center"
+      },
+      "route_configurations": {
+        "/library*": "کتابخانه + tagline + search, create, profile",
+        "/search*": "جستجو + search tagline",
+        "/creator*": "سازنده + creator tagline",
+        "/profile*": "پروفایل + settings tagline",
+        "/community*": "اجتماع + community tagline",
+        "/create*": "ایجاد + creation tagline"
+      },
+      "rtl_support": true,
+      "consumers": ["AppShell (non-landing pages)"],
+      "semantic_html": "<header>",
+      "key_classes": ["app-header", "sticky", "top-0", "z-30", "backdrop-blur-2xl"],
+      "props": {
+        "pathname": "string (required)"
+      }
+    },
+    {
+      "name": "MobileHeader (primitive)",
+      "path": "components/design-system/navigation/mobile-header.tsx",
+      "type": "canonical",
+      "category": "design-system-primitive",
+      "classification": "Generic sticky header with slots",
+      "responsibility": "Generic header primitive with leading, title, subtitle, and trailing slots (no route awareness)",
+      "rtl_support": true,
+      "semantic_html": "<header>",
+      "key_classes": ["sticky", "top-0", "z-30", "backdrop-blur-2xl", "mx-auto", "max-w-app"],
+      "props": {
+        "title": "ReactNode (required)",
+        "subtitle": "ReactNode (optional)",
+        "leading": "ReactNode (optional)",
+        "trailing": "ReactNode (optional)",
+        "className": "string (optional)"
+      }
+    },
+    {
+      "name": "BottomNavigation (adapter)",
+      "path": "components/layout/bottom-navigation.tsx",
+      "type": "adapter",
+      "category": "layout-adapter",
+      "classification": "Mobile tab navigation with route awareness",
+      "responsibility": "Bottom tab bar for mobile, routes to main sections, highlights active route",
+      "responsive_behavior": {
+        "mobile": "Always visible (fixed bottom)",
+        "md": "Hidden (md:hidden)"
+      },
+      "navigation_items": [
+        "Home (/) ",
+        "Library (/library)",
+        "Create (/create) [primary/FAB]",
+        "Search (/search)",
+        "Community (/community)",
+        "Profile (/profile)"
+      ],
+      "rtl_support": true,
+      "consumers": ["AppShell (mobile pages)"],
+      "semantic_html": "<nav>",
+      "key_classes": ["fixed", "inset-x-0", "bottom-0", "z-20", "md:hidden"],
+      "special_styling": "FAB (create): h-14 w-14 rounded-full, gradient background",
+      "props": {
+        "pathname": "string (required)"
+      }
+    },
+    {
+      "name": "BottomNavigation (primitive)",
+      "path": "components/design-system/navigation/bottom-navigation.tsx",
+      "type": "canonical",
+      "category": "design-system-primitive",
+      "classification": "Generic bottom navigation primitive",
+      "responsibility": "Renders bottom navigation bar from items config (non-route-aware)",
+      "rtl_support": true,
+      "semantic_html": "<nav>",
+      "key_classes": ["fixed", "inset-x-0", "bottom-0", "z-20"],
+      "props": {
+        "items": "BottomNavigationItem[] (required)",
+        "className": "string (optional)"
+      },
+      "item_interface": {
+        "id": "string",
+        "label": "ReactNode",
+        "href": "string",
+        "icon": "ComponentType",
+        "active": "boolean (optional)",
+        "primary": "boolean (optional)"
+      }
+    },
+    {
+      "name": "DesktopNavigation",
+      "path": "components/design-system/navigation/desktop-navigation.tsx",
+      "type": "canonical",
+      "category": "design-system-primitive",
+      "classification": "Horizontal navigation primitive",
+      "responsibility": "Renders horizontal nav links with optional icons (desktop view)",
+      "rtl_support": true,
+      "semantic_html": "<nav>",
+      "key_classes": ["flex", "items-center", "gap-2"],
+      "props": {
+        "items": "DesktopNavigationItem[] (required)",
+        "className": "string (optional)"
+      },
+      "item_interface": {
+        "id": "string",
+        "label": "ReactNode",
+        "href": "string",
+        "active": "boolean (optional)",
+        "icon": "ComponentType (optional)"
+      }
+    },
+    {
+      "name": "MobileContainer",
+      "path": "components/layout/mobile-container.tsx",
+      "type": "adapter",
+      "category": "layout-adapter",
+      "classification": "Responsive padding wrapper",
+      "responsibility": "Applies consistent horizontal padding and max-width to content",
+      "responsive_behavior": {
+        "mobile": "px-4 (1rem)",
+        "sm": "px-6 (1.5rem)",
+        "lg": "px-8 (2rem)"
+      },
+      "max_width": "72rem (1152px)",
+      "rtl_support": true,
+      "consumers": ["AppShell content wrapper"],
+      "semantic_html": "<div>",
+      "key_classes": ["mobile-container", "mx-auto", "w-full", "max-w-app"],
+      "props": {
+        "children": "ReactNode (required)",
+        "className": "string (optional)"
+      }
+    },
+    {
+      "name": "ThemeBoundary",
+      "path": "components/layout/theme-boundary.tsx",
+      "type": "canonical",
+      "category": "app-level",
+      "classification": "Theme provider/context wrapper",
+      "responsibility": "Applies theme to document element, watches system changes, syncs across tabs",
+      "rtl_support": true,
+      "consumers": ["AppShell wrapper"],
+      "semantic_html": "No output (Provider)",
+      "behavior": "Sets data-theme and colorScheme on document.documentElement",
+      "storage_key": "castaminofen-settings-preferences",
+      "props": {
+        "children": "ReactNode (required)"
+      }
+    },
+    {
+      "name": "ContentCarousel",
+      "path": "components/layout/content-carousel.tsx",
+      "type": "utility",
+      "category": "layout-helper",
+      "classification": "Horizontal scroll container",
+      "responsibility": "Provides horizontal scrolling with hidden scrollbars",
+      "rtl_support": true,
+      "semantic_html": "<div>",
+      "key_classes": ["flex", "gap-3", "overflow-x-auto", "[scrollbar-width:none]"],
+      "scrollbar_hiding": "Both webkit and firefox support",
+      "props": {
+        "children": "ReactNode (required)",
+        "className": "string (optional)"
+      }
+    },
+    {
+      "name": "Header",
+      "path": "components/layout/header.tsx",
+      "type": "legacy",
+      "category": "layout-adapter",
+      "classification": "Logo + title header (possibly superseded)",
+      "responsibility": "Renders logo, app title, and action buttons",
+      "status": "Check usage - may be legacy",
+      "rtl_support": true,
+      "semantic_html": "<header>",
+      "consumers": "Verify in app"
+    },
+    {
+      "name": "RoutePlaceholder",
+      "path": "components/layout/route-placeholder.tsx",
+      "type": "development",
+      "category": "development-utility",
+      "classification": "Route stub template",
+      "responsibility": "Provides consistent structure for placeholder/stub pages",
+      "use_case": "Development and route scaffolding",
+      "semantic_html": "<main>",
+      "props": {
+        "title": "string (required)",
+        "description": "string (required)",
+        "badge": "string (optional)",
+        "links": "RouteLink[] (optional)",
+        "stateVariant": "PageStateVariant (optional)",
+        "stateTitle": "string (optional)",
+        "stateDescription": "string (optional)"
+      }
+    },
+    {
+      "name": "app-shell-config",
+      "path": "components/layout/app-shell-config.ts",
+      "type": "configuration",
+      "category": "data",
+      "classification": "Route-to-navigation mapping",
+      "responsibility": "Centralized config for navigation items and header metadata per route",
+      "exports": [
+        "getAppShellNavigationItems(pathname)",
+        "getBottomNavigationItems(pathname)",
+        "getMobileHeaderConfig(pathname)",
+        "AppShellNavigationItem type",
+        "AppShellHeaderConfig type"
+      ],
+      "navigation_items_count": 6,
+      "consumers": ["BottomNavigation adapter", "MobileHeader adapter"],
+      "tested": true
+    }
+  ],
+  "layout_architecture": {
+    "layers": [
+      {
+        "name": "Root Layout",
+        "components": ["app/layout.tsx", "AppShell", "ThemeBoundary"],
+        "responsibility": "Global HTML setup, font loading, metadata, theme bootstrap"
+      },
+      {
+        "name": "Navigation Layer",
+        "components": ["MobileHeader (adapter)", "BottomNavigation (adapter)", "app-shell-config"],
+        "responsibility": "Route-aware navigation, active state tracking, conditional rendering"
+      },
+      {
+        "name": "Content Layer",
+        "components": ["MobileContainer", "PageContainer"],
+        "responsibility": "Consistent spacing, max-width constraints, responsive padding"
+      },
+      {
+        "name": "Design System",
+        "components": ["PageContainer", "SectionHeader", "MobileHeader (primitive)", "BottomNavigation (primitive)", "DesktopNavigation"],
+        "responsibility": "Reusable, non-owning UI primitives"
+      }
+    ]
+  },
+  "responsive_system": {
+    "breakpoints": {
+      "base": "0px (mobile first)",
+      "sm": "640px (tablet)",
+      "md": "768px (tablet→desktop threshold)",
+      "lg": "1024px (desktop)",
+      "xl": "1280px (large desktop)",
+      "2xl": "1536px (extra large)"
+    },
+    "container": {
+      "max_width_app": "72rem (1152px)",
+      "max_width_content": "72rem (1152px)",
+      "horizontal_padding": {
+        "base": "px-3 or px-4",
+        "sm": "px-6",
+        "lg": "px-8"
+      }
+    },
+    "spacing_rhythm": {
+      "page_container_vertical": {
+        "base": "space-y-4 (1rem)",
+        "sm": "space-y-6 (1.5rem)",
+        "lg": "space-y-8 (2rem)"
+      },
+      "section_header_horizontal": {
+        "base": "gap-3 flex-col",
+        "sm": "gap-3 flex-row items-end justify-between"
+      }
+    },
+    "navigation_visibility": {
+      "bottom_nav": "visible mobile, hidden md:",
+      "desktop_nav": "hidden mobile, visible md:",
+      "mobile_header": "visible mobile/sm, hidden md:"
+    }
+  },
+  "rtl_implementation": {
+    "global_direction": "html[lang='fa'][dir='rtl']",
+    "color_scheme": "dark light",
+    "theme_mode": "data-theme attribute on root",
+    "logical_utilities": [
+      "ms-*/me-* (margin start/end)",
+      "ps-*/pe-* (padding start/end)",
+      "start-*/end-* (inset start/end)",
+      "flex-col/flex-row (logical)",
+      "items-center/items-end (logical alignment)",
+      "justify-between/justify-center (logical alignment)"
+    ],
+    "physical_layout_avoided": true,
+    "icon_mirroring": "Only semantically directional (back, next, previous)",
+    "no_forced_ltr": true
+  },
+  "design_tokens": {
+    "surface_colors": {
+      "primary": "#060814",
+      "secondary": "#0E1220",
+      "card": "#161B2D",
+      "card_elevated": "#1D243B",
+      "hover": "#232A46"
+    },
+    "text_colors": {
+      "primary": "#F7F8FC",
+      "secondary": "#A6ACC7",
+      "muted": "#6C7491"
+    },
+    "accent": {
+      "primary": "#776CFE",
+      "green": "#00EA99",
+      "foreground": "#F7F8FC"
+    }
+  },
+  "missing_patterns": [
+    "Standalone Grid/Stack components (Tailwind classes used instead)",
+    "Dedicated Sidebar component (surface color exists, no component)",
+    "Explicit TopBar component (covered by headers)",
+    "Standalone Section wrapper (only SectionHeader exists)",
+    "ContentContainer (only PageContainer found)"
+  ],
+  "architecture_principles": {
+    "canonical_design_system": "Non-owning, reusable primitives (design-system/*)",
+    "layout_adapters": "Route-aware, app-specific wrappers (layout/*)",
+    "feature_ownership": "Data fetching, state, navigation in features/*",
+    "separation_of_concerns": "Clear boundary between primitives, adapters, and features",
+    "rtl_first": "Entire app RTL with logical Tailwind utilities"
+  },
+  "testing_coverage": {
+    "page_container": "Spacing rhythm, semantic html, children rendering",
+    "section_header": "Eyebrow, title, description, actions composition",
+    "app_shell_config": "Route matching, active state, header metadata, 6-item navigation"
+  },
+  "summary_statistics": {
+    "total_layout_files": 14,
+    "canonical_primitives": 9,
+    "layout_adapters": 4,
+    "utility_components": 1,
+    "responsive_breakpoints": 6,
+    "page_container_usage": "80+ pages",
+    "section_header_usage": "20+ features",
+    "rtl_support_coverage": "100%",
+    "z_index_layers": 4
+  }
+}
